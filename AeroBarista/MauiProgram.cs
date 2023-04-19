@@ -1,13 +1,8 @@
 ﻿using AeroBarista.ApiClients;
 using AeroBarista.ApiClients.Interfaces;
 using AeroBarista.Attributes;
-using AeroBarista.Services;
-using AeroBarista.Services.Interfaces;
-using AeroBarista.ViewModels;
-using AeroBarista.Views;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Java.Interop;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 
@@ -29,12 +24,12 @@ public static class MauiProgram
             })
             .ConfigureContainer(new AutofacServiceProviderFactory(), autofacBuilder =>
             {
-                var assembly = Assembly.GetExecutingAssembly();
+                var assembly = AppDomain.CurrentDomain.GetAssemblies();
 
                 Register(autofacBuilder, assembly);
                 RegisterAs(autofacBuilder, assembly);
 
-                RegisterApiClients(autofacBuilder);
+                RegisterApiClients(autofacBuilder, assembly, true);
             });
 
 
@@ -45,7 +40,7 @@ public static class MauiProgram
         return builder.Build();
     }
 
-    public static void Register(ContainerBuilder builder, Assembly assembly)
+    public static void Register(ContainerBuilder builder, Assembly[] assembly)
     {
         builder.RegisterAssemblyTypes(assembly)
         .Where(t => t.IsClass && t.GetCustomAttribute<ExportSingleton>() != null).SingleInstance();
@@ -55,7 +50,7 @@ public static class MauiProgram
 
     }
 
-    public static void RegisterAs(ContainerBuilder builder, Assembly assembly)
+    public static void RegisterAs(ContainerBuilder builder, Assembly[] assembly)
     {
         builder.RegisterAssemblyTypes(assembly)
          .Where(t => t.IsClass && t.GetCustomAttribute<ExportSingletonAs>() != null)
@@ -66,8 +61,22 @@ public static class MauiProgram
          .As(t => t.GetInterfaces().Where(x => x.Name == t.GetCustomAttribute<ExportTransientAs>().InterfaceName)).InstancePerDependency();
     }
 
-    public static void RegisterApiClients(ContainerBuilder builder)
+    public static void RegisterApiClients(ContainerBuilder builder, Assembly[] assembly, bool useDemoApiClients = false)
     {
-        builder.RegisterType<DemoRecipeApiClient>().As<IRecipeApiClient>();
+        if (useDemoApiClients)
+        {
+            builder.RegisterAssemblyTypes(assembly)
+               .Where(t => t.Name.StartsWith("Demo") && t.Name.EndsWith("ApiClient"))
+               .AsImplementedInterfaces()
+               .InstancePerDependency();
+
+            return;
+        }
+
+        builder.RegisterAssemblyTypes(assembly)
+            .Where(t => !t.Name.StartsWith("Demo") && t.Name.EndsWith("ApiClient"))
+            .AsImplementedInterfaces()
+            .InstancePerDependency();
+
     }
 }

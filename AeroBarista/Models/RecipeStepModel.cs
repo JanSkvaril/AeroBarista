@@ -3,8 +3,10 @@
 namespace AeroBarista.Models;
 
 public record RecipeStepModel(
+    int id,
     string ShorText,
     string? Description,
     StepType StepType,
-    int? Value
+    int? Value,
+    TimeSpan time
     );
