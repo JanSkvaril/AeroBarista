@@ -6,7 +6,20 @@
              Title="ProcessPage">
     <VerticalStackLayout>
         <Label 
-            Text="{Binding CurrentTimeText}"
+            Text="{Binding CurrentTime,  StringFormat='{}{0:mm\\:ss}'}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding RemainingTime, StringFormat='{}{0:mm\\:ss}'}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+        <Label 
+            Text="{Binding Recipe.Name}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding ActiveStep.ShorText}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

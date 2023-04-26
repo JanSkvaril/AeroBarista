@@ -15,6 +15,7 @@ namespace AeroBarista.Services
 
         IDispatcherTimer timer;
         DateTime time;
+        const int timerTickRate = 50; // miliseconds
 
         Action<TimeSpan>? tickCallback;
         public BrewProcessService()
@@ -22,7 +23,7 @@ namespace AeroBarista.Services
             if (Application.Current == null) throw new ArgumentException("Application cannot be null");
 
             timer = Application.Current.Dispatcher.CreateTimer();
-            timer.Interval = new TimeSpan(0, 0,0 ,0,25);
+            timer.Interval = new TimeSpan(0, 0,0 ,0, timerTickRate);
             timer.Tick += new EventHandler(TimerTick);
         }
 

@@ -22,7 +22,7 @@ namespace AeroBarista.ViewModels
         // TODO: get data from parameter, not api client!
         IRecipeApiClient apiClient;
         IBrewProcessService timer;
-
+        ProcessStateService processStateService;
         private RecipeModel _activeRecipe;
         public RecipeModel Recipe
         {
@@ -37,6 +37,20 @@ namespace AeroBarista.ViewModels
             }
         }
 
+        private RecipeStepModel _activeStep;
+        public RecipeStepModel ActiveStep
+        {
+            get => _activeStep;
+            set
+            {
+                if (_activeStep != value)
+                {
+                    _activeStep = value;
+                    OnPropertyChanged(nameof(ActiveStep));
+                }
+            }
+        }
+
         private TimeSpan currentTime;
         public TimeSpan CurrentTime
         {
@@ -47,22 +61,34 @@ namespace AeroBarista.ViewModels
                 {
                     currentTime = value;
                     OnPropertyChanged(nameof(CurrentTime));
-                    OnPropertyChanged(nameof(CurrentTimeText));
+                }
+            }
+        }
+
+        private TimeSpan remainingTime;
+        public TimeSpan RemainingTime
+        {
+            get => remainingTime;
+            set
+            {
+                if (remainingTime != value)
+                {
+                    remainingTime = value;
+                    OnPropertyChanged(nameof(RemainingTime));
                 }
             }
         }
 
 
-        public string CurrentTimeText
-        {
-            get => currentTime.ToString(@"mm\:ss");
-        }
 
 
         public ProcessPageViewModel(INavigationService navigationService, IRecipeApiClient apiClient, IBrewProcessService timer) : base(navigationService)
         {
             this.apiClient = apiClient;
             GetData();
+            processStateService = new ProcessStateService(Recipe.Steps);
+            _activeStep = processStateService.GetActiveStep();
+            processStateService.SetStateChangeCallback(StateChangeCallback);
             this.timer = timer;
             this.timer.RegisterTickCallback(TimeTickCallback);
             timer.Start();
@@ -71,6 +97,16 @@ namespace AeroBarista.ViewModels
         private void TimeTickCallback(TimeSpan time)
         {
             CurrentTime = time;
+            processStateService.UpdateState(time);
+            RemainingTime = processStateService.GetRemainingTimeForCurrentStep(time);
+        }
+
+        private void StateChangeCallback(RecipeStepModel? current, RecipeStepModel? prev, RecipeStepModel? next)
+        {
+            if (current != null)
+            {
+                ActiveStep = current;
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
