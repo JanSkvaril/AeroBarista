@@ -1,4 +1,5 @@
 ﻿using AeroBarista.Services.Interfaces;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AeroBarista.ViewModels.Base;
 
