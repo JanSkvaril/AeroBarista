@@ -1,4 +1,6 @@
-﻿using AeroBarista.Models;
+﻿using AeroBarista.Attributes;
+using AeroBarista.Models;
+using AeroBarista.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace AeroBarista.Services
 {
-    public class ProcessStateService
+    [ExportTransientAs(nameof(IProcessStateService))]
+    public class ProcessStateService : IProcessStateService
     {
         IList<RecipeStepModel> steps;
         Action<RecipeStepModel?, RecipeStepModel?, RecipeStepModel?>? stepChangeCallback = null;
