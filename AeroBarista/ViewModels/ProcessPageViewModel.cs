@@ -17,67 +17,27 @@ namespace AeroBarista.ViewModels
 {
 
     [ExportTransient]
-    public class ProcessPageViewModel : BaseViewModel, INotifyPropertyChanged
+    public partial class ProcessPageViewModel : BaseViewModel
     {
         // TODO: get data from parameter, not api client!
         IRecipeApiClient apiClient;
         IBrewProcessService timer;
-        ProcessStateService processStateService;
-        private RecipeModel _activeRecipe;
-        public RecipeModel Recipe
-        {
-            get => _activeRecipe;
-            set
-            {
-                if (_activeRecipe != value)
-                {
-                    _activeRecipe = value;
-                    OnPropertyChanged(nameof(Recipe)); 
-                }
-            }
-        }
+        IProcessStateService processStateService;
 
-        private RecipeStepModel _activeStep;
-        public RecipeStepModel ActiveStep
-        {
-            get => _activeStep;
-            set
-            {
-                if (_activeStep != value)
-                {
-                    _activeStep = value;
-                    OnPropertyChanged(nameof(ActiveStep));
-                }
-            }
-        }
 
+        [ObservableProperty]
+        RecipeModel recipe;
+
+        [ObservableProperty]
+        private RecipeStepModel? activeStep;
+
+        [ObservableProperty]
         private TimeSpan currentTime;
-        public TimeSpan CurrentTime
-        {
-            get => currentTime;
-            set
-            {
-                if (currentTime != value)
-                {
-                    currentTime = value;
-                    OnPropertyChanged(nameof(CurrentTime));
-                }
-            }
-        }
 
+
+        [ObservableProperty]
         private TimeSpan remainingTime;
-        public TimeSpan RemainingTime
-        {
-            get => remainingTime;
-            set
-            {
-                if (remainingTime != value)
-                {
-                    remainingTime = value;
-                    OnPropertyChanged(nameof(RemainingTime));
-                }
-            }
-        }
+
 
 
 
@@ -87,7 +47,8 @@ namespace AeroBarista.ViewModels
             this.apiClient = apiClient;
             GetData();
             processStateService = new ProcessStateService(Recipe.Steps);
-            _activeStep = processStateService.GetActiveStep();
+            activeStep = processStateService.GetActiveStep();
+
             processStateService.SetStateChangeCallback(StateChangeCallback);
             this.timer = timer;
             this.timer.RegisterTickCallback(TimeTickCallback);
@@ -109,17 +70,11 @@ namespace AeroBarista.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
 
         private async void GetData()
         {
             var x = await apiClient.GetAll();
-            _activeRecipe = x.First();
+            Recipe = x.First();
         }
 
 

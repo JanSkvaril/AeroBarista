@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AeroBarista.ViewModels.Base;
 
-public class BaseViewModel
+public class BaseViewModel : ObservableObject
 {
     protected INavigationService NavigationService { get; set; }
 
