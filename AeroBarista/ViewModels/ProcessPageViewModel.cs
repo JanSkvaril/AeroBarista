@@ -38,7 +38,8 @@ namespace AeroBarista.ViewModels
         [ObservableProperty]
         private TimeSpan remainingTime;
 
-
+        [ObservableProperty]
+        private double stepProgress;
 
 
 
@@ -60,7 +61,14 @@ namespace AeroBarista.ViewModels
             CurrentTime = time;
             processStateService.UpdateState(time);
             RemainingTime = processStateService.GetRemainingTimeForCurrentStep(time);
+            if (ActiveStep != null)
+            {
+                StepProgress = RemainingTime.TotalSeconds / ActiveStep.time.TotalSeconds;
+            }
+            else StepProgress = 0.0;
         }
+
+     
 
         private void StateChangeCallback(RecipeStepModel? current, RecipeStepModel? prev, RecipeStepModel? next)
         {
