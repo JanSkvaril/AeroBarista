@@ -5,14 +5,14 @@
              Title="ProcessPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
+        <Image Grid.RowSpan="5" Aspect="AspectFill"  Source="background_image.png" Opacity="0.3"/>
         <Label 
             FontSize="30"
             Grid.Row="0"
@@ -20,8 +20,10 @@
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
         <VerticalStackLayout      Grid.Row="1">
-                <Border  MaximumWidthRequest="200" 
+                <Border 
                     Background="Green"
+               
+                   
                     StrokeThickness="0"
                     VerticalOptions="Center" 
               
@@ -44,7 +46,7 @@
                         FontSize="50"
                         />
 
-                        <ProgressBar Progress="{Binding StepProgress}" Margin="10" />
+                    <ProgressBar Progress="{Binding StepProgress}" Margin="10"  MaximumWidthRequest="200"  />
                     </VerticalStackLayout>
                 </Border>
             <Label
@@ -60,12 +62,35 @@
             </Label>
         </VerticalStackLayout>
 
-
-        <Label 
-            FontSize="30"
-            Grid.Row="4"
-            Text="{Binding ActiveStep.ShorText}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <VerticalStackLayout    Grid.Row="3">
+            
+            <Label 
+                x:Name="PrevStep"
+                TextColor="LightGray"
+                HorizontalTextAlignment="Center"
+                FontSize="15"
+                Text="{Binding PrevStep.ShorText}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Label 
+                x:Name="CurrentStep"
+                Margin="0,20,0,20"
+                HorizontalTextAlignment="Center"
+                FontSize="25"
+                Text="{Binding ActiveStep.ShorText}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            
+            
+               
+            <Label 
+                 x:Name="NextStep"
+                TextColor="LightGray"
+                HorizontalTextAlignment="Center"
+                FontSize="15"
+                Text="{Binding NextStep.ShorText}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>

@@ -29,7 +29,12 @@ namespace AeroBarista.ViewModels
         RecipeModel recipe;
 
         [ObservableProperty]
+        private RecipeStepModel? prevStep;
+        [ObservableProperty]
         private RecipeStepModel? activeStep;
+        [ObservableProperty]
+        private RecipeStepModel? nextStep;
+
 
         [ObservableProperty]
         private TimeSpan currentTime;
@@ -75,6 +80,8 @@ namespace AeroBarista.ViewModels
             if (current != null)
             {
                 ActiveStep = current;
+                PrevStep = prev;
+                NextStep = next;
             }
         }
 
