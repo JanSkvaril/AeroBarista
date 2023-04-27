@@ -1,6 +1,7 @@
 ﻿using AeroBarista.ApiClients;
 using AeroBarista.ApiClients.Interfaces;
 using AeroBarista.Attributes;
+using AeroBarista.Database;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -63,20 +64,13 @@ public static class MauiProgram
 
     public static void RegisterApiClients(ContainerBuilder builder, Assembly[] assembly, bool useDemoApiClients = false)
     {
-        if (useDemoApiClients)
-        {
-            builder.RegisterAssemblyTypes(assembly)
-               .Where(t => t.Name.StartsWith("Demo") && t.Name.EndsWith("ApiClient"))
-               .AsImplementedInterfaces()
-               .InstancePerDependency();
-
-            return;
-        }
-
         builder.RegisterAssemblyTypes(assembly)
-            .Where(t => !t.Name.StartsWith("Demo") && t.Name.EndsWith("ApiClient"))
+            .Where(t => t.Name.EndsWith("ApiClient") && 
+                (useDemoApiClients ? t.Name.StartsWith("Demo") : !t.Name.StartsWith("Demo")))
             .AsImplementedInterfaces()
             .InstancePerDependency();
 
+        if(useDemoApiClients)
+            builder.RegisterType<DemoDatabase>().SingleInstance();
     }
 }
