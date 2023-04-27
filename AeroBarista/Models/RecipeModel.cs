@@ -2,6 +2,7 @@
 
 namespace AeroBarista.Models;
 
+[Serializable]
 public record RecipeModel(
     int Id,
     string Name,

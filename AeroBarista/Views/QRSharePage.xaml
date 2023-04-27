@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AeroBarista.Views.QRSharePage"
+             Title="QRSharePage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label 
+            Grid.Row="0"
+            Text="Share your recipe!"
+            FontSize="30"
+            TextColor="WhiteSmoke"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Image Grid.Row="1" x:Name="QrImage" Aspect="AspectFit" Grid.RowSpan="5"   Source="background_image.png"/>
+    </Grid>
+</ContentPage>

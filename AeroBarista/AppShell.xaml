@@ -21,6 +21,10 @@
         <Tab Title="share">
             <ShellContent ContentTemplate="{DataTemplate local:FinishedPage}" Route="FinishedPage" />
         </Tab>
+
+        <Tab Title="qrshare">
+            <ShellContent ContentTemplate="{DataTemplate local:QRSharePage}" Route="QRSharePage" />
+        </Tab>
     </TabBar>
 
 
