@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AeroBarista.Views.ProcessPage"
              Title="ProcessPage">
-    <Grid>
+    <Grid BackgroundColor="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition Height="Auto" />
@@ -19,7 +19,7 @@
             Text="{Binding Recipe.Name}"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
-        <VerticalStackLayout      Grid.Row="1">
+        <VerticalStackLayout  Grid.Row="1">
                 <Border 
                     Background="Green"
                
@@ -34,22 +34,25 @@
                     </Border.StrokeShape>
                     <VerticalStackLayout >
                         <Label 
+                            TextColor="WhiteSmoke"
                             FontSize="20"
                             Grid.Row="0"
                             Text="Remaining time:"
                             VerticalOptions="Start" 
                             HorizontalOptions="Center" />
                         <Label 
-                        Text="{Binding RemainingTime,  StringFormat='{}{0:mm\\:ss}'}"
-                        VerticalOptions="Center" 
-                        HorizontalOptions="Center" 
-                        FontSize="50"
+                            TextColor="WhiteSmoke"
+                            Text="{Binding RemainingTime,  StringFormat='{}{0:mm\\:ss}'}"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            FontSize="50"
                         />
 
-                    <ProgressBar Progress="{Binding StepProgress}" Margin="10"  MaximumWidthRequest="200"  />
+                    <ProgressBar ProgressColor="LightGreen" Progress="{Binding StepProgress}" Margin="10"  MaximumWidthRequest="200"  />
                     </VerticalStackLayout>
                 </Border>
             <Label
+                    TextColor="WhiteSmoke"
                     FontSize="20"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center">
@@ -73,6 +76,7 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
             <Label 
+                TextColor="WhiteSmoke"
                 x:Name="CurrentStep"
                 Margin="0,20,0,20"
                 HorizontalTextAlignment="Center"
