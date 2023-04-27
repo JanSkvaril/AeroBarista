@@ -24,7 +24,12 @@ namespace AeroBarista.Services
             {
                 throw new ArgumentException("Steps must contain at least one step");
             }
-            activeStep = steps.First();
+            
+        }
+
+        public void Inicialize()
+        {
+            ChangeState(steps.First(),new TimeSpan());
         }
 
         /// <summary>
@@ -68,7 +73,7 @@ namespace AeroBarista.Services
         public TimeSpan GetRemainingTimeForCurrentStep(TimeSpan currentTime)
         {
             if (activeStep == null) return TimeSpan.Zero;   
-            return stepStartTime + activeStep.time - currentTime;
+            return (TimeSpan)(stepStartTime + activeStep.time - currentTime);
         }
 
         private void ChangeState(RecipeStepModel? newStep, TimeSpan startTime)

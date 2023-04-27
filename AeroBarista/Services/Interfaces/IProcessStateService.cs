@@ -9,6 +9,7 @@ namespace AeroBarista.Services.Interfaces
 {
     public interface IProcessStateService
     {
+        void Inicialize();
 
         /// <summary>
         /// Callback is called every time state is changed

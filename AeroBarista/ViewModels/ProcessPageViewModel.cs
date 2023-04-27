@@ -51,14 +51,12 @@ namespace AeroBarista.ViewModels
         public ProcessPageViewModel(INavigationService navigationService, IRecipeApiClient apiClient, IBrewProcessService timer) : base(navigationService)
         {
             this.apiClient = apiClient;
-            GetData();
-            processStateService = new ProcessStateService(Recipe.Steps);
-            activeStep = processStateService.GetActiveStep();
-
-            processStateService.SetStateChangeCallback(StateChangeCallback);
             this.timer = timer;
             this.timer.RegisterTickCallback(TimeTickCallback);
-            timer.Start();
+            GetData();
+          
+            
+           
         }
 
         private void TimeTickCallback(TimeSpan time)
@@ -68,7 +66,7 @@ namespace AeroBarista.ViewModels
             RemainingTime = processStateService.GetRemainingTimeForCurrentStep(time);
             if (ActiveStep != null)
             {
-                StepProgress = RemainingTime.TotalSeconds / ActiveStep.time.TotalSeconds;
+                StepProgress = RemainingTime.TotalSeconds / ActiveStep.time.Value.TotalSeconds;
             }
             else StepProgress = 0.0;
         }
@@ -89,7 +87,13 @@ namespace AeroBarista.ViewModels
         private async void GetData()
         {
             var x = await apiClient.GetAll();
+        
             Recipe = x.First();
+            processStateService = new ProcessStateService(Recipe.Steps);
+
+            processStateService.SetStateChangeCallback(StateChangeCallback);
+            processStateService.Inicialize();
+            timer.Start();
         }
 
 
