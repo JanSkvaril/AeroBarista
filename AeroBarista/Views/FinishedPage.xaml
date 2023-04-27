@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AeroBarista.Views.FinishedPage"
+             Title="FinishedPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image Grid.RowSpan="5" Aspect="AspectFill"  Source="background_image.png" Opacity="0.3"/>
+        <Label
+            Grid.Row="0"
+            FontSize="40"
+            Text="Enjoy your brew! "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button Grid.Row="1" Command="{Binding TakePhotoCommand}" Text="Take a photo!" HeightRequest="80" WidthRequest="300" />
+
+        <Border Grid.Row="2" Margin="20">
+            <Image  Source="{Binding TakenImage.FullPath}" MinimumHeightRequest="100" MinimumWidthRequest="100" />
+        </Border>
+
+        <Button Grid.Row="3" Command="{Binding SharePhotoCommand}" Text="Share" HeightRequest="80" WidthRequest="300" />
+
+    </Grid>
+</ContentPage>
