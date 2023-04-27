@@ -14,6 +14,13 @@
         <Tab Title="y">
             <ShellContent ContentTemplate="{DataTemplate local:x}" Route="x" />
         </Tab>
+        <Tab Title="process">
+            <ShellContent ContentTemplate="{DataTemplate local:ProcessPage}" Route="ProcessPage" />
+        </Tab>
+
+        <Tab Title="share">
+            <ShellContent ContentTemplate="{DataTemplate local:FinishedPage}" Route="FinishedPage" />
+        </Tab>
     </TabBar>
 
 

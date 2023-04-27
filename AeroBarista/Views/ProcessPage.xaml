@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AeroBarista.Views.ProcessPage"
+             Title="ProcessPage">
+    <Grid BackgroundColor="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Image Grid.RowSpan="5" Aspect="AspectFill"  Source="background_image.png" Opacity="0.3"/>
+        <Label 
+            FontSize="30"
+            Grid.Row="0"
+            Text="{Binding Recipe.Name}"
+            VerticalOptions="Start" 
+            HorizontalOptions="Center" />
+        <VerticalStackLayout  Grid.Row="1">
+                <Border 
+                    Background="Green"
+               
+                   
+                    StrokeThickness="0"
+                    VerticalOptions="Center" 
+              
+       
+                >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8"/>
+                    </Border.StrokeShape>
+                    <VerticalStackLayout >
+                        <Label 
+                            TextColor="WhiteSmoke"
+                            FontSize="20"
+                            Grid.Row="0"
+                            Text="Remaining time:"
+                            VerticalOptions="Start" 
+                            HorizontalOptions="Center" />
+                        <Label 
+                            TextColor="WhiteSmoke"
+                            Text="{Binding RemainingTime,  StringFormat='{}{0:mm\\:ss}'}"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            FontSize="50"
+                        />
+
+                    <ProgressBar ProgressColor="LightGreen" Progress="{Binding StepProgress}" Margin="10"  MaximumWidthRequest="200"  />
+                    </VerticalStackLayout>
+                </Border>
+            <Label
+                    TextColor="WhiteSmoke"
+                    FontSize="20"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Total time: " />
+                        <Span Text="{Binding CurrentTime, StringFormat='{}{0:mm\\:ss}'}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout    Grid.Row="3">
+            
+            <Label 
+                x:Name="PrevStep"
+                TextColor="LightGray"
+                HorizontalTextAlignment="Center"
+                FontSize="15"
+                Text="{Binding PrevStep.ShorText}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Label 
+                TextColor="WhiteSmoke"
+                x:Name="CurrentStep"
+                Margin="0,20,0,20"
+                HorizontalTextAlignment="Center"
+                FontSize="25"
+                Text="{Binding ActiveStep.ShorText}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            
+            
+               
+            <Label 
+                 x:Name="NextStep"
+                TextColor="LightGray"
+                HorizontalTextAlignment="Center"
+                FontSize="15"
+                Text="{Binding NextStep.ShorText}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

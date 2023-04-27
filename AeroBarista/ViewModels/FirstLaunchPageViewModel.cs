@@ -12,9 +12,9 @@ public partial class FirstLaunchPageViewModel : BaseViewModel
 
 	}
 
-	[RelayCommand]
-	public void NavigateToHomePage()
-	{
-		NavigationService.NavigateToAsync(nameof(HomePage));
-	}
+	//[RelayCommand]
+	//public void NavigateToHomePage()
+	//{
+	//	NavigationService.NavigateToAsync(nameof(HomePage));
+	//}
 }
