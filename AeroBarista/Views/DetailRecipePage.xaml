@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AeroBarista.Views.DetailRecipePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
+    Title="DetailRecipePage"
+    x:DataType="viewModels:DetailRecipeViewModel">
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="{Binding Name}"
+            VerticalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
