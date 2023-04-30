@@ -23,8 +23,6 @@
                         TextColor="{DynamicResource Text}"
                         VerticalOptions="Center" />
 
-
-
                     <Grid
                         ColumnDefinitions="*, 100, 100, *"
                         ColumnSpacing="15"
@@ -239,7 +237,6 @@
                 Margin="10,10"
                 BackgroundColor="{DynamicResource Secondary}"
                 Command="{Binding StartRecipeCommand}"
-                CommandParameter="{Binding Recipe.Id}"
                 Text="Start"
                 TextColor="{DynamicResource Text}"
                 WidthRequest="100" />

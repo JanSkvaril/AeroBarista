@@ -9,9 +9,9 @@ using CommunityToolkit.Mvvm.Input;
 namespace AeroBarista.ViewModels
 {
     [ExportTransient]
+    [QueryProperty(nameof(Id), nameof(Id))]
     public partial class DetailRecipeViewModel : BaseViewModel
     {
-        // TODO: get data from parameter, not api client!
         IRecipeApiClient apiClient;
 
         [ObservableProperty]
@@ -20,19 +20,21 @@ namespace AeroBarista.ViewModels
         [ObservableProperty]
         private TimeSpan totalTime;
 
+        [ObservableProperty]
+        private int id;
+
         public DetailRecipeViewModel(INavigationService navigationService, IRecipeApiClient apiClient) : base(navigationService)
         {
             this.apiClient = apiClient;
+        }
 
-            // change here!
-            int id = 1;
-            // change end
-
-            GetData(id);
+        partial void OnIdChanged(int value)
+        {
+            GetData(value);
         }
 
         [RelayCommand]
-        public async void StartRecipe(int id)
+        public async void StartRecipe()
         {
             await NavigationService.NavigateToAsync("//ProcessPage");
         }
