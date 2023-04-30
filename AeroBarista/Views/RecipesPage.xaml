@@ -15,12 +15,15 @@
             Source="background_image.png" />
         <Grid RowDefinitions="70, 50, *">
             <SearchBar
+                x:Name="searchBar"
                 Grid.Row="0"
                 Margin="10,10"
                 BackgroundColor="{DynamicResource PrimaryLight}"
                 HeightRequest="50"
                 Placeholder="Find recipe..."
                 PlaceholderColor="{DynamicResource TextDescription}"
+                SearchCommand="{Binding SearchCommand}"
+                SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
                 TextColor="{DynamicResource Text}" />
 
             <VerticalStackLayout Grid.Row="1" />
@@ -33,7 +36,12 @@
                                 Margin="0,5"
                                 BackgroundColor="{DynamicResource PrimaryLight}"
                                 HeightRequest="40">
-                                <Label Text="{Binding Name}" TextColor="{DynamicResource Text}" />
+                                <Label
+                                    Margin="5,0"
+                                    HeightRequest="40"
+                                    Text="{Binding Name}"
+                                    TextColor="{DynamicResource Text}"
+                                    VerticalTextAlignment="Center" />
                                 <VerticalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.RecipeDetailCommand}" CommandParameter="{Binding Id}" />
                                 </VerticalStackLayout.GestureRecognizers>
