@@ -3,13 +3,246 @@
     x:Class="AeroBarista.Views.DetailRecipePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:AeroBarista.Models"
     xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
     Title="DetailRecipePage"
     x:DataType="viewModels:DetailRecipeViewModel">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="{Binding Name}"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid BackgroundColor="Black">
+        <Image
+            Aspect="AspectFill"
+            Opacity="0.3"
+            Source="background_image.png" />
+        <Grid ColumnDefinitions="*, auto, *" RowDefinitions="*, auto">
+            <ScrollView Grid.Row="0" Grid.Column="1">
+                <VerticalStackLayout>
+                    <Label
+                        Margin="0,15"
+                        FontSize="Small"
+                        HorizontalOptions="Center"
+                        Text="{Binding Recipe.Name}"
+                        TextColor="{DynamicResource Text}"
+                        VerticalOptions="Center" />
+
+
+
+                    <Grid
+                        ColumnDefinitions="*, 100, 100, *"
+                        ColumnSpacing="15"
+                        RowDefinitions="120, 120, 120"
+                        RowSpacing="15">
+
+                        <Border
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            BackgroundColor="{DynamicResource PrimaryLight}"
+                            HeightRequest="120"
+                            HorizontalOptions="Center"
+                            Stroke="{DynamicResource PrimaryLight}"
+                            WidthRequest="100">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+                            </Border.StrokeShape>
+
+                            <Grid RowDefinitions="70, 20, 20" WidthRequest="100">
+                                <BoxView
+                                    CornerRadius="90"
+                                    HeightRequest="60"
+                                    WidthRequest="60" />
+                                <Image
+                                    Grid.Row="0"
+                                    HeightRequest="35"
+                                    Source="method.png"
+                                    WidthRequest="35" />
+                                <Label
+                                    Grid.Row="1"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Method"
+                                    TextColor="{DynamicResource TextDescription}" />
+                                <Label
+                                    Grid.Row="2"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Recipe.Method}"
+                                    TextColor="{DynamicResource Text}" />
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            BackgroundColor="{DynamicResource PrimaryLight}"
+                            HeightRequest="120"
+                            Stroke="{DynamicResource PrimaryLight}"
+                            WidthRequest="100">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+                            </Border.StrokeShape>
+
+                            <Grid RowDefinitions="70, 20, 20" WidthRequest="100">
+                                <BoxView
+                                    CornerRadius="90"
+                                    HeightRequest="60"
+                                    WidthRequest="60" />
+                                <Image
+                                    Grid.Row="0"
+                                    HeightRequest="35"
+                                    Source="water.png"
+                                    WidthRequest="35" />
+                                <Label
+                                    Grid.Row="1"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Water"
+                                    TextColor="{DynamicResource TextDescription}" />
+                                <Label
+                                    Grid.Row="2"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Recipe.TotalWaterGrams}"
+                                    TextColor="{DynamicResource Text}" />
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            BackgroundColor="{DynamicResource PrimaryLight}"
+                            HeightRequest="120"
+                            Stroke="{DynamicResource PrimaryLight}"
+                            WidthRequest="100">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+                            </Border.StrokeShape>
+
+                            <Grid RowDefinitions="70, 20, 20" WidthRequest="100">
+                                <BoxView
+                                    CornerRadius="90"
+                                    HeightRequest="60"
+                                    WidthRequest="60" />
+                                <Image
+                                    Grid.Row="0"
+                                    HeightRequest="35"
+                                    Source="beans.png"
+                                    WidthRequest="35" />
+                                <Label
+                                    Grid.Row="1"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Beans"
+                                    TextColor="{DynamicResource TextDescription}" />
+                                <Label
+                                    Grid.Row="2"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Recipe.CoffeeGrams}"
+                                    TextColor="{DynamicResource Text}" />
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            BackgroundColor="{DynamicResource PrimaryLight}"
+                            HeightRequest="120"
+                            Stroke="{DynamicResource PrimaryLight}"
+                            WidthRequest="100">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+                            </Border.StrokeShape>
+
+                            <Grid RowDefinitions="70, 20, 20" WidthRequest="100">
+                                <BoxView
+                                    CornerRadius="90"
+                                    HeightRequest="60"
+                                    WidthRequest="60" />
+                                <Image
+                                    Grid.Row="0"
+                                    HeightRequest="35"
+                                    Source="grind.png"
+                                    WidthRequest="35" />
+                                <Label
+                                    Grid.Row="1"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Grind"
+                                    TextColor="{DynamicResource TextDescription}" />
+                                <Label
+                                    Grid.Row="2"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Recipe.GrandSize}"
+                                    TextColor="{DynamicResource Text}" />
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            BackgroundColor="{DynamicResource PrimaryLight}"
+                            HeightRequest="120"
+                            Stroke="{DynamicResource PrimaryLight}"
+                            WidthRequest="100">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+                            </Border.StrokeShape>
+
+                            <Grid RowDefinitions="70, 20, 20" WidthRequest="100">
+                                <BoxView
+                                    CornerRadius="90"
+                                    HeightRequest="60"
+                                    WidthRequest="60" />
+                                <Image
+                                    Grid.Row="0"
+                                    HeightRequest="35"
+                                    Source="time.png"
+                                    WidthRequest="35" />
+                                <Label
+                                    Grid.Row="1"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Time"
+                                    TextColor="{DynamicResource TextDescription}" />
+                                <Label
+                                    Grid.Row="2"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding TotalTime, StringFormat='{}{0:mm\\:ss}'}"
+                                    TextColor="{DynamicResource Text}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <Label
+                        Margin="0,5"
+                        Text="Steps:"
+                        TextColor="{DynamicResource Text}" />
+                    <CollectionView ItemsSource="{Binding Recipe.Steps}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:RecipeStepModel">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Order}" TextColor="{DynamicResource TextDescription}" />
+                                    <Label Text="{Binding ShorText}" TextColor="{DynamicResource TextDescription}" />
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label
+                        Margin="0,5"
+                        Text="Summary:"
+                        TextColor="{DynamicResource Text}" />
+
+                    <Button
+                        Grid.Row="1"
+                        BackgroundColor="{DynamicResource Secondary}"
+                        Text="Share"
+                        TextColor="{DynamicResource Text}"
+                        WidthRequest="100" />
+
+                </VerticalStackLayout>
+            </ScrollView>
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="10,10"
+                BackgroundColor="{DynamicResource Secondary}"
+                Command="{Binding StartRecipeCommand}"
+                CommandParameter="{Binding Recipe.Id}"
+                Text="Start"
+                TextColor="{DynamicResource Text}"
+                WidthRequest="100" />
+        </Grid>
+    </Grid>
 </ContentPage>
