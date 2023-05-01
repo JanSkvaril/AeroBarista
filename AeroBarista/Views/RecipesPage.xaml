@@ -46,6 +46,7 @@
                 x:Name="searchBar"
                 Grid.Row="0"
                 Margin="10,10"
+                TextChanged="OnTextChanged"
                 BackgroundColor="{DynamicResource PrimaryLight}"
                 HeightRequest="50"
                 Placeholder="Find recipe..."
