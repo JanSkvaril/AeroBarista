@@ -15,7 +15,7 @@ namespace AeroBarista.ViewModels
         IRecipeApiClient apiClient;
 
         [ObservableProperty]
-        private RecipeModel? recipe;
+        private RecipeModel recipe;
 
         [ObservableProperty]
         private TimeSpan totalTime;
@@ -36,7 +36,8 @@ namespace AeroBarista.ViewModels
         [RelayCommand]
         public async void StartRecipe()
         {
-            await NavigationService.NavigateToAsync("//ProcessPage");
+            var parameters = new Dictionary<string, object> { [nameof(ProcessPageViewModel.Recipe)] = Recipe };
+            await NavigationService.NavigateToAsync("//ProcessPage", parameters);
         }
 
         private async void GetData(int id)

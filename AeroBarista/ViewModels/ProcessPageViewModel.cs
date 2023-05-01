@@ -17,16 +17,15 @@ namespace AeroBarista.ViewModels
 {
 
     [ExportTransient]
+    [QueryProperty(nameof(Recipe), nameof(Recipe))]
     public partial class ProcessPageViewModel : BaseViewModel
     {
-        // TODO: get data from parameter, not api client!
-        IRecipeApiClient apiClient;
         IBrewProcessService timer;
         IProcessStateService processStateService;
 
 
         [ObservableProperty]
-        RecipeModel recipe;
+        private RecipeModel recipe;
 
         [ObservableProperty]
         private RecipeStepModel? prevStep;
@@ -46,17 +45,19 @@ namespace AeroBarista.ViewModels
         [ObservableProperty]
         private double stepProgress;
 
-
-
-        public ProcessPageViewModel(INavigationService navigationService, IRecipeApiClient apiClient, IBrewProcessService timer) : base(navigationService)
+        public ProcessPageViewModel(INavigationService navigationService, IBrewProcessService timer) : base(navigationService)
         {
-            this.apiClient = apiClient;
             this.timer = timer;
             this.timer.RegisterTickCallback(TimeTickCallback);
-            GetData();
-          
-            
-           
+        }
+
+        partial void OnRecipeChanged(RecipeModel value)
+        {
+            processStateService = new ProcessStateService(Recipe.Steps);
+
+            processStateService.SetStateChangeCallback(StateChangeCallback);
+            processStateService.Inicialize();
+            timer.Start();
         }
 
         private void TimeTickCallback(TimeSpan time)
@@ -71,8 +72,6 @@ namespace AeroBarista.ViewModels
             else StepProgress = 0.0;
         }
 
-     
-
         private void StateChangeCallback(RecipeStepModel? current, RecipeStepModel? prev, RecipeStepModel? next)
         {
             if (current != null)
@@ -82,20 +81,5 @@ namespace AeroBarista.ViewModels
                 NextStep = next;
             }
         }
-
-
-        private async void GetData()
-        {
-            var x = await apiClient.GetAll();
-        
-            Recipe = x.First();
-            processStateService = new ProcessStateService(Recipe.Steps);
-
-            processStateService.SetStateChangeCallback(StateChangeCallback);
-            processStateService.Inicialize();
-            timer.Start();
-        }
-
-
     }
 }
