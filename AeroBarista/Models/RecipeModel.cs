@@ -7,6 +7,7 @@ public record RecipeModel(
     string Name,
     string? Description,
     RecipeMethod Method,
+    RecipeCategory Category,
 
     GrandSize GrandSize,
     int CoffeeGrams,
