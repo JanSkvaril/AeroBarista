@@ -2,8 +2,8 @@
 {
     public enum RecipeCategory
     {
-        TheBest,
-        Acceptable,
-        Trash
+        Default,
+        UserDefined,
+        Imported
     }
 }
