@@ -10,28 +10,32 @@
     x:DataType="viewModels:RecipesViewModel">
     <ContentPage.Resources>
         <ControlTemplate x:Key="FrameRadioTemplate">
-            <Frame Padding="0" CornerRadius="15" VerticalOptions="Start"
-               HeightRequest="30" WidthRequest="100" HorizontalOptions="Start">
+            <Frame
+                Padding="0"
+                CornerRadius="15"
+                HeightRequest="30"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                WidthRequest="100">
+                <Grid Margin="4" WidthRequest="100">
+                    <ContentPresenter />
+                </Grid>
 
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CheckedStates">
                         <VisualState x:Name="Checked">
                             <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="#C69256"/>
+                                <Setter Property="BackgroundColor" Value="#C69256" />
                             </VisualState.Setters>
                         </VisualState>
 
                         <VisualState x:Name="Unchecked">
                             <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="#372F2C"/>
+                                <Setter Property="BackgroundColor" Value="#372F2C" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-
-                <Grid Margin="4" WidthRequest="100">
-                    <ContentPresenter/>
-                </Grid>
             </Frame>
         </ControlTemplate>
     </ContentPage.Resources>
@@ -46,38 +50,67 @@
                 x:Name="searchBar"
                 Grid.Row="0"
                 Margin="10,10"
-                TextChanged="OnTextChanged"
                 BackgroundColor="{DynamicResource PrimaryLight}"
                 HeightRequest="50"
                 Placeholder="Find recipe..."
                 PlaceholderColor="{DynamicResource TextDescription}"
                 SearchCommand="{Binding SearchCommand}"
                 SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+                Text="{Binding FilterName}"
+                TextChanged="OnTextChanged"
                 TextColor="{DynamicResource Text}" />
 
-            <ScrollView Grid.Row="1" Orientation="Horizontal" WidthRequest="250" HorizontalScrollBarVisibility="Never">
-                <StackLayout Orientation="Horizontal" >
-                    <RadioButton  ControlTemplate="{StaticResource FrameRadioTemplate}">
+            <ScrollView
+                Grid.Row="1"
+                HorizontalScrollBarVisibility="Never"
+                Orientation="Horizontal"
+                WidthRequest="250">
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton
+                        x:Name="CategoryAll"
+                        CheckedChanged="OnCategoryChanged"
+                        ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
-                            <Label Text="All" TextColor="{DynamicResource Text}" HorizontalTextAlignment="Center" />
-                        </RadioButton.Content>
-                    </RadioButton>
-                    
-                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
-                        <RadioButton.Content>
-                            <Label Text="Default" TextColor="{DynamicResource Text}" HorizontalTextAlignment="Center" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="All"
+                                TextColor="{DynamicResource Text}" />
                         </RadioButton.Content>
                     </RadioButton>
 
-                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton
+                        x:Name="CategoryDefault"
+                        CheckedChanged="OnCategoryChanged"
+                        ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
-                            <Label Text="My" TextColor="{DynamicResource Text}" HorizontalTextAlignment="Center" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Default"
+                                TextColor="{DynamicResource Text}" />
                         </RadioButton.Content>
                     </RadioButton>
 
-                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton
+                        x:Name="CategoryMy"
+                        CheckedChanged="OnCategoryChanged"
+                        ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
-                            <Label Text="Imported" TextColor="{DynamicResource Text}" HorizontalTextAlignment="Center" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="My"
+                                TextColor="{DynamicResource Text}" />
+                        </RadioButton.Content>
+                    </RadioButton>
+
+                    <RadioButton
+                        x:Name="CategoryImported"
+                        CheckedChanged="OnCategoryChanged"
+                        ControlTemplate="{StaticResource FrameRadioTemplate}">
+                        <RadioButton.Content>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Imported"
+                                TextColor="{DynamicResource Text}" />
                         </RadioButton.Content>
                     </RadioButton>
                 </StackLayout>

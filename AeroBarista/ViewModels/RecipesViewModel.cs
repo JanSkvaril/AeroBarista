@@ -1,5 +1,6 @@
 ﻿using AeroBarista.ApiClients.Interfaces;
 using AeroBarista.Attributes;
+using AeroBarista.Enums;
 using AeroBarista.Models;
 using AeroBarista.Services.Interfaces;
 using AeroBarista.ViewModels.Base;
@@ -14,19 +15,28 @@ namespace AeroBarista.ViewModels
         IRecipeApiClient apiClient;
 
         [ObservableProperty]
-        private IList<RecipeModel>? recipes;
+        private IList<RecipeModel> recipes;
+        private IList<RecipeModel> allRecipes;
+
+        [ObservableProperty]
+        private string filterName;
+        private RecipeCategory filterCategory;
 
         public RecipesViewModel(INavigationService navigationService, IRecipeApiClient apiClient) : base(navigationService)
         {
             this.apiClient = apiClient;
+            Recipes = new List<RecipeModel>();
+            allRecipes = new List<RecipeModel>();
             GetData();
+            filterName = String.Empty;
+            filterCategory = RecipeCategory.All;
         }
 
         private async void GetData()
         {
             var actual = await apiClient.GetAll();
-
             Recipes = actual.ToList();
+            allRecipes = actual.ToList();
         }
 
         [RelayCommand]
@@ -37,13 +47,32 @@ namespace AeroBarista.ViewModels
         }
 
         [RelayCommand]
-        public async void Search(string findingName)
+        public void Search()
         {
-            findingName = findingName.ToLower();
+            var actualRecipes = Recipes;
+            if (filterCategory == RecipeCategory.All)
+            {
+                actualRecipes = allRecipes.ToList();
+            }
+            else
+            {
+                actualRecipes = actualRecipes.Where(r => r.Category == filterCategory).ToList();
+            }
 
-            var allRecipes = await apiClient.GetAll();
+            Recipes = actualRecipes.Where(r => r.Name.ToLower().Contains(FilterName.ToLower())).ToList();
+        }
 
-            Recipes = allRecipes.Where(r => r.Name.ToLower().Contains(findingName)).ToList();
+        public void Filter(RecipeCategory category)
+        {
+            filterCategory = category;
+            var actualRecipes = allRecipes.Where(r => r.Category == category).ToList();
+            Recipes = actualRecipes.Where(r => r.Name.ToLower().Contains(FilterName.ToLower())).ToList();
+        }
+
+        public void AllRecipe()
+        {
+            filterCategory = RecipeCategory.All;
+            Recipes = allRecipes.Where(r => r.Name.ToLower().Contains(FilterName.ToLower())).ToList();
         }
     }
 }
