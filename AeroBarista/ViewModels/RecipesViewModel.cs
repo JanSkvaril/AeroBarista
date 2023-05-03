@@ -72,10 +72,25 @@ namespace AeroBarista.ViewModels
         [RelayCommand]
         public void FilterWithName(string name)
         {
-            Filter(RecipeCategory.UserDefined);
+            if (name == "My")
+            {
+                Filter(RecipeCategory.UserDefined);
+            }
+            else if (name == "Default")
+            {
+                Filter(RecipeCategory.Default);
+            }
+            else if (name == "Imported")
+            {
+                Filter(RecipeCategory.Imported);
+            }
+            else if (name == "All")
+            {
+                AllRecipes();
+            }
         }
 
-        public void AllRecipe()
+        public void AllRecipes()
         {
             filterCategory = RecipeCategory.All;
             Recipes = allRecipes.Where(r => r.Name.ToLower().Contains(FilterName.ToLower())).ToList();

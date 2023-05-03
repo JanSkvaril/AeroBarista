@@ -10,14 +10,16 @@
     x:DataType="viewModels:RecipesViewModel">
     <ContentPage.Resources>
         <ControlTemplate x:Key="FrameRadioTemplate">
-            <Frame
+            <Border
                 Padding="0"
-                BorderColor="{DynamicResource PrimaryLight}"
-                CornerRadius="15"
-                HeightRequest="40"
+                HeightRequest="30"
                 HorizontalOptions="Start"
+                Stroke="{DynamicResource PrimaryLight}"
                 VerticalOptions="Start"
                 WidthRequest="100">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
                 <Grid Margin="4" WidthRequest="100">
                     <ContentPresenter />
                 </Grid>
@@ -37,7 +39,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-            </Frame>
+            </Border>
         </ControlTemplate>
     </ContentPage.Resources>
 
@@ -63,27 +65,23 @@
 
             <ScrollView
                 Grid.Row="1"
+                Margin="10,10"
                 HorizontalScrollBarVisibility="Never"
-                Orientation="Horizontal"
-                WidthRequest="200">
+                Orientation="Horizontal">
                 <StackLayout Orientation="Horizontal">
-                    <RadioButton
-                        x:Name="CategoryAll"
-                        CheckedChanged="OnCategoryChanged"
-                        ControlTemplate="{StaticResource FrameRadioTemplate}"
-                        GroupName="CategoriesButtons">
+                    <RadioButton x:Name="CategoryAll" ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
                                 Text="All"
                                 TextColor="{DynamicResource Text}" />
                         </RadioButton.Content>
+                        <RadioButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="All" />
+                        </RadioButton.GestureRecognizers>
                     </RadioButton>
 
-                    <RadioButton
-                        x:Name="CategoryDefault"
-                        ControlTemplate="{StaticResource FrameRadioTemplate}"
-                        GroupName="CategoriesButtons">
+                    <RadioButton x:Name="CategoryDefault" ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
@@ -91,14 +89,11 @@
                                 TextColor="{DynamicResource Text}" />
                         </RadioButton.Content>
                         <RadioButton.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="My" />
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="Default" />
                         </RadioButton.GestureRecognizers>
                     </RadioButton>
 
-                    <RadioButton
-                        x:Name="CategoryMy"
-                        ControlTemplate="{StaticResource FrameRadioTemplate}"
-                        GroupName="CategoriesButtons">
+                    <RadioButton x:Name="CategoryMy" ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
@@ -110,17 +105,17 @@
                         </RadioButton.GestureRecognizers>
                     </RadioButton>
 
-                    <RadioButton
-                        x:Name="CategoryImported"
-                        CheckedChanged="OnCategoryChanged"
-                        ControlTemplate="{StaticResource FrameRadioTemplate}"
-                        GroupName="CategoriesButtons">
+                    <RadioButton x:Name="CategoryImported" ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
                                 Text="Imported"
                                 TextColor="{DynamicResource Text}" />
                         </RadioButton.Content>
+                        <RadioButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="Imported" />
+                        </RadioButton.GestureRecognizers>
+
                     </RadioButton>
                 </StackLayout>
             </ScrollView>
