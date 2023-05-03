@@ -155,7 +155,7 @@ public class DemoDatabase
                         1,
                         2,
                         "Grind 12 grams (fine)",
-                        string.Empty,
+                        "Very loo oo ooooo ooooo oooo ooo oo oo ooo ooo oo oo oo ong description",
                         StepType.Simple,
                         null,
                         TimeSpan.FromSeconds(5)
@@ -369,7 +369,7 @@ public class DemoDatabase
                         1,
                         2,
                         "Grind 12 grams (fine)",
-                        string.Empty,
+                        "Grind 12 grams fine",
                         StepType.Simple,
                         null,
                         TimeSpan.FromSeconds(5)
