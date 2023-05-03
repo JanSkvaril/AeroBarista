@@ -209,6 +209,7 @@
                     <VerticalStackLayout HorizontalOptions="Center" MaximumWidthRequest="300">
                         <Label
                             Margin="0,15,0,5"
+                            IsVisible="{Binding Recipe.Description, Converter={StaticResource DescriptionVisibility}}"
                             Text="{Binding Recipe.Description}"
                             TextColor="{StaticResource TextDescription}" />
 

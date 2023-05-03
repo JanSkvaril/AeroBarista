@@ -238,7 +238,7 @@ public class DemoDatabase
             new RecipeModel(
                 2,
                 "ReceptFromBestDrive",
-                String.Empty,
+                null,
                 RecipeMethod.Standard,
                 RecipeCategory.UserDefined,
                 GrandSize.Medium,
