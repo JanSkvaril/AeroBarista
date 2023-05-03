@@ -11,7 +11,6 @@
     <ContentPage.Resources>
         <ControlTemplate x:Key="FrameRadioTemplate">
             <Border
-                Padding="0"
                 HeightRequest="30"
                 HorizontalOptions="Start"
                 Stroke="{DynamicResource PrimaryLight}"
@@ -20,7 +19,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="15" />
                 </Border.StrokeShape>
-                <Grid Margin="4" WidthRequest="100">
+                <Grid Margin="4" WidthRequest="90">
                     <ContentPresenter />
                 </Grid>
 
@@ -66,10 +65,11 @@
             <ScrollView
                 Grid.Row="1"
                 Margin="10,10"
+                HeightRequest="60"
                 HorizontalScrollBarVisibility="Never"
                 Orientation="Horizontal">
                 <StackLayout Orientation="Horizontal">
-                    <RadioButton x:Name="CategoryAll" ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
@@ -81,7 +81,7 @@
                         </RadioButton.GestureRecognizers>
                     </RadioButton>
 
-                    <RadioButton x:Name="CategoryDefault" ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
@@ -93,7 +93,7 @@
                         </RadioButton.GestureRecognizers>
                     </RadioButton>
 
-                    <RadioButton x:Name="CategoryMy" ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
@@ -105,7 +105,7 @@
                         </RadioButton.GestureRecognizers>
                     </RadioButton>
 
-                    <RadioButton x:Name="CategoryImported" ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
