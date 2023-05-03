@@ -18,6 +18,6 @@ public partial class RecipesPage : ContentPage
 
 	public void OnTextChanged(object sender, EventArgs e)
 	{
-        viewModel.Search();
+		viewModel.Search();
 	}
 }
