@@ -11,7 +11,7 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <converters:DescriptionVisibilityConverter x:Key="DescriptionVisibility" />
+            <converters:StringVisibilityConverter x:Key="StringVisibility" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -350,7 +350,7 @@ public class DemoDatabase
                 RecipeCategory.UserDefined,
                 GrandSize.Medium,
                 14,
-                "Pan Varil",
+                null,
                 100,
                 new()
                 {

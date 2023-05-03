@@ -2,7 +2,7 @@
 
 namespace AeroBarista.Converters
 {
-    public class DescriptionVisibilityConverter : IValueConverter
+    public class StringVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
