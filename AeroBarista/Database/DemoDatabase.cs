@@ -238,7 +238,7 @@ public class DemoDatabase
             new RecipeModel(
                 2,
                 "ReceptFromBestDrive",
-                "Recipe stolen from some random article. Is has large coffe-water ratio, so it's quite cheap. It's generally better for lighter roastes. For Darker roasts I recomment reducing the water tempeture to 90 degres",
+                String.Empty,
                 RecipeMethod.Standard,
                 RecipeCategory.UserDefined,
                 GrandSize.Medium,

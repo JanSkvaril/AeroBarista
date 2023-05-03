@@ -208,6 +208,11 @@
 
                     <VerticalStackLayout HorizontalOptions="Center" MaximumWidthRequest="300">
                         <Label
+                            Margin="0,15,0,5"
+                            Text="{Binding Recipe.Description}"
+                            TextColor="{StaticResource TextDescription}" />
+
+                        <Label
                             Margin="0,5"
                             FontAttributes="Bold"
                             Text="Steps:"
