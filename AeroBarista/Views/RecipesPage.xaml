@@ -8,40 +8,6 @@
     x:Name="Root"
     Title="RecipesPage"
     x:DataType="viewModels:RecipesViewModel">
-    <ContentPage.Resources>
-        <ControlTemplate x:Key="FrameRadioTemplate">
-            <Border
-                HeightRequest="30"
-                HorizontalOptions="Start"
-                Stroke="{DynamicResource PrimaryLight}"
-                VerticalOptions="Start"
-                WidthRequest="100">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="15" />
-                </Border.StrokeShape>
-                <Grid Margin="4" WidthRequest="90">
-                    <ContentPresenter />
-                </Grid>
-
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CheckedStates">
-                        <VisualState x:Name="Checked">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="#C69256" />
-                            </VisualState.Setters>
-                        </VisualState>
-
-                        <VisualState x:Name="Unchecked">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="#372F2C" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-            </Border>
-        </ControlTemplate>
-    </ContentPage.Resources>
-
     <Grid BackgroundColor="Black">
         <Image
             Aspect="AspectFill"
@@ -69,7 +35,7 @@
                 HorizontalScrollBarVisibility="Never"
                 Orientation="Horizontal">
                 <StackLayout Orientation="Horizontal">
-                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton>
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
@@ -81,7 +47,7 @@
                         </RadioButton.GestureRecognizers>
                     </RadioButton>
 
-                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton>
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
@@ -93,7 +59,7 @@
                         </RadioButton.GestureRecognizers>
                     </RadioButton>
 
-                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton>
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
@@ -105,7 +71,7 @@
                         </RadioButton.GestureRecognizers>
                     </RadioButton>
 
-                    <RadioButton ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton>
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
@@ -115,7 +81,6 @@
                         <RadioButton.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="Imported" />
                         </RadioButton.GestureRecognizers>
-
                     </RadioButton>
                 </StackLayout>
             </ScrollView>
