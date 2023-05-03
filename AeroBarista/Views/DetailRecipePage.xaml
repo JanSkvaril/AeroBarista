@@ -98,7 +98,7 @@
                                 <Label
                                     Grid.Row="2"
                                     HorizontalTextAlignment="Center"
-                                    Text="{Binding Recipe.TotalWaterGrams}"
+                                    Text="{Binding Recipe.TotalWaterGrams, StringFormat='{0} g'}"
                                     TextColor="{DynamicResource Text}" />
                             </Grid>
                         </Border>
@@ -132,7 +132,7 @@
                                 <Label
                                     Grid.Row="2"
                                     HorizontalTextAlignment="Center"
-                                    Text="{Binding Recipe.CoffeeGrams}"
+                                    Text="{Binding Recipe.CoffeeGrams, StringFormat='{0} g'}"
                                     TextColor="{DynamicResource Text}" />
                             </Grid>
                         </Border>
