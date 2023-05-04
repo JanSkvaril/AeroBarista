@@ -40,7 +40,8 @@ namespace AeroBarista.ViewModels
        
             var Recipe = x.First();
             QRRecipeService qr_service = new QRRecipeService();
-            QrCodeBytes = qr_service.CreateQRCodeForRecipe(Recipe);
+            // TODO: dont hardcode url, fix!
+            QrCodeBytes = qr_service.CreateQRCodeForRecipe(Recipe, "https://aerobarista/recipe");
         }
     }
 }
