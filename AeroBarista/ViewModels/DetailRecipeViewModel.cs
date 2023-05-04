@@ -12,7 +12,7 @@ namespace AeroBarista.ViewModels
     [QueryProperty(nameof(Id), nameof(Id))]
     public partial class DetailRecipeViewModel : BaseViewModel
     {
-        IRecipeApiClient apiClient;
+        private readonly IRecipeApiClient apiClient;
 
         [ObservableProperty]
         private RecipeModel recipe;
@@ -38,6 +38,13 @@ namespace AeroBarista.ViewModels
         {
             var parameters = new Dictionary<string, object> { [nameof(ProcessPageViewModel.Recipe)] = Recipe };
             await NavigationService.NavigateToAsync("//ProcessPage", parameters);
+        }
+
+        [RelayCommand]
+        public async void DeleteRecipe()
+        {
+            //await apiClient.Delete(Id);
+            await NavigationService.NavigateToAsync("//RecipesPage");
         }
 
         private async void GetData(int id)

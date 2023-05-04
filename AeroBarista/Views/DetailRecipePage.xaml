@@ -301,6 +301,19 @@
                         TextColor="{DynamicResource Text}"
                         WidthRequest="100" />
 
+                    <Button
+                        BackgroundColor="{DynamicResource Secondary}"
+                        Command="{Binding DeleteRecipeCommand}"
+                        Text="Delete"
+                        TextColor="{DynamicResource Text}"
+                        WidthRequest="100" />
+
+                    <Button
+                        BackgroundColor="{DynamicResource Secondary}"
+                        Text="Update"
+                        TextColor="{DynamicResource Text}"
+                        WidthRequest="100" />
+
                 </VerticalStackLayout>
             </ScrollView>
             <Button
