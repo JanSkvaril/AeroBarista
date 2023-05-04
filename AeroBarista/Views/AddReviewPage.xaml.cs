@@ -4,11 +4,11 @@ using AeroBarista.ViewModels;
 namespace AeroBarista.Views;
 
 [ExportTransient]
-public partial class DetailRecipePage : ContentPage
+public partial class AddReviewPage : ContentPage
 {
-    public DetailRecipePage(DetailRecipeViewModel vm)
+	public AddReviewPage(AddReviewViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;
-    }
+	}
 }

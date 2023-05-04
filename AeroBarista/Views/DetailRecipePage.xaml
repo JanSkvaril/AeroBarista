@@ -294,7 +294,7 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
 
-                        <Button Clicked="DisplayPopup" Text="Add review" />
+                        <Button Text="Add review" Command="{Binding AddReviewNavigateCommand}" />
 
                     </VerticalStackLayout>
 

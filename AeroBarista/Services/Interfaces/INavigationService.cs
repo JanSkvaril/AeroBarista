@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using CommunityToolkit.Maui.Views;
+using System.Runtime.InteropServices;
 
 namespace AeroBarista.Services.Interfaces;
 

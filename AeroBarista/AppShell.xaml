@@ -29,6 +29,10 @@
         <Tab Title="allRecipes">
             <ShellContent ContentTemplate="{DataTemplate local:RecipesPage}" Route="RecipesPage" />
         </Tab>
+
+        <Tab Title="addReview">
+            <ShellContent ContentTemplate="{DataTemplate local:AddReviewPage}" Route="AddReview" />
+        </Tab>
     </TabBar>
 
 

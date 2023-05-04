@@ -3,6 +3,7 @@ using AeroBarista.Attributes;
 using AeroBarista.Models;
 using AeroBarista.Services.Interfaces;
 using AeroBarista.ViewModels.Base;
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -45,6 +46,13 @@ namespace AeroBarista.ViewModels
         {
             //await apiClient.Delete(Id);
             await NavigationService.NavigateToAsync("//RecipesPage");
+        }
+
+        [RelayCommand]
+        public async void AddReviewNavigate()
+        {
+            var parameters = new Dictionary<string, object> { [nameof(AddReviewViewModel.RecipeId)] = Recipe.Id };
+            await NavigationService.NavigateToAsync("//AddReview", parameters);
         }
 
         private async void GetData(int id)
