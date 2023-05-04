@@ -293,6 +293,9 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
+
+                        <Button Clicked="DisplayPopup" Text="Add review" />
+
                     </VerticalStackLayout>
 
                     <Button
