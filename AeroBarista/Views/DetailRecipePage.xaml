@@ -3,6 +3,7 @@
     x:Class="AeroBarista.Views.DetailRecipePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:AlohaKit.Controls;assembly=AlohaKit"
     xmlns:models="clr-namespace:AeroBarista.Models"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
@@ -263,8 +264,35 @@
 
                         <Label
                             Margin="0,5"
-                            Text="Summary:"
+                            FontAttributes="Bold"
+                            Text="Reviews:"
                             TextColor="{DynamicResource Text}" />
+                        <CollectionView ItemsSource="{Binding Recipe.Reviews}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:RecipeReviewModel">
+                                    <VerticalStackLayout Margin="0,10">
+                                        <Grid ColumnDefinitions="*, 100">
+                                            <Label
+                                                Grid.Column="0"
+                                                Text="{Binding date, StringFormat='{}{0:dd.MM.yyyy}'}"
+                                                TextColor="{DynamicResource Text}"
+                                                VerticalTextAlignment="Center" />
+                                            <controls:Rating
+                                                Grid.Column="1"
+                                                IsReadOnly="True"
+                                                Scale="0.5"
+                                                SelectedFill="{DynamicResource Secondary}"
+                                                SelectedStroke="{DynamicResource Secondary}"
+                                                Value="{Binding Rating}" />
+                                        </Grid>
+                                        <Label
+                                            LineBreakMode="WordWrap"
+                                            Text="{Binding Text}"
+                                            TextColor="{DynamicResource TextDescription}" />
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </VerticalStackLayout>
 
                     <Button

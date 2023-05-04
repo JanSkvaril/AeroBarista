@@ -440,7 +440,7 @@ public class DemoDatabase
                     new(
                         1,
                         1,
-                        5,
+                        3,
                         "Enthiopia from Peneriny roastery in Brno, grinder was set to 10 steps. It was ok, but next time go finer with the grind",
                          new DateTime(2023,3,15)
                      )
