@@ -306,7 +306,12 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
 
-                        <Button Command="{Binding AddReviewNavigateCommand}" Text="Add review" />
+                        <Button
+                            BackgroundColor="{DynamicResource Secondary}"
+                            Command="{Binding AddReviewNavigateCommand}"
+                            Text="Add review"
+                            TextColor="{DynamicResource Text}"
+                            WidthRequest="120" />
 
                     </VerticalStackLayout>
 
