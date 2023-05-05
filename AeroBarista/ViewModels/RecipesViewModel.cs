@@ -43,6 +43,24 @@ namespace AeroBarista.ViewModels
             var actual = await apiClient.GetAll();
             Recipes = actual.ToList();
             allRecipes = actual.ToList();
+            FilterByCategory();
+            Search();
+        }
+
+        private void FilterByCategory()
+        {
+            if (RecipeCategory.Favourite == filterCategory)
+            {
+                FavouriteRecipes();
+            }
+            else if (RecipeCategory.All == filterCategory)
+            {
+                AllRecipes();
+            }
+            else
+            {
+                Filter(filterCategory);
+            }
         }
 
         [RelayCommand]

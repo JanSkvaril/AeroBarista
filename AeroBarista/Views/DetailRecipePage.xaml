@@ -20,14 +20,23 @@
                 Grid.Column="1"
                 VerticalScrollBarVisibility="Never">
                 <VerticalStackLayout>
-                    <Label
-                        Margin="0,15"
-                        FontSize="Small"
-                        HorizontalOptions="Center"
-                        Text="{Binding Recipe.Name}"
-                        TextColor="{DynamicResource Text}"
-                        VerticalOptions="Center" />
+                    <Grid ColumnDefinitions="*, Auto, 50, *">
+                        <Label
+                            Margin="0,15"
+                            FontSize="Small"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe.Name}"
+                            TextColor="{DynamicResource Text}"
+                            VerticalOptions="Center" />
 
+                        <Switch
+                            Grid.Column="2"
+                            Margin="5,0"
+                            IsToggled="{Binding Recipe.IsFavourite}"
+                            OnColor="{DynamicResource Secondary}" />
+                    </Grid>
+                    
                     <Grid
                         ColumnDefinitions="*, 100, 100, *"
                         ColumnSpacing="15"
