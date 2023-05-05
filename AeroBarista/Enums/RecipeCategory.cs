@@ -5,6 +5,7 @@
         All,
         Default,
         UserDefined,
-        Imported
+        Imported,
+        Favourite
     }
 }

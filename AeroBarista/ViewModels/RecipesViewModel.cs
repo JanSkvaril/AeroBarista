@@ -60,9 +60,13 @@ namespace AeroBarista.ViewModels
             {
                 actualRecipes = allRecipes.ToList();
             }
+            else if (filterCategory == RecipeCategory.Favourite)
+            {
+                actualRecipes = allRecipes.Where(r => r.IsFavourite).ToList();
+            }
             else
             {
-                actualRecipes = actualRecipes.Where(r => r.Category == filterCategory).ToList();
+                actualRecipes = allRecipes.Where(r => r.Category == filterCategory).ToList();
             }
 
             Recipes = actualRecipes.Where(r => r.Name.ToLower().Contains(FilterName.ToLower())).ToList();
@@ -90,6 +94,10 @@ namespace AeroBarista.ViewModels
             {
                 Filter(RecipeCategory.Imported);
             }
+            else if (name == "Favourite")
+            {
+                FavouriteRecipes();
+            }
             else if (name == "All")
             {
                 AllRecipes();
@@ -100,6 +108,12 @@ namespace AeroBarista.ViewModels
         {
             filterCategory = RecipeCategory.All;
             Recipes = allRecipes.Where(r => r.Name.ToLower().Contains(FilterName.ToLower())).ToList();
+        }
+
+        public void FavouriteRecipes()
+        {
+            filterCategory = RecipeCategory.Favourite;
+            Recipes = allRecipes.Where(r => r.IsFavourite).ToList();
         }
     }
 }

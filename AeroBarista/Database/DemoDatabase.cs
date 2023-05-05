@@ -138,6 +138,7 @@ public class DemoDatabase
                 12,
                 "Franta Zahradnik",
                 200,
+                true,
                 new()
                 {
                     new(
@@ -245,6 +246,7 @@ public class DemoDatabase
                 14,
                 "Pan Varil",
                 100,
+                false,
                 new()
                 {
                     new(
@@ -352,6 +354,7 @@ public class DemoDatabase
                 14,
                 null,
                 100,
+                true,
                 new()
                 {
                     new(

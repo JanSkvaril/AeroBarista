@@ -54,6 +54,18 @@
                         <RadioButton.Content>
                             <Label
                                 HorizontalTextAlignment="Center"
+                                Text="Favourite"
+                                TextColor="{DynamicResource Text}" />
+                        </RadioButton.Content>
+                        <RadioButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="Favourite" />
+                        </RadioButton.GestureRecognizers>
+                    </RadioButton>
+
+                    <RadioButton>
+                        <RadioButton.Content>
+                            <Label
+                                HorizontalTextAlignment="Center"
                                 Text="Default"
                                 TextColor="{DynamicResource Text}" />
                         </RadioButton.Content>
