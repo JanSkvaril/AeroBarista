@@ -27,12 +27,18 @@ namespace AeroBarista.ViewModels
             this.apiClient = apiClient;
             Recipes = new List<RecipeModel>();
             allRecipes = new List<RecipeModel>();
-            GetData();
+            GetDataAsync();
             filterName = String.Empty;
             filterCategory = RecipeCategory.All;
         }
 
-        private async void GetData()
+        public override async Task OnAppearingAsync()
+        {
+            await base.OnAppearingAsync();
+            GetDataAsync();
+        }
+
+        private async void GetDataAsync()
         {
             var actual = await apiClient.GetAll();
             Recipes = actual.ToList();

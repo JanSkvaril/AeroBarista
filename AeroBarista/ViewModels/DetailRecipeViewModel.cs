@@ -44,7 +44,7 @@ namespace AeroBarista.ViewModels
         [RelayCommand]
         public async void DeleteRecipe()
         {
-            //await apiClient.Delete(Id);
+            await apiClient.Delete(Id);
             await NavigationService.NavigateToAsync("//RecipesPage");
         }
 

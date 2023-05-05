@@ -1,5 +1,4 @@
 using AeroBarista.Attributes;
-using AeroBarista.Enums;
 using AeroBarista.ViewModels;
 
 namespace AeroBarista.Views;
@@ -16,7 +15,14 @@ public partial class RecipesPage : ContentPage
 		BindingContext = vm;
 	}
 
-	public void OnTextChanged(object sender, EventArgs e)
+    protected override async void OnAppearing()
+	{
+        base.OnAppearing();
+		await viewModel.OnAppearingAsync();
+    }
+
+
+    public void OnTextChanged(object sender, EventArgs e)
 	{
 		viewModel.Search();
 	}

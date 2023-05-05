@@ -8,6 +8,9 @@
     x:Name="Root"
     Title="RecipesPage"
     x:DataType="viewModels:RecipesViewModel">
+    <ContentPage.Behaviors>
+        
+    </ContentPage.Behaviors>
     <Grid BackgroundColor="Black">
         <Image
             Aspect="AspectFill"
