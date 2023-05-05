@@ -6,34 +6,36 @@
     xmlns:controls="clr-namespace:AlohaKit.Controls;assembly=AlohaKit"
     xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
     x:DataType="viewModels:AddReviewViewModel">
-    <VerticalStackLayout
-        BackgroundColor="{DynamicResource Primary}"
-        MinimumHeightRequest="200"
-        MinimumWidthRequest="200">
-        <Label
-            Margin="0,5"
-            FontSize="Large"
-            HorizontalOptions="Center"
-            Text="Add review"
-            TextColor="{DynamicResource Text}"
-            VerticalOptions="Center" />
-        <controls:Rating
-            Grid.Column="1"
-            Margin="0,5"
-            SelectedFill="{DynamicResource Secondary}"
-            SelectedStroke="{DynamicResource Secondary}"
-            Value="{Binding Rating, Mode=TwoWay}" />
-        <Editor
-            Margin="10,5"
-            BackgroundColor="{DynamicResource PrimaryLight}"
-            HeightRequest="100"
-            Text="{Binding Text}"
-            TextColor="{DynamicResource Text}"
-            WidthRequest="200" />
-        <Button
-            Margin="10,5"
-            BackgroundColor="{DynamicResource Secondary}"
-            Command="{Binding SaveReviewCommand}"
-            Text="Save" />
-    </VerticalStackLayout>
+    <Grid BackgroundColor="{DynamicResource Black}">
+        <Image
+            Aspect="AspectFill"
+            Opacity="0.3"
+            Source="background_image.png" />
+        <VerticalStackLayout>
+            <Label
+                Margin="0,5"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="Add review"
+                TextColor="{DynamicResource Text}"
+                VerticalOptions="Center" />
+            <controls:Rating
+                Grid.Column="1"
+                Margin="0,5"
+                SelectedFill="{DynamicResource Secondary}"
+                SelectedStroke="{DynamicResource Secondary}"
+                Value="{Binding Rating, Mode=TwoWay}" />
+            <Editor
+                Margin="10,5"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="100"
+                Text="{Binding Text}"
+                TextColor="{DynamicResource Text}" />
+            <Button
+                Margin="10,5"
+                BackgroundColor="{DynamicResource Secondary}"
+                Command="{Binding SaveReviewCommand}"
+                Text="Save" />
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>
