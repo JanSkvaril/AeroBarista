@@ -16,7 +16,7 @@ namespace AeroBarista.ViewModels
         private readonly IRecipeApiClient apiClient;
 
         [ObservableProperty]
-        private RecipeModel recipe;
+        private RecipeModel? recipe;
 
         [ObservableProperty]
         private TimeSpan totalTime;
@@ -29,9 +29,19 @@ namespace AeroBarista.ViewModels
             this.apiClient = apiClient;
         }
 
+        public override async Task OnAppearingAsync()
+        {
+            await base.OnAppearingAsync();
+            if (Id != 0)
+            {
+                // Id is initialized for parameter
+                GetDataAsync(Id);
+            }
+        }
+
         partial void OnIdChanged(int value)
         {
-            GetData(value);
+            GetDataAsync(value);
         }
 
         [RelayCommand]
@@ -55,10 +65,10 @@ namespace AeroBarista.ViewModels
             await NavigationService.NavigateToAsync("//AddReview", parameters);
         }
 
-        private async void GetData(int id)
+        private async void GetDataAsync(int id)
         {
             var actual = await apiClient.GetAll();
-
+            Recipe = null;
             Recipe = actual.First(r => r.Id == id);
 
             GetTotalTime();

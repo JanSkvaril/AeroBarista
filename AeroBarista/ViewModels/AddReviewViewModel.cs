@@ -42,7 +42,8 @@ namespace AeroBarista.ViewModels
             var recip = await apiRecipeClient.GetAll();
             var y = recip.First(r => r.Id == RecipeId);
 
-            await NavigationService.NavigateToAsync("//DetailRecipePage");
+            var parameters = new Dictionary<string, object> { [nameof(DetailRecipeViewModel.Id)] = RecipeId };
+            await NavigationService.NavigateToAsync("//DetailRecipePage", parameters);
         }
     }
 }
