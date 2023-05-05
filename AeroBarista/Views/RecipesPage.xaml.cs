@@ -21,7 +21,6 @@ public partial class RecipesPage : ContentPage
 		await viewModel.OnAppearingAsync();
     }
 
-
     public void OnTextChanged(object sender, EventArgs e)
 	{
 		viewModel.Search();
