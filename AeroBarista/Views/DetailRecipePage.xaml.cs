@@ -1,6 +1,7 @@
 using AeroBarista.Attributes;
 using AeroBarista.ViewModels;
 using AeroBarista.ViewModels.Base;
+using CommunityToolkit.Maui.Views;
 
 namespace AeroBarista.Views;
 
@@ -20,5 +21,11 @@ public partial class DetailRecipePage : ContentPage
         {
             await viewModel.OnAppearingAsync();
         }
+    }
+
+    public async void OptionsButtonClicked(object sender, EventArgs args)
+    {
+        var popup = new RecipeOptionsPage();
+        await this.ShowPopupAsync(popup);
     }
 }

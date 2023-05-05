@@ -317,22 +317,10 @@
 
                     <Button
                         BackgroundColor="{DynamicResource Secondary}"
-                        Text="Share"
+                        Clicked="OptionsButtonClicked"
+                        Text="More options.."
                         TextColor="{DynamicResource Text}"
-                        WidthRequest="100" />
-
-                    <Button
-                        BackgroundColor="{DynamicResource Secondary}"
-                        Command="{Binding DeleteRecipeCommand}"
-                        Text="Delete"
-                        TextColor="{DynamicResource Text}"
-                        WidthRequest="100" />
-
-                    <Button
-                        BackgroundColor="{DynamicResource Secondary}"
-                        Text="Update"
-                        TextColor="{DynamicResource Text}"
-                        WidthRequest="100" />
+                        WidthRequest="130" />
 
                 </VerticalStackLayout>
             </ScrollView>

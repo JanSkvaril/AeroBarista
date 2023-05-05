@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="AeroBarista.Views.RecipeOptionsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <VerticalStackLayout BackgroundColor="{DynamicResource PrimaryLight}">
+        <Button
+            Margin="0,5"
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            BorderColor="{DynamicResource PrimaryLight}"
+            HeightRequest="40"
+            Text="Share"
+            TextColor="{DynamicResource Text}"
+            WidthRequest="100" />
+
+        <Button
+            Margin="0,5"
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            BorderColor="{DynamicResource PrimaryLight}"
+            Command="{Binding DeleteRecipeCommand}"
+            HeightRequest="40"
+            Text="Delete"
+            TextColor="{DynamicResource Text}"
+            WidthRequest="100" />
+
+        <Button
+            Margin="0,5"
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            BorderColor="{DynamicResource PrimaryLight}"
+            HeightRequest="40"
+            Text="Update"
+            TextColor="{DynamicResource Text}"
+            WidthRequest="100" />
+    </VerticalStackLayout>
+</toolkit:Popup>
