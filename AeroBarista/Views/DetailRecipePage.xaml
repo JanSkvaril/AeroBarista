@@ -20,23 +20,14 @@
                 Grid.Column="1"
                 VerticalScrollBarVisibility="Never">
                 <VerticalStackLayout>
-                    <Grid ColumnDefinitions="*, Auto, 50, *">
-                        <Label
-                            Margin="0,15"
-                            FontSize="Small"
-                            Grid.Column="1"
-                            HorizontalOptions="Center"
-                            Text="{Binding Recipe.Name}"
-                            TextColor="{DynamicResource Text}"
-                            VerticalOptions="Center" />
+                    <Label
+                        Margin="0,15"
+                        FontSize="Small"
+                        HorizontalOptions="Center"
+                        Text="{Binding Recipe.Name}"
+                        TextColor="{DynamicResource Text}"
+                        VerticalOptions="Center" />
 
-                        <Switch
-                            Grid.Column="2"
-                            Margin="5,0"
-                            IsToggled="{Binding Recipe.IsFavourite}"
-                            OnColor="{DynamicResource Secondary}" />
-                    </Grid>
-                    
                     <Grid
                         ColumnDefinitions="*, 100, 100, *"
                         ColumnSpacing="15"
@@ -217,6 +208,18 @@
                     </Grid>
 
                     <VerticalStackLayout HorizontalOptions="Center" MaximumWidthRequest="300">
+                        <Grid ColumnDefinitions="70, *">
+                            <Label
+                                Grid.Column="0"
+                                Text="Favourite: "
+                                TextColor="{DynamicResource TextDescription}"
+                                VerticalTextAlignment="Center" />
+                            <Switch
+                                Grid.Column="1"
+                                Margin="5,0"
+                                IsToggled="{Binding Recipe.IsFavourite}"
+                                OnColor="{DynamicResource Secondary}" />
+                        </Grid>
                         <Label
                             Margin="0,5"
                             HorizontalTextAlignment="Center"
@@ -303,7 +306,7 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
 
-                        <Button Text="Add review" Command="{Binding AddReviewNavigateCommand}" />
+                        <Button Command="{Binding AddReviewNavigateCommand}" Text="Add review" />
 
                     </VerticalStackLayout>
 
