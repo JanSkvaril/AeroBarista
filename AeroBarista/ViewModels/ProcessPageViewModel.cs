@@ -4,6 +4,7 @@ using AeroBarista.Services;
 using AeroBarista.Services.Interfaces;
 using AeroBarista.ViewModels.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AeroBarista.ViewModels
 {
@@ -49,7 +50,6 @@ namespace AeroBarista.ViewModels
 
             processStateService.SetStateChangeCallback(StateChangeCallback);
             processStateService.Inicialize();
-            timer.Start();
         }
 
         private void TimeTickCallback(TimeSpan time)
@@ -71,7 +71,37 @@ namespace AeroBarista.ViewModels
                 ActiveStep = current;
                 PrevStep = prev;
                 NextStep = next;
+
+                // new current step has time and timer was not started
+                if (ActiveStep != null && ActiveStep.time != null && !timer.IsRunning()) 
+                {
+                    timer.Start();
+                }
             }
+        }
+
+        [RelayCommand]
+        public void GoToNextStep()
+        {
+            processStateService.NextStep();
+        }
+
+        [RelayCommand]
+        public void GoToPrevStep()
+        {
+            processStateService.PrevStep();
+        }
+
+        [RelayCommand]
+        public void Pause()
+        {
+            timer.Stop();
+        }
+
+        [RelayCommand]
+        public void Resume()
+        {
+            timer.Resume();
         }
     }
 }

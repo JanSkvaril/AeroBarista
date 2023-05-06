@@ -16,6 +16,8 @@ namespace AeroBarista.Services
         Action<RecipeStepModel?, RecipeStepModel?, RecipeStepModel?>? stepChangeCallback = null;
         RecipeStepModel? activeStep = null;
         TimeSpan stepStartTime;
+        TimeSpan lastCurrentTime;
+        private bool goToNextStepRequest = false;
 
         public ProcessStateService(IList<RecipeStepModel> steps) 
         { 
@@ -53,8 +55,10 @@ namespace AeroBarista.Services
 
         public void UpdateState(TimeSpan currentTime)
         {
+            lastCurrentTime = currentTime;
             if (steps.Count() == 0) return;
             if (activeStep == null) return;
+            if (activeStep.time == null) return;
 
             else if (stepStartTime + activeStep.time < currentTime)
             {
@@ -95,6 +99,34 @@ namespace AeroBarista.Services
                     if (activeStep != steps.Last()) nextStep = steps[index + 1];
                     stepChangeCallback.Invoke(activeStep, prevStep, nextStep);
                 }
+            }
+        }
+
+        public void NextStep()
+        {
+            if (activeStep == null) return;
+            if (activeStep == steps.Last())
+            {
+                ChangeState(null, lastCurrentTime);
+            }
+            else
+            {
+                int current_index = steps.IndexOf(activeStep);
+                ChangeState(steps[current_index + 1], lastCurrentTime);
+            }
+        }
+
+        public void PrevStep()
+        {
+            if (activeStep == null) return;
+            if (activeStep == steps.First())
+            {
+                ChangeState(steps.First(), lastCurrentTime); // start again
+            }
+            else
+            {
+                int current_index = steps.IndexOf(activeStep);
+                ChangeState(steps[current_index - 1], lastCurrentTime);
             }
         }
 

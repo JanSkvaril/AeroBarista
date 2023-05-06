@@ -6,5 +6,8 @@
 
         public void Start();
         public void Stop();
+
+        public void Resume();
+        bool IsRunning();
     }
 }

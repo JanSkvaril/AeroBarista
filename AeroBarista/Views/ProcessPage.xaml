@@ -3,6 +3,8 @@
     x:Class="AeroBarista.Views.ProcessPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
+    x:DataType="viewModels:ProcessPageViewModel"
     Title="ProcessPage">
     <Grid BackgroundColor="Black">
         <Grid.RowDefinitions>
@@ -99,5 +101,11 @@
                 TextColor="LightGray"
                 VerticalOptions="Center" />
         </VerticalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="4" HorizontalOptions="Center">
+            <Button Text="Prev"  Command="{Binding GoToPrevStepCommand}" WidthRequest="100" VerticalOptions="Center"/>
+            <Button Text="Next" Command="{Binding GoToNextStepCommand}" WidthRequest="100" VerticalOptions="Center"/>
+            <Button Text="Pause" Command="{Binding PauseCommand}" WidthRequest="100" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
     </Grid>
 </ContentPage>

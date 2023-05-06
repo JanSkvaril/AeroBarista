@@ -16,7 +16,7 @@ namespace AeroBarista.Services
         IDispatcherTimer timer;
         DateTime time;
         const int timerTickRate = 50; // miliseconds
-
+        bool isRunning = false;
         Action<TimeSpan>? tickCallback;
         public BrewProcessService()
         {
@@ -25,6 +25,7 @@ namespace AeroBarista.Services
             timer = Application.Current.Dispatcher.CreateTimer();
             timer.Interval = new TimeSpan(0, 0,0 ,0, timerTickRate);
             timer.Tick += new EventHandler(TimerTick);
+            isRunning = false;
         }
 
         private void TimerTick(object? sender, EventArgs? e)
@@ -41,11 +42,26 @@ namespace AeroBarista.Services
         public void Start()
         {
             timer.Start();
-            time = DateTime.Now; 
+            time = DateTime.Now;
+            isRunning = true;
         }
         public void Stop() { 
-            timer.Stop(); 
+            timer.Stop();
+            isRunning = false;
         }
+
+        public void Resume()
+        {
+            timer.Start();
+            isRunning = true;
+        }
+
+        public bool IsRunning()
+        {
+            return isRunning;
+        }
+
+
 
 
     }

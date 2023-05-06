@@ -29,6 +29,8 @@ namespace AeroBarista.Services.Interfaces
 
         public TimeSpan GetRemainingTimeForCurrentStep(TimeSpan currentTime);
 
-      
+        public void NextStep();
+
+        public void PrevStep();
     }
 }
