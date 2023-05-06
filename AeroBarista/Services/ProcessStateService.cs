@@ -14,6 +14,7 @@ namespace AeroBarista.Services
     {
         IList<RecipeStepModel> steps;
         Action<RecipeStepModel?, RecipeStepModel?, RecipeStepModel?>? stepChangeCallback = null;
+        Action? finishedCallback = null;
         RecipeStepModel? activeStep = null;
         TimeSpan stepStartTime;
         TimeSpan lastCurrentTime;
@@ -43,6 +44,11 @@ namespace AeroBarista.Services
             stepChangeCallback = callback;
         }
 
+        public void SetFinishedCallback(Action callback)
+        {
+            finishedCallback = callback;
+        }
+
         public RecipeStepModel? GetActiveStep()
         {
             return activeStep;
@@ -65,6 +71,7 @@ namespace AeroBarista.Services
                 if (activeStep == steps.Last())
                 {
                     ChangeState(null, currentTime);
+                    if (finishedCallback != null) finishedCallback();
                 }
                 else
                 {
@@ -108,6 +115,7 @@ namespace AeroBarista.Services
             if (activeStep == steps.Last())
             {
                 ChangeState(null, lastCurrentTime);
+                if (finishedCallback != null) finishedCallback();
             }
             else
             {

@@ -17,6 +17,8 @@ namespace AeroBarista.Services.Interfaces
         /// <param name="callback">Parameters are [current, previous, next]. Any of them can be null</param>
         public void SetStateChangeCallback(Action<RecipeStepModel?, RecipeStepModel?, RecipeStepModel?> callback);
 
+        public void SetFinishedCallback(Action callback);
+
 
         public RecipeStepModel? GetActiveStep();
 

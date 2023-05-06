@@ -1,4 +1,6 @@
-﻿using Plugin.Maui.Audio;
+﻿using AeroBarista.Attributes;
+using AeroBarista.Services.Interfaces;
+using Plugin.Maui.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace AeroBarista.Services
 {
-    public class AudioService
+    [ExportTransientAs(nameof(IAudioService))]
+    public class AudioService : IAudioService
     {
 
-        public static async Task PlayFinishedSound()
+        public async Task PlayFinishedSound()
         {
   
             var audioPlayer = AudioManager.Current.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("finished_sound.mp3"));
@@ -19,7 +22,7 @@ namespace AeroBarista.Services
            
         }
 
-        public static async Task PlayNextStepSound()
+        public async Task PlayNextStepSound()
         {
             var audioPlayer = AudioManager.Current.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("next_step_sound.mp3"));
 

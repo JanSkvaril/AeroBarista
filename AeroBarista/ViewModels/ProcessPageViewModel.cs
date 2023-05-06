@@ -15,6 +15,7 @@ namespace AeroBarista.ViewModels
     {
         IBrewProcessService timer;
         IProcessStateService processStateService;
+        IAudioService audio;
 
 
         [ObservableProperty]
@@ -38,10 +39,11 @@ namespace AeroBarista.ViewModels
         [ObservableProperty]
         private double stepProgress;
 
-        public ProcessPageViewModel(INavigationService navigationService, IBrewProcessService timer) : base(navigationService)
+        public ProcessPageViewModel(INavigationService navigationService, IBrewProcessService timer, IAudioService audio) : base(navigationService)
         {
             this.timer = timer;
             this.timer.RegisterTickCallback(TimeTickCallback);
+            this.audio = audio;
         }
 
         public bool IsPaused()
@@ -54,6 +56,7 @@ namespace AeroBarista.ViewModels
             processStateService = new ProcessStateService(Recipe.Steps);
 
             processStateService.SetStateChangeCallback(StateChangeCallback);
+            processStateService.SetFinishedCallback(FinishedCallback);
             processStateService.Inicialize();
         }
 
@@ -83,7 +86,15 @@ namespace AeroBarista.ViewModels
                     timer.Start();
                 }
             }
-            _ = AudioService.PlayNextStepSound(); // todo: refactor to interface with DI
+            _ = audio.PlayNextStepSound();
+        }
+
+        private void FinishedCallback()
+        {
+            _ = audio.PlayFinishedSound();
+            NavigationService.NavigateToAsync("//FinishedPage");
+
+
         }
 
         [RelayCommand]
