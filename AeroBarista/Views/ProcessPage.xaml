@@ -102,22 +102,25 @@
                 VerticalOptions="Center" />
         </VerticalStackLayout>
 
-        <HorizontalStackLayout Grid.Row="4" HorizontalOptions="Center">
-            <Button
+        <HorizontalStackLayout
+            Grid.Row="4"
+            HorizontalOptions="Center"
+            Spacing="10">
+            <ImageButton
                 Command="{Binding GoToPrevStepCommand}"
-                Text="Prev"
+                Source="arrowleft.png"
                 VerticalOptions="Center"
-                WidthRequest="100" />
-            <Button
+                WidthRequest="30" />
+            <ImageButton
+                x:Name="startPlayButton"
+                Clicked="PausePlayButtonClicked"
+                Source="pausesolid.png"
+                WidthRequest="30" />
+            <ImageButton
                 Command="{Binding GoToNextStepCommand}"
-                Text="Next"
+                Source="arrowright.png"
                 VerticalOptions="Center"
-                WidthRequest="100" />
-            <Button
-                Command="{Binding PauseCommand}"
-                Text="Pause"
-                VerticalOptions="Center"
-                WidthRequest="100" />
+                WidthRequest="30" />
         </HorizontalStackLayout>
 
         <Grid.GestureRecognizers>

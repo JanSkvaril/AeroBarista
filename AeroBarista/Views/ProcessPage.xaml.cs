@@ -7,14 +7,35 @@ namespace AeroBarista.Views;
 [ExportTransient]
 public partial class ProcessPage : ContentPage
 {
-	public ProcessPage(ProcessPageViewModel vm)
+    private readonly ProcessPageViewModel viewModel;
+    private readonly string pausePath = "pausesolid.png";
+    private readonly string playPath = "playsolid.png";
+
+    public ProcessPage(ProcessPageViewModel vm)
 	{
 		InitializeComponent();
+        viewModel = vm;
 		BindingContext = vm;
-
         SetupAnimations();
     }
-	private void SetupAnimations()
+
+    public void PausePlayButtonClicked(object sender, EventArgs args)
+    {
+        var isPaused = viewModel.IsPaused();
+        if (!isPaused)
+        {
+            startPlayButton.Source = playPath;
+            viewModel.Resume();
+        }
+        else
+        {
+            startPlayButton.Source = pausePath;
+            viewModel.Pause();
+        }
+    }
+
+
+    private void SetupAnimations()
 	{
         CurrentStep.PropertyChanging += async (sender, e) =>
         {

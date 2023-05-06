@@ -44,6 +44,11 @@ namespace AeroBarista.ViewModels
             this.timer.RegisterTickCallback(TimeTickCallback);
         }
 
+        public bool IsPaused()
+        {
+            return !timer.IsRunning();
+        }
+
         partial void OnRecipeChanged(RecipeModel value)
         {
             processStateService = new ProcessStateService(Recipe.Steps);
