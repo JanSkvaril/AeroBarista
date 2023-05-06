@@ -8,7 +8,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace AeroBarista.ViewModels
 {
-    [ExportSingleton]
+    [ExportTransient]
     [QueryProperty(nameof(RecipeId), nameof(RecipeId))]
     public partial class AddReviewViewModel : BaseViewModel
     {
@@ -29,6 +29,11 @@ namespace AeroBarista.ViewModels
             this.apiRecipeClient = apiRecipeClient;
         }
 
+        partial void OnRecipeIdChanged(int value)
+        {
+            Reset();
+        }
+
         [RelayCommand]
         public async void SaveReview()
         {
@@ -42,8 +47,16 @@ namespace AeroBarista.ViewModels
             var recip = await apiRecipeClient.GetAll();
             var y = recip.First(r => r.Id == RecipeId);
 
+            Reset();
+
             var parameters = new Dictionary<string, object> { [nameof(DetailRecipeViewModel.Id)] = RecipeId };
             await NavigationService.NavigateToAsync("//DetailRecipePage", parameters);
+        }
+
+        private void Reset()
+        {
+            Text = string.Empty;
+            Rating = 0;
         }
     }
 }
