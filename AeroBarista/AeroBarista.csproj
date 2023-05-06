@@ -41,6 +41,9 @@
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\ellipsisvertical.svg" TintColor="#B7B5B5" />
+		<MauiImage Update="Resources\Images\trashcan.svg" TintColor="#B7B5B5" />
+		<MauiImage Update="Resources\Images\pen.svg" TintColor="#B7B5B5" />
+		<MauiImage Update="Resources\Images\sharenodes.svg" TintColor="#B7B5B5" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->

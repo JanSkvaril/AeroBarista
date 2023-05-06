@@ -8,4 +8,6 @@ public partial class RecipeOptionsPage : Popup
 	{
 		InitializeComponent();
 	}
+
+	public void CloseButtonClicked(object? sender, EventArgs e) => Close(true);
 }
