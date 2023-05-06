@@ -48,6 +48,7 @@
 		<MauiImage Update="Resources\Images\arrowright.svg" TintColor="#C69256" />
 		<MauiImage Update="Resources\Images\pausesolid.svg" TintColor="#C69256" />
 		<MauiImage Update="Resources\Images\playsolid.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\plus.svg" TintColor="#FFFFFF" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
