@@ -2,7 +2,7 @@
 
 namespace AeroBarista.ApiClients.Interfaces;
 
-interface IRecipesReviewApiClient
+public interface IRecipesReviewApiClient
 {
     public Task Create(RecipeReviewModel recipeReview);
     public Task<bool> Update(RecipeReviewModel recipeReview);

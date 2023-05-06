@@ -130,7 +130,7 @@ public class DemoDatabase
         data.Add(
             new RecipeModel(
                 1,
-                "MyCustomRecipe",
+                "MyCustomBestRecipe",
                 "Recipe stolen from some random article. Is has large coffe-water ratio, so it's quite cheap. It's generally better for lighter roastes. For Darker roasts I recomment reducing the water tempeture to 90 degres",
                 RecipeMethod.Standard,
                 RecipeCategory.Default,
@@ -138,6 +138,7 @@ public class DemoDatabase
                 12,
                 "Franta Zahradnik",
                 200,
+                true,
                 new()
                 {
                       new(
@@ -150,6 +151,114 @@ public class DemoDatabase
                         null,
                         null
                     ),
+                    new(
+                        1,
+                        1,
+                        1,
+                        "Boil the water to 98 degress",
+                        "For lighter roasts I recomend 90 degress",
+                        StepType.Simple,
+                        null,
+                        TimeSpan.FromSeconds(5)
+                    ),
+                    new(
+                        2,
+                        1,
+                        2,
+                        "Grind 12 grams (fine)",
+                        "Very loo oo ooooo ooooo oooo ooo oo oo ooo ooo oo oo oo ong description",
+                        StepType.Simple,
+                        null,
+                        TimeSpan.FromSeconds(5)
+                    ),
+                    new(
+                        3,
+                        1,
+                        3,
+                        "Add the filter (no rinse) and the grounds",
+                        string.Empty,
+                        StepType.Simple,
+                        null,
+                        TimeSpan.FromSeconds(5)
+                    ),
+                    new(
+                        4,
+                        1,
+                        4,
+                        "Slowly poor 150 grams of water",
+                        string.Empty,
+                        StepType.Water,
+                        150,
+                        TimeSpan.FromSeconds(60)
+                    ),
+                    new(
+                        5,
+                        1,
+                        5,
+                        "Wait 10 seconds",
+                        string.Empty,
+                        StepType.Simple,
+                        null,
+                        TimeSpan.FromSeconds(10)
+                    ),
+                    new(
+                        6,
+                        1,
+                        6,
+                        "Poor the rest of the foter (50 grams)",
+                        string.Empty,
+                        StepType.Simple,
+                        null,
+                        TimeSpan.FromSeconds(15)
+                    ),
+                    new(
+                        7,
+                        1,
+                        7,
+                        "Boil the water to 98 degress",
+                        string.Empty,
+                        StepType.Water,
+                        null,
+                        TimeSpan.FromSeconds(180)
+                    ),
+                    new(
+                        8,
+                        1,
+                        8,
+                        "Boil the water to 98 degress",
+                        string.Empty,
+                        StepType.Simple,
+                        null,
+                        TimeSpan.FromSeconds(30)
+                    )
+                },
+                new()
+                {
+                    new(
+                        1,
+                        1,
+                        5,
+                        "Enthiopia from Peneriny roastery in Brno, grinder was set to 10 steps. It was ok, but next time go finer with the grind",
+                         new DateTime(2023,3,15)
+                     )
+                }
+            )
+        );
+
+        data.Add(
+            new RecipeModel(
+                2,
+                "ReceptFromBestDrive",
+                null,
+                RecipeMethod.Standard,
+                RecipeCategory.UserDefined,
+                GrandSize.Medium,
+                14,
+                "Pan Varil",
+                100,
+                false,
+                new()
+                {
                     new(
                         1,
                         1,
@@ -246,15 +355,16 @@ public class DemoDatabase
 
         data.Add(
             new RecipeModel(
-                2,
-                "ReceptFromBestDrive",
+                3,
+                "ReceptFromPetrovice",
                 "Recipe stolen from some random article. Is has large coffe-water ratio, so it's quite cheap. It's generally better for lighter roastes. For Darker roasts I recomment reducing the water tempeture to 90 degres",
                 RecipeMethod.Standard,
                 RecipeCategory.UserDefined,
                 GrandSize.Medium,
                 14,
-                "Pan Varil",
+                null,
                 100,
+                true,
                 new()
                 {
                     new(
@@ -272,7 +382,7 @@ public class DemoDatabase
                         1,
                         2,
                         "Grind 12 grams (fine)",
-                        string.Empty,
+                        "Grind 12 grams fine",
                         StepType.Simple,
                         null,
                         TimeSpan.FromSeconds(5)
@@ -343,7 +453,7 @@ public class DemoDatabase
                     new(
                         1,
                         1,
-                        5,
+                        3,
                         "Enthiopia from Peneriny roastery in Brno, grinder was set to 10 steps. It was ok, but next time go finer with the grind",
                          new DateTime(2023,3,15)
                      )

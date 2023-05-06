@@ -11,4 +11,8 @@ public class BaseViewModel : ObservableObject
     {
         NavigationService = navigationService;
     }
+    public virtual Task OnAppearingAsync()
+    {
+        return Task.CompletedTask;
+    }
 }

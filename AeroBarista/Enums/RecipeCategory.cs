@@ -2,8 +2,10 @@
 {
     public enum RecipeCategory
     {
+        All,
         Default,
         UserDefined,
-        Imported
+        Imported,
+        Favourite
     }
 }

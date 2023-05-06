@@ -11,12 +11,18 @@ public partial class RecipesPage : ContentPage
 	public RecipesPage(RecipesViewModel vm)
 	{
 		InitializeComponent();
-		BindingContext = vm;
 		viewModel = vm;
+		BindingContext = vm;
 	}
 
-	public void OnTextChanged(object sender, EventArgs e)
+    protected override async void OnAppearing()
 	{
-        viewModel.Search(searchBar.Text);
+        base.OnAppearing();
+		await viewModel.OnAppearingAsync();
+    }
+
+    public void OnTextChanged(object sender, EventArgs e)
+	{
+		viewModel.Search();
 	}
 }

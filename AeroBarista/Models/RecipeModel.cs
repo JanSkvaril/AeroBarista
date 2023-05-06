@@ -14,6 +14,7 @@ public record RecipeModel(
     int CoffeeGrams,
     string? Author,
     int TotalWaterGrams,
+    bool IsFavourite,
     List<RecipeStepModel> Steps,
     List<RecipeReviewModel> Reviews
     );

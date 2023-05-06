@@ -1,4 +1,4 @@
-﻿using AeroBarista.ApiClients;
+using AeroBarista.ApiClients;
 using AeroBarista.ApiClients.Interfaces;
 using AeroBarista.Attributes;
 using AeroBarista.Database;
@@ -7,6 +7,7 @@ using Autofac.Extensions.DependencyInjection;
 using Camera.MAUI;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
+using CommunityToolkit.Maui;
 
 namespace AeroBarista;
 
@@ -19,6 +20,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .UseMauiCameraView()
             .ConfigureFonts(fonts =>
             {

@@ -3,6 +3,7 @@ using AeroBarista.Attributes;
 using AeroBarista.Models;
 using AeroBarista.Services.Interfaces;
 using AeroBarista.ViewModels.Base;
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -12,10 +13,10 @@ namespace AeroBarista.ViewModels
     [QueryProperty(nameof(Id), nameof(Id))]
     public partial class DetailRecipeViewModel : BaseViewModel
     {
-        IRecipeApiClient apiClient;
+        private readonly IRecipeApiClient apiClient;
 
         [ObservableProperty]
-        private RecipeModel recipe;
+        private RecipeModel? recipe;
 
         [ObservableProperty]
         private TimeSpan totalTime;
@@ -28,9 +29,19 @@ namespace AeroBarista.ViewModels
             this.apiClient = apiClient;
         }
 
+        public override async Task OnAppearingAsync()
+        {
+            await base.OnAppearingAsync();
+            if (Id != 0)
+            {
+                // Id is initialized for parameter
+                GetDataAsync(Id);
+            }
+        }
+
         partial void OnIdChanged(int value)
         {
-            GetData(value);
+            GetDataAsync(value);
         }
 
         [RelayCommand]
@@ -40,10 +51,24 @@ namespace AeroBarista.ViewModels
             await NavigationService.NavigateToAsync("//ProcessPage", parameters);
         }
 
-        private async void GetData(int id)
+        [RelayCommand]
+        public async void DeleteRecipe()
+        {
+            await apiClient.Delete(Id);
+            await NavigationService.NavigateToAsync("//RecipesPage");
+        }
+
+        [RelayCommand]
+        public async void AddReviewNavigate()
+        {
+            var parameters = new Dictionary<string, object> { [nameof(AddReviewViewModel.RecipeId)] = Recipe.Id };
+            await NavigationService.NavigateToAsync("//AddReview", parameters);
+        }
+
+        private async void GetDataAsync(int id)
         {
             var actual = await apiClient.GetAll();
-
+            Recipe = null;
             Recipe = actual.First(r => r.Id == id);
 
             GetTotalTime();
