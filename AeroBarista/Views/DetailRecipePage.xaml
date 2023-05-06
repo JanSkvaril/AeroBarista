@@ -316,11 +316,12 @@
                         </CollectionView>
 
                         <Button
-                            BackgroundColor="{DynamicResource Secondary}"
+                            BackgroundColor="{DynamicResource PrimaryLight}"
                             Command="{Binding AddReviewNavigateCommand}"
+                            HorizontalOptions="End"
                             Text="Add review"
                             TextColor="{DynamicResource Text}"
-                            WidthRequest="120" />
+                            WidthRequest="110" />
 
                     </VerticalStackLayout>
                 </VerticalStackLayout>
@@ -331,9 +332,10 @@
                 Margin="10,10"
                 BackgroundColor="{DynamicResource Secondary}"
                 Command="{Binding StartRecipeCommand}"
+                FontSize="Medium"
                 Text="Start"
                 TextColor="{DynamicResource Text}"
-                WidthRequest="100" />
+                WidthRequest="200" />
         </Grid>
     </Grid>
 </ContentPage>
