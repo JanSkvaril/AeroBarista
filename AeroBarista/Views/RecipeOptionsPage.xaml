@@ -19,9 +19,9 @@
                 FontSize="Medium"
                 Text="Share"
                 TextColor="{DynamicResource Text}" />
-            <!--HorizontalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding DeleteRecipeCommand}" />
-            </HorizontalStackLayout.GestureRecognizers-->
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ShareRecipeCommand}" />
+            </HorizontalStackLayout.GestureRecognizers>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="Center">
