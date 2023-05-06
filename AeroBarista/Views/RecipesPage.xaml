@@ -102,20 +102,77 @@
                 <CollectionView ItemsSource="{Binding Recipes}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:RecipeModel">
-                            <VerticalStackLayout
+                            <Border
                                 Margin="0,5"
                                 BackgroundColor="{DynamicResource PrimaryLight}"
-                                HeightRequest="40">
-                                <Label
-                                    Margin="5,0"
-                                    HeightRequest="40"
-                                    Text="{Binding Name}"
-                                    TextColor="{DynamicResource Text}"
-                                    VerticalTextAlignment="Center" />
-                                <VerticalStackLayout.GestureRecognizers>
+                                HeightRequest="60"
+                                StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="5" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="40, 50, 40, 40, 60, 40, *, 50" RowDefinitions="*, *">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="4"
+                                        Margin="10,5"
+                                        Text="{Binding Name}"
+                                        TextColor="{DynamicResource Text}" />
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="7"
+                                        HeightRequest="20"
+                                        IsVisible="{Binding IsFavourite}"
+                                        Source="heart.png"
+                                        WidthRequest="20" />
+                                    <Image
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        HeightRequest="20"
+                                        Source="droplet.png"
+                                        WidthRequest="20" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding TotalWaterGrams, StringFormat='{0} g'}"
+                                        TextColor="{DynamicResource TextDescription}"
+                                        VerticalTextAlignment="Center" />
+                                    <Image
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        HeightRequest="20"
+                                        Source="coffeebean.png"
+                                        WidthRequest="20" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="3"
+                                        Text="{Binding CoffeeGrams, StringFormat='{0} g'}"
+                                        TextColor="{DynamicResource TextDescription}"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="4"
+                                        Text="{Binding GrandSize}"
+                                        TextColor="{DynamicResource TextDescription}"
+                                        VerticalTextAlignment="Center" />
+                                    <Image
+                                        Grid.Row="1"
+                                        Grid.Column="5"
+                                        HeightRequest="20"
+                                        Source="clock.png"
+                                        WidthRequest="20" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="6"
+                                        Grid.ColumnSpan="2"
+                                        Text="{Binding Steps, StringFormat='{}{0:mm\\:ss}', Converter={StaticResource TotalStepsTime}}"
+                                        TextColor="{DynamicResource TextDescription}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.RecipeDetailCommand}" CommandParameter="{Binding Id}" />
-                                </VerticalStackLayout.GestureRecognizers>
-                            </VerticalStackLayout>
+                                </Border.GestureRecognizers>
+                            </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

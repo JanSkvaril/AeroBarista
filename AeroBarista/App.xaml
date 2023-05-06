@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converters:StringVisibilityConverter x:Key="StringVisibility" />
+            <converters:TotalTimeConvertor x:Key="TotalStepsTime" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
