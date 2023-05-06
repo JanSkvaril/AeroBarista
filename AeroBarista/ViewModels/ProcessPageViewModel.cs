@@ -54,11 +54,18 @@ namespace AeroBarista.ViewModels
 
         partial void OnRecipeChanged(RecipeModel value)
         {
-            processStateService = new ProcessStateService(Recipe.Steps);
+            timer.Stop();
+            timer.Reset();
+            IsProcessPaused = false;
+            CurrentTime = new TimeSpan();
+            RemainingTime = new TimeSpan();
+
+            processStateService = new ProcessStateService(Recipe.Steps); // TODO: use factory?
 
             processStateService.SetStateChangeCallback(StateChangeCallback);
             processStateService.SetFinishedCallback(FinishedCallback);
             processStateService.Inicialize();
+
         }
 
         private void TimeTickCallback(TimeSpan time)

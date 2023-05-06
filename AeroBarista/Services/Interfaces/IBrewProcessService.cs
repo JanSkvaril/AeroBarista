@@ -9,5 +9,6 @@
 
         public void Resume();
         bool IsRunning();
+        void Reset();
     }
 }

@@ -39,6 +39,17 @@ namespace AeroBarista.Services
             tickCallback = callback;
         }
 
+        public void Reset()
+        {
+            if (Application.Current == null) throw new ArgumentException("Application cannot be null");
+
+            timer = Application.Current.Dispatcher.CreateTimer();
+            timer.Interval = new TimeSpan(0, 0, 0, 0, timerTickRate);
+            timer.Tick += new EventHandler(TimerTick);
+            timer.Stop();
+            isRunning = false;
+        }
+
         public void Start()
         {
             timer.Start();
