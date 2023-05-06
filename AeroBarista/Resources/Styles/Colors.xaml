@@ -8,6 +8,7 @@
     <Color x:Key="Text">#FFFFFF</Color>
     <Color x:Key="PrimaryLight">#372F2C</Color>
     <Color x:Key="TextDescription">#B7B5B5</Color>
+    <Color x:Key="IconsBackground">Transparent</Color>
 
     <Color x:Key="Tertiary">#D7B5B5</Color>
     <Color x:Key="White">White</Color>

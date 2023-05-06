@@ -20,13 +20,22 @@
                 Grid.Column="1"
                 VerticalScrollBarVisibility="Never">
                 <VerticalStackLayout>
-                    <Label
-                        Margin="0,15"
-                        FontSize="Small"
-                        HorizontalOptions="Center"
-                        Text="{Binding Recipe.Name}"
-                        TextColor="{DynamicResource Text}"
-                        VerticalOptions="Center" />
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Label
+                            Margin="0,15"
+                            FontSize="Large"
+                            Text="{Binding Recipe.Name}"
+                            TextColor="{DynamicResource Text}"
+                            VerticalOptions="Center" />
+
+                        <ImageButton
+                            Margin="10,0"
+                            BackgroundColor="{DynamicResource IconsBackground}"
+                            Clicked="OptionsButtonClicked"
+                            HeightRequest="25"
+                            Source="ellipsisvertical.png"
+                            WidthRequest="25" />
+                    </HorizontalStackLayout>
 
                     <Grid
                         ColumnDefinitions="*, 100, 100, *"
@@ -314,14 +323,6 @@
                             WidthRequest="120" />
 
                     </VerticalStackLayout>
-
-                    <Button
-                        BackgroundColor="{DynamicResource Secondary}"
-                        Clicked="OptionsButtonClicked"
-                        Text="More options.."
-                        TextColor="{DynamicResource Text}"
-                        WidthRequest="130" />
-
                 </VerticalStackLayout>
             </ScrollView>
             <Button
