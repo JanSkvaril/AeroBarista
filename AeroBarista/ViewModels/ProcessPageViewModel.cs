@@ -78,6 +78,7 @@ namespace AeroBarista.ViewModels
                     timer.Start();
                 }
             }
+            _ = AudioService.PlayNextStepSound(); // todo: refactor to interface with DI
         }
 
         [RelayCommand]

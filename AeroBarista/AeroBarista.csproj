@@ -55,6 +55,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\background_image.png" />
+	  <None Remove="Resources\Raw\finished_sound.mp3" />
+	  <None Remove="Resources\Raw\next_step_sound.mp3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -65,6 +67,7 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Plugin.Maui.Audio" Version="1.0.0" />
 		<PackageReference Include="QRCoder" Version="1.4.3" />
 	</ItemGroup>
 
