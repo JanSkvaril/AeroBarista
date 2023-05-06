@@ -8,6 +8,7 @@ namespace AeroBarista.Services.Interfaces
 {
     public interface INativeShareService
     {
-        public void ShareFile(string title, FileResult file);
+        public Task ShareFile(string title, FileResult file);
+        public Task ShareURL(string uri);
     }
 }
