@@ -84,6 +84,7 @@ namespace AeroBarista.Services
         public TimeSpan GetRemainingTimeForCurrentStep(TimeSpan currentTime)
         {
             if (activeStep == null) return TimeSpan.Zero;   
+            if (activeStep.time == null) return TimeSpan.Zero;
             return (TimeSpan)(stepStartTime + activeStep.time - currentTime);
         }
 

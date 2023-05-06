@@ -39,16 +39,17 @@ namespace AeroBarista.ViewModels
         [ObservableProperty]
         private double stepProgress;
 
+        [ObservableProperty]
+        private bool isStepWithTime = false;
+
+        [ObservableProperty]
+        private bool isProcessPaused = false;
+
         public ProcessPageViewModel(INavigationService navigationService, IBrewProcessService timer, IAudioService audio) : base(navigationService)
         {
             this.timer = timer;
             this.timer.RegisterTickCallback(TimeTickCallback);
             this.audio = audio;
-        }
-
-        public bool IsPaused()
-        {
-            return !timer.IsRunning();
         }
 
         partial void OnRecipeChanged(RecipeModel value)
@@ -65,7 +66,7 @@ namespace AeroBarista.ViewModels
             CurrentTime = time;
             processStateService.UpdateState(time);
             RemainingTime = processStateService.GetRemainingTimeForCurrentStep(time);
-            if (ActiveStep != null)
+            if (ActiveStep != null && ActiveStep.time != null)
             {
                 StepProgress = RemainingTime.TotalSeconds / ActiveStep.time.Value.TotalSeconds;
             }
@@ -80,11 +81,24 @@ namespace AeroBarista.ViewModels
                 PrevStep = prev;
                 NextStep = next;
 
+                IsStepWithTime = current.time != null;
                 // new current step has time and timer was not started
                 if (ActiveStep != null && ActiveStep.time != null && !timer.IsRunning()) 
                 {
-                    timer.Start();
+                    if (IsProcessPaused)
+                    {
+                        timer.Resume();
+                    }
+                    else
+                    {
+                        timer.Start();
+                    }
+                    IsProcessPaused = false;
                 }
+            }
+            else
+            {
+                IsStepWithTime = false;
             }
             _ = audio.PlayNextStepSound();
         }
@@ -113,12 +127,14 @@ namespace AeroBarista.ViewModels
         public void Pause()
         {
             timer.Stop();
+            IsProcessPaused = true;
         }
 
         [RelayCommand]
         public void Resume()
         {
             timer.Resume();
+            IsProcessPaused = false;
         }
     }
 }

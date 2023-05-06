@@ -17,19 +17,35 @@ public partial class ProcessPage : ContentPage
         viewModel = vm;
 		BindingContext = vm;
         SetupAnimations();
+
+        viewModel.PropertyChanged += (sender, args) =>
+        {
+            if (args.PropertyName == nameof(viewModel.IsProcessPaused))
+            {
+                var isPaused = viewModel.IsProcessPaused;
+                if (isPaused)
+                {
+                    startPlayButton.Source = playPath;
+
+                }
+                else
+                {
+                    startPlayButton.Source = pausePath;
+                }
+            }
+            return;
+        };
     }
 
     public void PausePlayButtonClicked(object sender, EventArgs args)
     {
-        var isPaused = viewModel.IsPaused();
-        if (!isPaused)
+        var isPaused = viewModel.IsProcessPaused;
+        if (isPaused)
         {
-            startPlayButton.Source = playPath;
             viewModel.Resume();
         }
         else
         {
-            startPlayButton.Source = pausePath;
             viewModel.Pause();
         }
     }

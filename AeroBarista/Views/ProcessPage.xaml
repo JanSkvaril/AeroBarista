@@ -112,9 +112,11 @@
                 VerticalOptions="Center"
                 WidthRequest="30" />
             <ImageButton
+                IsVisible="{Binding IsStepWithTime}"
                 x:Name="startPlayButton"
                 Clicked="PausePlayButtonClicked"
                 Source="pausesolid.png"
+                MaximumHeightRequest="20"
                 WidthRequest="30" />
             <ImageButton
                 Command="{Binding GoToNextStepCommand}"
