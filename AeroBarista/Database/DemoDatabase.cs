@@ -167,7 +167,7 @@ public class DemoDatabase
                         2,
                         "Grind 12 grams (fine)",
                         "Very loo oo ooooo ooooo oooo ooo oo oo ooo ooo oo oo oo ong description",
-                        StepType.Simple,
+                        StepType.Grounds,
                         null,
                         TimeSpan.FromSeconds(5)
                     ),
@@ -177,7 +177,7 @@ public class DemoDatabase
                         3,
                         "Add the filter (no rinse) and the grounds",
                         string.Empty,
-                        StepType.Simple,
+                        StepType.Movement,
                         null,
                         TimeSpan.FromSeconds(5)
                     ),
@@ -197,7 +197,7 @@ public class DemoDatabase
                         5,
                         "Wait 10 seconds",
                         string.Empty,
-                        StepType.Simple,
+                        StepType.Wait,
                         null,
                         TimeSpan.FromSeconds(10)
                     ),

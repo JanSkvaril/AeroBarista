@@ -247,23 +247,30 @@
                             FontAttributes="Bold"
                             Text="Steps:"
                             TextColor="{DynamicResource Text}" />
-                        <CollectionView ItemsSource="{Binding Recipe.Steps}">
+                        <CollectionView x:Name="collectionSteps">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:RecipeStepModel">
+                                <DataTemplate x:DataType="models:StepIconModel">
                                     <VerticalStackLayout Margin="0,10">
                                         <toolkit:Expander>
                                             <toolkit:Expander.Header>
-                                                <Grid ColumnDefinitions="*, 50">
-                                                    <Label Grid.Column="0" TextColor="{DynamicResource Text}">
-                                                        <Label.Text>
-                                                            <MultiBinding StringFormat="{}{0}. {1}">
-                                                                <Binding Path="Order" />
-                                                                <Binding Path="ShorText" />
-                                                            </MultiBinding>
-                                                        </Label.Text>
-                                                    </Label>
+                                                <Grid ColumnDefinitions="40, 25, *, 50" ColumnSpacing="5">
+                                                    <Label
+                                                        Grid.Column="0"
+                                                        Text="{Binding Time, StringFormat='{}{0:mm\\:ss}'}"
+                                                        TextColor="{DynamicResource TextDescription}"
+                                                        VerticalTextAlignment="Center" />
                                                     <Image
                                                         Grid.Column="1"
+                                                        HeightRequest="20"
+                                                        Source="{Binding IconPath}"
+                                                        WidthRequest="20" />
+                                                    <Label
+                                                        Grid.Column="2"
+                                                        Text="{Binding ShorText}"
+                                                        TextColor="{DynamicResource Text}" />
+
+                                                    <Image
+                                                        Grid.Column="3"
                                                         HeightRequest="15"
                                                         Source="arrowdown.png"
                                                         WidthRequest="15" />

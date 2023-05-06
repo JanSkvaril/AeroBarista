@@ -4,5 +4,7 @@ public enum StepType
 {
     Simple,
     Grounds,
-    Water
+    Water,
+    Wait,
+    Movement
 }
