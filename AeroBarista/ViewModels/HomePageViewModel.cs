@@ -39,7 +39,7 @@ public partial class HomePageViewModel : BaseViewModel
     public async void RecipeDetail()
     {
         var parameters = new Dictionary<string, object> { [nameof(DetailRecipeViewModel.Id)] = RatedRecipe.Id };
-        await NavigationService.NavigateToAsync("DetailRecipePage", parameters);
+        await NavigationService.NavigateToAsync("//RecipesPage/DetailRecipePage", parameters);
     }
 
     private async void GetData()
