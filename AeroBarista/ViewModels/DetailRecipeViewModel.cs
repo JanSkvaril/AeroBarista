@@ -91,9 +91,9 @@ namespace AeroBarista.ViewModels
             
             foreach (var step in Recipe.Steps)
             {
-                if (step.time != null)
+                if (step.Time != null)
                 {
-                    TotalTime += (TimeSpan)step.time;
+                    TotalTime += (TimeSpan)step.Time;
                 }
             }
         }

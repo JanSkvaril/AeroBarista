@@ -10,5 +10,5 @@ public record RecipeStepModel(
     string? Description,
     StepType StepType,
     int? Value,
-    TimeSpan? time
+    TimeSpan? Time
     );

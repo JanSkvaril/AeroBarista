@@ -64,9 +64,9 @@ namespace AeroBarista.Services
             lastCurrentTime = currentTime;
             if (steps.Count() == 0) return;
             if (activeStep == null) return;
-            if (activeStep.time == null) return;
+            if (activeStep.Time == null) return;
 
-            else if (stepStartTime + activeStep.time < currentTime)
+            else if (stepStartTime + activeStep.Time < currentTime)
             {
                 if (activeStep == steps.Last())
                 {
@@ -84,8 +84,8 @@ namespace AeroBarista.Services
         public TimeSpan GetRemainingTimeForCurrentStep(TimeSpan currentTime)
         {
             if (activeStep == null) return TimeSpan.Zero;   
-            if (activeStep.time == null) return TimeSpan.Zero;
-            return (TimeSpan)(stepStartTime + activeStep.time - currentTime);
+            if (activeStep.Time == null) return TimeSpan.Zero;
+            return (TimeSpan)(stepStartTime + activeStep.Time - currentTime);
         }
 
         private void ChangeState(RecipeStepModel? newStep, TimeSpan startTime)

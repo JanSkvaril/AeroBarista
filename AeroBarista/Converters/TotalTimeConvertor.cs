@@ -21,9 +21,9 @@ namespace AeroBarista.Converters
 
             foreach (var step in steps)
             {
-                if (step.time != null)
+                if (step.Time != null)
                 {
-                    result += (TimeSpan)step.time;
+                    result += (TimeSpan)step.Time;
                 }
             }
             return result;

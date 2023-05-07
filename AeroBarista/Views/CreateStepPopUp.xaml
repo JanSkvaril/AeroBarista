@@ -1,0 +1,31 @@
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AeroBarista.Views.CreateStepPopUp"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <VerticalStackLayout HorizontalOptions="Fill" Margin="10" WidthRequest="300" Padding="15">
+        <Label Text="Order"/>
+        <Entry Text="{Binding Order}"/>
+        <Label Text="ShortText"/>
+        <Entry Text="{Binding ShortText}"/>
+        <Label Text="Description"/>
+        <Entry Text="{Binding Description}"/>
+        <Label Text="StepType"/>
+        <Picker SelectedIndex="{Binding StepTypeIndex}" ItemsSource="{Binding StepTypes}"/>
+        <Label Text="Value"/>
+        <Entry Text="{Binding Value}"/>
+        <Label Text="Time (seconds)"/>
+        <Entry Text="{Binding Time}"/>
+        <Button
+                Margin="5"
+                BackgroundColor="{DynamicResource Secondary}"
+                Command="{Binding SaveCommand}"
+                FontSize="Medium"
+                Text="Save"
+                TextColor="{DynamicResource Text}"
+                WidthRequest="200" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+
+</toolkit:Popup>
