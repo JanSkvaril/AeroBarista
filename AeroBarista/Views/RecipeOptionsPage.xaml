@@ -6,59 +6,69 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <VerticalStackLayout
         BackgroundColor="{DynamicResource PrimaryLight}"
-        HeightRequest="170"
+        HeightRequest="260"
         Spacing="15"
-        WidthRequest="150">
-        <HorizontalStackLayout Margin="0,10,0,0" HorizontalOptions="Center">
+        WidthRequest="200">
+        <HorizontalStackLayout
+            Margin="0,10,0,0"
+            HeightRequest="50"
+            HorizontalOptions="Center">
             <Image
                 Margin="5,0"
                 HeightRequest="20"
                 Source="sharenodes.png"
+                VerticalOptions="Center"
                 WidthRequest="20" />
             <Label
                 FontSize="Medium"
                 Text="Share"
-                TextColor="{DynamicResource Text}" />
+                TextColor="{DynamicResource Text}"
+                VerticalTextAlignment="Center" />
             <HorizontalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding ShareRecipeCommand}" />
+                <TapGestureRecognizer Command="{Binding ShareRecipeCommand}" Tapped="CloseButtonClicked" />
             </HorizontalStackLayout.GestureRecognizers>
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout HorizontalOptions="Center">
+        <HorizontalStackLayout HeightRequest="50" HorizontalOptions="Center">
             <Image
                 Margin="5,0"
                 HeightRequest="20"
                 Source="trashcan.png"
+                VerticalOptions="Center"
                 WidthRequest="20" />
             <Label
                 FontSize="Medium"
                 Text="Delete"
-                TextColor="{DynamicResource Text}" />
+                TextColor="{DynamicResource Text}"
+                VerticalTextAlignment="Center" />
             <HorizontalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding DeleteRecipeCommand}" />
+                <TapGestureRecognizer Command="{Binding DeleteRecipeCommand}" Tapped="CloseButtonClicked" />
             </HorizontalStackLayout.GestureRecognizers>
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout HorizontalOptions="Center">
+        <HorizontalStackLayout HeightRequest="50" HorizontalOptions="Center">
             <Image
                 Margin="5,0"
                 HeightRequest="20"
                 Source="pen.png"
+                VerticalOptions="Center"
                 WidthRequest="20" />
             <Label
                 FontSize="Medium"
                 Text="Update"
-                TextColor="{DynamicResource Text}" />
+                TextColor="{DynamicResource Text}"
+                VerticalTextAlignment="Center" />
             <!--HorizontalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding DeleteRecipeCommand}" />
+                <TapGestureRecognizer Command="{Binding DeleteRecipeCommand}" Tapped="CloseButtonClicked" />
             </HorizontalStackLayout.GestureRecognizers-->
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout HorizontalOptions="Center">
+        <HorizontalStackLayout HeightRequest="50" HorizontalOptions="Center">
             <Label
                 FontSize="Medium"
                 Text="Close"
-                TextColor="{DynamicResource Text}" />
+                TextColor="{DynamicResource Text}"
+                VerticalTextAlignment="Center" />
             <HorizontalStackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="CloseButtonClicked" />
             </HorizontalStackLayout.GestureRecognizers>
