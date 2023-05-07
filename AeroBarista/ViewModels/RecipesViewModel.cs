@@ -66,7 +66,7 @@ namespace AeroBarista.ViewModels
         public async void RecipeDetail(int id)
         {
             var parameters = new Dictionary<string, object> { [nameof(DetailRecipeViewModel.Id)] = id };
-            await NavigationService.NavigateToAsync("//DetailRecipePage", parameters);
+            await NavigationService.NavigateToAsync("DetailRecipePage", parameters);
         }
 
         [RelayCommand]

@@ -50,7 +50,7 @@ namespace AeroBarista.ViewModels
             Reset();
 
             var parameters = new Dictionary<string, object> { [nameof(DetailRecipeViewModel.Id)] = RecipeId };
-            await NavigationService.NavigateToAsync("//DetailRecipePage", parameters);
+            await NavigationService.NavigateToAsync("DetailRecipePage", parameters);
         }
 
         private void Reset()

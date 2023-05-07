@@ -47,28 +47,28 @@ namespace AeroBarista.ViewModels
         public async void StartRecipe()
         {
             var parameters = new Dictionary<string, object> { [nameof(ProcessPageViewModel.Recipe)] = Recipe };
-            await NavigationService.NavigateToAsync("//ProcessPage", parameters);
+            await NavigationService.NavigateToAsync("ProcessPage", parameters);
         }
 
         [RelayCommand]
         public async void DeleteRecipe()
         {
             await apiClient.Delete(Id);
-            await NavigationService.NavigateToAsync("//RecipesPage");
+            await NavigationService.NavigateToAsync("RecipesPage");
         }
 
         [RelayCommand]
         public async void AddReviewNavigate()
         {
             var parameters = new Dictionary<string, object> { [nameof(AddReviewViewModel.RecipeId)] = Recipe.Id };
-            await NavigationService.NavigateToAsync("//AddReview", parameters);
+            await NavigationService.NavigateToAsync("AddReview", parameters);
         }
 
         [RelayCommand]
         public async void ShareRecipe()
         {
             var parameters = new Dictionary<string, object> { [nameof(QRSharePageViewModel.Recipe)] = Recipe };
-            await NavigationService.NavigateToAsync("//QRSharePage", parameters);
+            await NavigationService.NavigateToAsync("QRSharePage", parameters);
         }
 
         private async void GetDataAsync(int id)

@@ -8,37 +8,17 @@
     Shell.NavBarIsVisible="False">
 
     <TabBar>
-        <Tab Title="x">
+        <Tab Title="Home">
             <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage" />
         </Tab>
-        <Tab Title="y">
-            <ShellContent ContentTemplate="{DataTemplate local:x}" Route="x" />
-        </Tab>
-        <Tab Title="process">
-            <ShellContent ContentTemplate="{DataTemplate local:ProcessPage}" Route="ProcessPage" />
-        </Tab>
 
-        <Tab Title="share">
-            <ShellContent ContentTemplate="{DataTemplate local:FinishedPage}" Route="FinishedPage" />
-        </Tab>
 
-        <Tab Title="qrshare">
-            <ShellContent ContentTemplate="{DataTemplate local:QRSharePage}" Route="QRSharePage" />
-        </Tab>
-
-        <Tab Title="detail">
-            <ShellContent ContentTemplate="{DataTemplate local:DetailRecipePage}" Route="DetailRecipePage" />
-        </Tab>
-
-        <Tab Title="allRecipes">
+        <Tab Title="Recipes">
             <ShellContent ContentTemplate="{DataTemplate local:RecipesPage}" Route="RecipesPage" />
         </Tab>
 
-        <Tab Title="addReview">
-            <ShellContent ContentTemplate="{DataTemplate local:AddReviewPage}" Route="AddReview" />
-        </Tab>
 
-        <Tab Title="import">
+        <Tab Title="Immport">
             <ShellContent ContentTemplate="{DataTemplate local:ImportPage}" Route="ImportPage" />
         </Tab>
     </TabBar>

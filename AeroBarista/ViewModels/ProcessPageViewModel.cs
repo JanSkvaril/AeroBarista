@@ -122,7 +122,7 @@ namespace AeroBarista.ViewModels
         private void FinishedCallback()
         {
             _ = audio.PlayFinishedSound();
-            NavigationService.NavigateToAsync("//FinishedPage");
+            NavigationService.NavigateToAsync("FinishedPage");
 
 
         }
