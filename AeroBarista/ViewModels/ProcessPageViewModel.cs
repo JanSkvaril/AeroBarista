@@ -1,4 +1,4 @@
-﻿using AeroBarista.Attributes;
+using AeroBarista.Attributes;
 using AeroBarista.Shared.Models;
 using AeroBarista.Services;
 using AeroBarista.Services.Interfaces;
@@ -19,7 +19,7 @@ namespace AeroBarista.ViewModels
 
 
         [ObservableProperty]
-        private RecipeModel recipe;
+        private RecipeModel? recipe;
 
         [ObservableProperty]
         private RecipeStepModel? prevStep;
@@ -54,8 +54,9 @@ namespace AeroBarista.ViewModels
 
         partial void OnRecipeChanged(RecipeModel value)
         {
+            if (Recipe == null) return;
             timer.Stop();
-            timer.Reset();
+            timer.Reset();  
             IsProcessPaused = false;
             CurrentTime = new TimeSpan();
             RemainingTime = new TimeSpan();
@@ -66,6 +67,14 @@ namespace AeroBarista.ViewModels
             processStateService.SetFinishedCallback(FinishedCallback);
             processStateService.Inicialize();
 
+        }
+
+        public Task OnDisappearing()
+        {
+
+            Pause();
+
+            return Task.CompletedTask;
         }
 
         private void TimeTickCallback(TimeSpan time)
@@ -87,7 +96,7 @@ namespace AeroBarista.ViewModels
                 ActiveStep = current;
                 PrevStep = prev;
                 NextStep = next;
-
+                    
                 IsStepWithTime = current.time != null;
                 // new current step has time and timer was not started
                 if (ActiveStep != null && ActiveStep.time != null && !timer.IsRunning()) 

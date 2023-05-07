@@ -8,17 +8,18 @@ namespace AeroBarista.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            string def = "blank.png";
             if (value == null)
             {
-                return string.Empty;
+                return def;
             }
             StepType? category = (StepType)value;
             if (category == null)
             {
-                return string.Empty;
+                return def;
             }
 
-            var path = "";
+            var path = def;
             if (category == StepType.Water)
             {
                 path = "droplet.png";

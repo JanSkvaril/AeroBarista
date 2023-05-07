@@ -72,15 +72,20 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="3">
-            <HorizontalStackLayout HorizontalOptions="Center">
+            <Grid
+                x:Name="PrevStep"
+                ColumnDefinitions="auto, *"
+                HorizontalOptions="Center">
                 <Image
+                    Grid.Column="0"
                     Margin="10,0"
-                    HeightRequest="20"
+                    MaximumHeightRequest="20"
+                    MaximumWidthRequest="20"
                     Opacity="0.5"
                     Source="{Binding PrevStep.StepType, Converter={StaticResource IconPath}}"
                     WidthRequest="20" />
                 <Label
-                    x:Name="PrevStep"
+                    Grid.Column="1"
                     FontSize="15"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
@@ -88,15 +93,19 @@
                     Text="{Binding PrevStep.ShorText}"
                     TextColor="LightGray"
                     VerticalOptions="Center" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center">
+            </Grid>
+            <Grid
+                x:Name="CurrentStep"
+                ColumnDefinitions="auto, *"
+                HorizontalOptions="Center">
                 <Image
-                    Margin="10,0"
-                    HeightRequest="20"
-                    Source="{Binding ActiveStep.StepType, Converter={StaticResource IconPath}}"
-                    WidthRequest="20" />
+                    Grid.Column="0"
+                    Margin="5,0,10,0"
+                    MaximumHeightRequest="20"
+                    MaximumWidthRequest="20"
+                    Source="{Binding ActiveStep.StepType, Converter={StaticResource IconPath}}" />
                 <Label
-                    x:Name="CurrentStep"
+                    Grid.Column="1"
                     Margin="0,20,0,20"
                     FontSize="25"
                     HorizontalOptions="Center"
@@ -105,16 +114,20 @@
                     Text="{Binding ActiveStep.ShorText}"
                     TextColor="WhiteSmoke"
                     VerticalOptions="Center" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center">
+            </Grid>
+            <Grid
+                x:Name="NextStep"
+                ColumnDefinitions="auto, *"
+                HorizontalOptions="Center">
                 <Image
+                    Grid.Column="0"
                     Margin="10,0"
-                    HeightRequest="20"
+                    MaximumHeightRequest="20"
+                    MaximumWidthRequest="20"
                     Opacity="0.5"
-                    Source="{Binding NextStep.StepType, Converter={StaticResource IconPath}}"
-                    WidthRequest="20" />
+                    Source="{Binding NextStep.StepType, Converter={StaticResource IconPath}}" />
                 <Label
-                    x:Name="NextStep"
+                    Grid.Column="1"
                     FontSize="15"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
@@ -122,7 +135,7 @@
                     Text="{Binding NextStep.ShorText}"
                     TextColor="LightGray"
                     VerticalOptions="Center" />
-            </HorizontalStackLayout>
+            </Grid>
         </VerticalStackLayout>
 
         <HorizontalStackLayout
@@ -149,8 +162,8 @@
         </HorizontalStackLayout>
 
         <Grid.GestureRecognizers>
-            <SwipeGestureRecognizer Command="{Binding GoToPrevStepCommand}" Direction="Right" />
-            <SwipeGestureRecognizer Command="{Binding GoToNextStepCommand}" Direction="Left" />
+            <SwipeGestureRecognizer Command="{Binding GoToPrevStepCommand}" Direction="Down" />
+            <SwipeGestureRecognizer Command="{Binding GoToNextStepCommand}" Direction="Up" />
             <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="PausePlayButtonClicked" />
         </Grid.GestureRecognizers>
     </Grid>

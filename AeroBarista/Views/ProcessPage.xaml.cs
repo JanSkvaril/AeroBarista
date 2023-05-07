@@ -1,5 +1,6 @@
 using AeroBarista.Attributes;
 using AeroBarista.ViewModels;
+using AeroBarista.ViewModels.Base;
 
 namespace AeroBarista.Views;
 
@@ -23,15 +24,24 @@ public partial class ProcessPage : ContentPage
             if (args.PropertyName == nameof(viewModel.IsProcessPaused))
             {
                 var isPaused = viewModel.IsProcessPaused;
-                if (isPaused)
-                {
-                    startPlayButton.Source = playPath;
+                if (isPaused) startPlayButton.Source = playPath;
+                else startPlayButton.Source = pausePath;
+            }
 
-                }
-                else
-                {
-                    startPlayButton.Source = pausePath;
-                }
+            if (args.PropertyName == nameof(viewModel.PrevStep))
+            {
+                PrevStep.Opacity = 0;
+                PrevStep.FadeTo(1, 100);
+            }
+            if (args.PropertyName == nameof(viewModel.ActiveStep))
+            {
+                CurrentStep.Opacity = 0;
+                CurrentStep.FadeTo(1, 300);
+            }
+            if (args.PropertyName == nameof(viewModel.NextStep))
+            {
+                NextStep.Opacity = 0;
+                NextStep.FadeTo(1, 500);
             }
             return;
         };
@@ -49,38 +59,43 @@ public partial class ProcessPage : ContentPage
             viewModel.Pause();
         }
     }
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        _ = viewModel.OnDisappearing();
 
+    }
 
     private void SetupAnimations()
 	{
-        CurrentStep.PropertyChanging += async (sender, e) =>
-        {
-            if (e.PropertyName == Label.TextProperty.PropertyName)
-            {
+        //CurrentStep.PropertyChanging += async (sender, e) =>
+        //{
+        //    if (e.PropertyName == Label.TextProperty.PropertyName)
+        //    {
 
-                CurrentStep.Opacity = 0;
-                await CurrentStep.FadeTo(1, 300);
-            }
-        };
+        //        CurrentStep.Opacity = 0;
+        //        await CurrentStep.FadeTo(1, 300);
+        //    }
+        //};
 
-        PrevStep.PropertyChanging += async (sender, e) =>
-        {
-            if (e.PropertyName == Label.TextProperty.PropertyName)
-            {
+        //PrevStep.PropertyChanging += async (sender, e) =>
+        //{
+        //    if (e.PropertyName == Label.TextProperty.PropertyName)
+        //    {
 
-                PrevStep.Opacity = 0;
-                await PrevStep.FadeTo(1, 100);
-            }
-        };
+        //        PrevStep.Opacity = 0;
+        //        await PrevStep.FadeTo(1, 100);
+        //    }
+        //};
 
-        NextStep.PropertyChanging += async (sender, e) =>
-        {
-            if (e.PropertyName == Label.TextProperty.PropertyName)
-            {
+        //NextStep.PropertyChanging += async (sender, e) =>
+        //{
+        //    if (e.PropertyName == Label.TextProperty.PropertyName)
+        //    {
 
-                NextStep.Opacity = 0;
-                await NextStep.FadeTo(1, 400);
-            }
-        };
+        //        NextStep.Opacity = 0;
+        //        await NextStep.FadeTo(1, 1000);
+        //    }
+        //};
     }
 }

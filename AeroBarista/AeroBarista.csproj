@@ -66,6 +66,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\background_image.png" />
+	  <None Remove="Resources\Images\blank.png" />
 	  <None Remove="Resources\Raw\finished_sound.mp3" />
 	  <None Remove="Resources\Raw\next_step_sound.mp3" />
 	  <None Remove="Resources\Raw\slogans.json" />
