@@ -7,8 +7,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Label
             Grid.Row="0"
@@ -20,7 +20,7 @@
         <Image
             x:Name="QrImage"
             Grid.Row="1"
-            Aspect="AspectFill"
+            Aspect="AspectFit"
             MaximumWidthRequest="300"
             Source="background_image.png" />
 

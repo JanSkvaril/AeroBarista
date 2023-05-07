@@ -19,7 +19,7 @@ namespace AeroBarista;
 ]
 public class MainActivity : MauiAppCompatActivity
 {
-
+    int? idParameter = null;
     protected override void OnCreate(Bundle savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
@@ -34,8 +34,11 @@ public class MainActivity : MauiAppCompatActivity
         var fromDeepLink = Preferences.Get("FromDeepLink", false);
         if (fromDeepLink)
         {
+            if (idParameter == null) return;
             Preferences.Set("FromDeepLink", false);
-            Shell.Current.GoToAsync("//ProcessPage");
+            var parameters = new Dictionary<string, object> { { "Id", idParameter } };
+            Shell.Current.GoToAsync("//DetailRecipePage", parameters);
+
         }
     }
 
@@ -51,11 +54,9 @@ public class MainActivity : MauiAppCompatActivity
 
         if (data.Contains("/recipe"))
         {
-            bool a = Shell.Current == null;
-            bool b = App.Current == null;
+            idParameter = int.Parse(data.Split("/").Last());
             Preferences.Set("FromDeepLink", true);
 
-            //do what you want 
         }
     }
 }
