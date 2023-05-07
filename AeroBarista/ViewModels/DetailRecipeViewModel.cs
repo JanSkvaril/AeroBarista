@@ -61,7 +61,7 @@ namespace AeroBarista.ViewModels
         public async void AddReviewNavigate()
         {
             var parameters = new Dictionary<string, object> { [nameof(AddReviewViewModel.RecipeId)] = Recipe.Id };
-            await NavigationService.NavigateToAsync("AddReview", parameters);
+            await NavigationService.NavigateToAsync("AddReviewPage", parameters);
         }
 
         [RelayCommand]
