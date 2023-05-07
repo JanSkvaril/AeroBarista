@@ -8,17 +8,17 @@
     Shell.NavBarIsVisible="False">
 
     <TabBar>
-        <Tab Title="Home">
+        <Tab Title="Home" Icon="housechimney.png">
             <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage" />
         </Tab>
 
 
-        <Tab Title="Recipes">
+        <Tab Title="Recipes" Icon="mughot.png">
             <ShellContent ContentTemplate="{DataTemplate local:RecipesPage}" Route="RecipesPage" />
         </Tab>
 
 
-        <Tab Title="Immport">
+        <Tab Title="Immport" Icon="qrcode.png">
             <ShellContent ContentTemplate="{DataTemplate local:ImportPage}" Route="ImportPage" />
         </Tab>
     </TabBar>
