@@ -17,7 +17,7 @@
                 FontSize="Large"
                 HorizontalTextAlignment="Center"
                 LineBreakMode="WordWrap"
-                Text="text here"
+                Text="{Binding Slogan}"
                 TextColor="{DynamicResource Text}"
                 VerticalTextAlignment="Center" />
 

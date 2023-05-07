@@ -12,6 +12,10 @@ namespace AeroBarista.ViewModels;
 public partial class HomePageViewModel : BaseViewModel
 {
     private readonly IRecipeApiClient apiClient;
+    private readonly ISloganService sloganService;
+
+    [ObservableProperty]
+    private string slogan;
 
     [ObservableProperty]
     private RecipeModel ratedRecipe;
@@ -22,10 +26,11 @@ public partial class HomePageViewModel : BaseViewModel
     [ObservableProperty]
     private RecipeModel randomRecipe;
 
-    public HomePageViewModel(INavigationService navigationService, IRecipeApiClient apiClient) : base(navigationService)
+    public HomePageViewModel(INavigationService navigationService, IRecipeApiClient apiClient, ISloganService sloganService) : base(navigationService)
     {
         this.apiClient = apiClient;
         GetData();
+        this.sloganService = sloganService;
     }
 
     [RelayCommand]
@@ -42,6 +47,7 @@ public partial class HomePageViewModel : BaseViewModel
         FindBestRatedRecipe(recipes);
         FindOneFavouriteRecipe(recipes);
         FindRandomRecipe(recipes);
+        Slogan = await sloganService.GetRandomSlogan();
     }
 
     private void FindBestRatedRecipe(ICollection<RecipeModel> recipes)
@@ -82,7 +88,7 @@ public partial class HomePageViewModel : BaseViewModel
     {
         var favourite = recipes.Where(r => r.IsFavourite).ToList();
         Random random = new Random();
-        int index = random.Next(0, favourite.Count());
+        int index = random.Next(0, favourite.Count);
         FavouriteRecipe = favourite[index];
     }
 
@@ -90,7 +96,7 @@ public partial class HomePageViewModel : BaseViewModel
     {
         var randomRecipes = recipes.ToList();
         Random random = new Random();
-        int index = random.Next(0, randomRecipes.Count());
+        int index = random.Next(0, randomRecipes.Count);
         RandomRecipe = randomRecipes[index];
     }
 }
