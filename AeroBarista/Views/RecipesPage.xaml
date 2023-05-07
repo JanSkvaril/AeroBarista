@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:AeroBarista.Shared.Models;assembly=AeroBarista.Shared"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
     x:Name="Root"
     Title="Recipes"
@@ -24,10 +25,12 @@
                 Placeholder="Find recipe..."
                 PlaceholderColor="{DynamicResource TextDescription}"
                 SearchCommand="{Binding SearchCommand}"
-                SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
                 Text="{Binding FilterName}"
-                TextChanged="OnTextChanged"
-                TextColor="{DynamicResource Text}" />
+                TextColor="{DynamicResource Text}">
+                <SearchBar.Behaviors>
+                    <toolkit:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="TextChanged" />
+                </SearchBar.Behaviors>
+            </SearchBar>
 
             <ScrollView
                 Grid.Row="1"
