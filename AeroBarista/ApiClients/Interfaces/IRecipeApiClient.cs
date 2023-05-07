@@ -9,4 +9,5 @@ public interface IRecipeApiClient
     public Task Create(RecipeModel recipe);
     public Task<bool> Update(RecipeModel recipe);
     public Task<bool> Delete(int recipeId);
+    public Task<RecipeModel> GetRecipe(int id);
 }

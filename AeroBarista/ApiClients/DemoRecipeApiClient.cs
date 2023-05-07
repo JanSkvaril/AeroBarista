@@ -16,6 +16,8 @@ public class DemoRecipeApiClient : IRecipeApiClient
 
     public async Task<ICollection<RecipeModel>> GetAll() => await Task.Run(() => demoDatabase.GetAllRecipes());
 
+    public async Task<RecipeModel> GetRecipe(int id) => await Task.Run(() => demoDatabase.GetRecipe(id));
+
     public async Task<bool> Update(RecipeModel recipe) => await Task.Run(() => demoDatabase.UpdateRecipe(recipe));
 
 }
