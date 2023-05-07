@@ -247,22 +247,22 @@
                             FontAttributes="Bold"
                             Text="Steps:"
                             TextColor="{DynamicResource Text}" />
-                        <CollectionView x:Name="collectionSteps">
+                        <CollectionView x:Name="collectionSteps" ItemsSource="{Binding Recipe.Steps}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:StepIconModel">
+                                <DataTemplate x:DataType="models:RecipeStepModel">
                                     <VerticalStackLayout Margin="0,10">
                                         <toolkit:Expander>
                                             <toolkit:Expander.Header>
                                                 <Grid ColumnDefinitions="40, 25, *, 50" ColumnSpacing="5">
                                                     <Label
                                                         Grid.Column="0"
-                                                        Text="{Binding Time, StringFormat='{}{0:mm\\:ss}'}"
+                                                        Text="{Binding time, StringFormat='{}{0:mm\\:ss}'}"
                                                         TextColor="{DynamicResource TextDescription}"
                                                         VerticalTextAlignment="Center" />
                                                     <Image
                                                         Grid.Column="1"
                                                         HeightRequest="20"
-                                                        Source="{Binding IconPath}"
+                                                        Source="{Binding StepType, Converter={StaticResource IconPath}}"
                                                         WidthRequest="20" />
                                                     <Label
                                                         Grid.Column="2"
