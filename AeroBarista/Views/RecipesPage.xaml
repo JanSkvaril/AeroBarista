@@ -6,7 +6,7 @@
     xmlns:models="clr-namespace:AeroBarista.Shared.Models;assembly=AeroBarista.Shared"
     xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
     x:Name="Root"
-    Title="RecipesPage"
+    Title="Recipes"
     x:DataType="viewModels:RecipesViewModel">
     <ContentPage.Behaviors />
     <Grid BackgroundColor="Black">

@@ -4,29 +4,34 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
-    Title="ImportPage">
-    <Grid RowDefinitions="*, auto, *">
+    Title="Import">
+    <Grid>
+        <Image
+            Aspect="AspectFill"
+            Opacity="0.3"
+            Source="background_image.png" />
+        <Grid RowDefinitions="*, auto, *">
+            <Label
+                Grid.Row="0"
+                FontSize="30"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="Import a recipe"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
 
-        <Label
-            Grid.Row="0"
-            FontSize="30"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center"
-            Text="Import a recipe"
-            VerticalOptions="Center"
-            VerticalTextAlignment="Center" />
 
+            <cv:CameraView
+                x:Name="cameraView"
+                Grid.Row="1"
+                HeightRequest="300"
+                WidthRequest="300" />
 
-        <cv:CameraView
-            x:Name="cameraView"
-            Grid.Row="1"
-            HeightRequest="300"
-            WidthRequest="300" />
-
-        <Label
-            Grid.Row="2"
-            HorizontalOptions="Center"
-            Text="{Binding StatusMessage}"
-            VerticalOptions="Center" />
+            <Label
+                Grid.Row="2"
+                HorizontalOptions="Center"
+                Text="{Binding StatusMessage}"
+                VerticalOptions="Center" />
+        </Grid>
     </Grid>
 </ContentPage>
