@@ -37,6 +37,10 @@
         <Tab Title="addReview">
             <ShellContent ContentTemplate="{DataTemplate local:AddReviewPage}" Route="AddReview" />
         </Tab>
+
+        <Tab Title="import">
+            <ShellContent ContentTemplate="{DataTemplate local:ImportPage}" Route="ImportPage" />
+        </Tab>
     </TabBar>
 
 
