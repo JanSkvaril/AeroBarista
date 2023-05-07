@@ -15,8 +15,10 @@ namespace AeroBarista.ViewModels
     public partial class ImportPageViewModel : BaseViewModel
     {
         [ObservableProperty]
-        string statusMessage; 
+        string statusMessage;
 
+        [ObservableProperty]
+        bool isBusy = false;
 
         ISettingsProvider settings;
         public ImportPageViewModel(INavigationService navigationService, ISettingsProvider settings) : base(navigationService)
@@ -29,9 +31,9 @@ namespace AeroBarista.ViewModels
         public async Task QRDetected(string value)
         {
             if (value.Contains(settings.GetAppUrl())){
-
                 string? recipe_id = value.Split("/").LastOrDefault();
                 if (recipe_id != null) {
+                    IsBusy = true;
                     StatusMessage = "QR code detected";
                     int id = int.Parse(recipe_id);
                     var parameters = new Dictionary<string, object> { [nameof(DetailRecipeViewModel.Id)] = id };

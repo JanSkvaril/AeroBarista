@@ -1,7 +1,9 @@
 using AeroBarista.Attributes;
 using AeroBarista.ViewModels;
+using AndroidX.Lifecycle;
 using Camera.MAUI;
 using Camera.MAUI.ZXingHelper;
+using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
 using ZXing;
 
@@ -53,6 +55,10 @@ public partial class ImportPage : ContentPage
     private void CameraView_BarcodeDetected(object sender, BarcodeEventArgs args)
     {
         string text = args.Result[0].Text;
-        _ = viewmodel.QRDetected(text);
+     
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            _ = viewmodel.QRDetected(text);
+        });
     }
 }

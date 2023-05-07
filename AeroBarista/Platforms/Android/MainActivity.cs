@@ -37,7 +37,7 @@ public class MainActivity : MauiAppCompatActivity
             if (idParameter == null) return;
             Preferences.Set("FromDeepLink", false);
             var parameters = new Dictionary<string, object> { { "Id", idParameter } };
-            Shell.Current.GoToAsync("//DetailRecipePage", parameters);
+            Shell.Current.GoToAsync("//RecipesPage/DetailRecipePage", parameters);
 
         }
     }
