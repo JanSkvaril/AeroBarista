@@ -256,7 +256,7 @@
                                                 <Grid ColumnDefinitions="40, 25, *, 50" ColumnSpacing="5">
                                                     <Label
                                                         Grid.Column="0"
-                                                        Text="{Binding time, StringFormat='{}{0:mm\\:ss}'}"
+                                                        Text="{Binding Time, StringFormat='{}{0:mm\\:ss}'}"
                                                         TextColor="{DynamicResource TextDescription}"
                                                         VerticalTextAlignment="Center" />
                                                     <Image

@@ -194,7 +194,8 @@
                 <ImageButton
                     HeightRequest="40"
                     Source="plus.png"
-                    WidthRequest="40" />
+                    WidthRequest="40" 
+                    Command="{Binding CreateRecipeCommand}"/>
             </Border>
         </Grid>
     </Grid>

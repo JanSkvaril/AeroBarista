@@ -82,9 +82,9 @@ namespace AeroBarista.ViewModels
             CurrentTime = time;
             processStateService.UpdateState(time);
             RemainingTime = processStateService.GetRemainingTimeForCurrentStep(time);
-            if (ActiveStep != null && ActiveStep.time != null)
+            if (ActiveStep != null && ActiveStep.Time != null)
             {
-                StepProgress = RemainingTime.TotalSeconds / ActiveStep.time.Value.TotalSeconds;
+                StepProgress = RemainingTime.TotalSeconds / ActiveStep.Time.Value.TotalSeconds;
             }
             else StepProgress = 0.0;
         }
@@ -97,9 +97,9 @@ namespace AeroBarista.ViewModels
                 PrevStep = prev;
                 NextStep = next;
                     
-                IsStepWithTime = current.time != null;
+                IsStepWithTime = current.Time != null;
                 // new current step has time and timer was not started
-                if (ActiveStep != null && ActiveStep.time != null && !timer.IsRunning()) 
+                if (ActiveStep != null && ActiveStep.Time != null && !timer.IsRunning()) 
                 {
                     if (IsProcessPaused)
                     {

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:AeroBarista.Shared.Models;assembly=AeroBarista.Shared"
+             x:Class="AeroBarista.Views.CreateRecipePage"
+             Title="CreateRecipePage">
+    <Grid BackgroundColor="Black">
+        <Image 
+            Aspect="AspectFill"
+            Opacity="0.3"
+            Source="background_image.png" />
+
+        <ScrollView>
+            <VerticalStackLayout  Margin="15">
+                <Label 
+            Text="Create recipe"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            FontSize="25"
+            FontAttributes="Italic,Bold"/>
+                <Label 
+            Text="Name"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"/>
+                <Entry Text="{Binding Name}" TextColor="White"/>
+                <Label 
+            Text="Description"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"/>
+                <Editor Text="{Binding Description}" TextColor="White"/>
+                <Label 
+            Text="Method"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"/>
+                <Picker ItemsSource="{Binding Methods}" SelectedIndex="{Binding methodIndex}"/>
+                <Label 
+            Text="Category"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"/>
+                <Picker ItemsSource="{Binding Categories}" SelectedIndex="{Binding categoriesIndex}"/>
+                <Label 
+            Text="Grand Size"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"/>
+                <Picker ItemsSource="{Binding GrandSizes}" SelectedIndex="{Binding grandSizesIndex}"/>
+                <Label 
+            Text="Cofee Grams"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"/>
+                <Entry Text="{Binding CoffeeGrams}" TextColor="White"/>
+                <Label 
+            Text="Author"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"/>
+                <Entry Text="{Binding Author}" TextColor="White"/>
+                <Label 
+            Text="Total Water Grams"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"/>
+                <Entry Text="{Binding TotalWaterGrams}" TextColor="White"/>
+                <Label 
+            Text="Steps"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"/>
+                <CollectionView x:Name="collectionSteps" ItemsSource="{Binding Steps}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:RecipeStepModel">
+                            <VerticalStackLayout Margin="0,10">
+                                <toolkit:Expander>
+                                    <toolkit:Expander.Header>
+                                        <Grid ColumnDefinitions="40, 25, *, 50" ColumnSpacing="5">
+                                            <Label
+                                                        Grid.Column="0"
+                                                        Text="{Binding Time, StringFormat='{}{0:mm\\:ss}'}"
+                                                        TextColor="{DynamicResource TextDescription}"
+                                                        VerticalTextAlignment="Center" />
+                                            <Image
+                                                        Grid.Column="1"
+                                                        HeightRequest="20"
+                                                        Source="{Binding StepType, Converter={StaticResource IconPath}}"
+                                                        WidthRequest="20" />
+                                            <Label
+                                                        Grid.Column="2"
+                                                        Text="{Binding ShorText}"
+                                                        TextColor="{DynamicResource Text}" />
+
+                                            <Image
+                                                        Grid.Column="3"
+                                                        HeightRequest="15"
+                                                        Source="arrowdown.png"
+                                                        WidthRequest="15" />
+                                        </Grid>
+                                    </toolkit:Expander.Header>
+                                    <toolkit:Expander.Content>
+                                        <VerticalStackLayout>
+                                            <Label
+                                                        LineBreakMode="WordWrap"
+                                                        Text="{Binding Description}"
+                                                        TextColor="{DynamicResource TextDescription}" />
+                                        </VerticalStackLayout>
+                                    </toolkit:Expander.Content>
+                                </toolkit:Expander>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <ImageButton
+                    HeightRequest="25"
+                    Source="plus.png"
+                    WidthRequest="25" 
+                    Command="{Binding AddStepCommand}"
+                    Margin="15"/>
+                <Button
+                Margin="10"
+                BackgroundColor="{DynamicResource Secondary}"
+                Command="{Binding CreateRecipeCommand}"
+                FontSize="Medium"
+                Text="Save"
+                TextColor="{DynamicResource Text}"
+                WidthRequest="200" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

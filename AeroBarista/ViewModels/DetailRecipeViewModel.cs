@@ -91,9 +91,9 @@ namespace AeroBarista.ViewModels
             TimeSpan time = new TimeSpan();
             foreach (var step in Recipe.Steps)
             {
-                if (step.time != null)
+                if (step.Time != null)
                 {
-                    time += (TimeSpan)step.time;
+                    time += (TimeSpan)step.Time;
                 }
             }
             TotalTime = time;

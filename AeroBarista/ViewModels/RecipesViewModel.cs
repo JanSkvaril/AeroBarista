@@ -132,5 +132,11 @@ namespace AeroBarista.ViewModels
             filterCategory = RecipeCategory.Favourite;
             Recipes = allRecipes.Where(r => r.IsFavourite).ToList();
         }
+
+        [RelayCommand]
+        public async void CreateRecipe()
+        {
+            await NavigationService.NavigateToAsync("CreateRecipePage");
+        }
     }
 }

@@ -23,7 +23,7 @@
         </Tab>
 
 
-        <Tab Title="Immport" Icon="qrcode.png">
+        <Tab Title="Import" Icon="qrcode.png">
             <ShellContent ContentTemplate="{DataTemplate local:ImportPage}" Route="ImportPage" />
         </Tab>
     </TabBar>
