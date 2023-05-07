@@ -20,9 +20,4 @@ public partial class RecipesPage : ContentPage
         base.OnAppearing();
 		await viewModel.OnAppearingAsync();
     }
-
-    public void OnTextChanged(object sender, EventArgs e)
-	{
-		viewModel.Search();
-	}
 }

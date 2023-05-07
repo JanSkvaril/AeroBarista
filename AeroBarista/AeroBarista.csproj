@@ -46,6 +46,8 @@
 		<MauiImage Update="Resources\Images\sharenodes.svg" TintColor="#B7B5B5" />
 		<MauiImage Update="Resources\Images\arrowleft.svg" TintColor="#C69256" />
 		<MauiImage Update="Resources\Images\arrowright.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\arrowup.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\arrowdown.svg" TintColor="#C69256" />
 		<MauiImage Update="Resources\Images\pausesolid.svg" TintColor="#C69256" />
 		<MauiImage Update="Resources\Images\playsolid.svg" TintColor="#C69256" />
 		<MauiImage Update="Resources\Images\plus.svg" TintColor="#FFFFFF" />

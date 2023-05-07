@@ -4,13 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
-    Title="Brewing"
+    Title="{Binding Recipe.Name}"
     x:DataType="viewModels:ProcessPageViewModel">
 
     <Grid BackgroundColor="Black">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="110" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="2*" />
@@ -21,13 +21,7 @@
             Aspect="AspectFill"
             Opacity="0.3"
             Source="background_image.png" />
-        <Label
-            Grid.Row="0"
-            FontSize="30"
-            HorizontalOptions="Center"
-            Text="{Binding Recipe.Name}"
-            TextColor="{DynamicResource Text}"
-            VerticalOptions="Start" />
+
         <VerticalStackLayout Grid.Row="1">
             <Border
                 Background="{DynamicResource Secondary}"
@@ -60,6 +54,7 @@
             </Border>
             <Label
                 FontSize="20"
+                HeightRequest="30"
                 HorizontalOptions="Center"
                 TextColor="WhiteSmoke"
                 VerticalOptions="Center">
@@ -73,6 +68,13 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="3" Padding="15,0,10,0">
+            <ImageButton
+                Margin="10,10"
+                Command="{Binding GoToPrevStepCommand}"
+                HeightRequest="30"
+                Source="arrowup.png"
+                VerticalOptions="Center"
+                WidthRequest="30" />
             <Grid
                 x:Name="PrevStep"
                 ColumnDefinitions="auto, *"
@@ -138,30 +140,26 @@
                     TextColor="LightGray"
                     VerticalOptions="Center" />
             </Grid>
+            <ImageButton
+                Margin="10,10"
+                Command="{Binding GoToNextStepCommand}"
+                HeightRequest="30"
+                Source="arrowdown.png"
+                VerticalOptions="Center"
+                WidthRequest="30" />
         </VerticalStackLayout>
 
-        <HorizontalStackLayout
+
+        <ImageButton
+            x:Name="startPlayButton"
             Grid.Row="4"
+            Clicked="PausePlayButtonClicked"
             HorizontalOptions="Center"
-            Spacing="10">
-            <ImageButton
-                Command="{Binding GoToPrevStepCommand}"
-                Source="arrowleft.png"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-            <ImageButton
-                x:Name="startPlayButton"
-                Clicked="PausePlayButtonClicked"
-                IsVisible="{Binding IsStepWithTime}"
-                MaximumHeightRequest="20"
-                Source="pausesolid.png"
-                WidthRequest="30" />
-            <ImageButton
-                Command="{Binding GoToNextStepCommand}"
-                Source="arrowright.png"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-        </HorizontalStackLayout>
+            IsVisible="{Binding IsStepWithTime}"
+            MaximumHeightRequest="20"
+            Source="pausesolid.png"
+            WidthRequest="30" />
+
 
         <Grid.GestureRecognizers>
             <SwipeGestureRecognizer Command="{Binding GoToPrevStepCommand}" Direction="Down" />

@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
     Title="Import">
-    <Grid>
+    <Grid BackgroundColor="{DynamicResource Black}">
         <Image
             Aspect="AspectFill"
             Opacity="0.3"
@@ -17,6 +17,7 @@
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 Text="Import a recipe"
+                TextColor="{DynamicResource Text}"
                 VerticalOptions="Center"
                 VerticalTextAlignment="Center" />
 
