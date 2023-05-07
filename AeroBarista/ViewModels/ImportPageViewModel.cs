@@ -1,6 +1,7 @@
 ﻿using AeroBarista.Attributes;
 using AeroBarista.Services.Interfaces;
 using AeroBarista.ViewModels.Base;
+using AndroidX.Lifecycle;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -37,7 +38,9 @@ namespace AeroBarista.ViewModels
                     StatusMessage = "QR code detected";
                     int id = int.Parse(recipe_id);
                     var parameters = new Dictionary<string, object> { [nameof(DetailRecipeViewModel.Id)] = id };
-                    await NavigationService.NavigateToAsync("DetailRecipePage", parameters);
+                    await NavigationService.NavigateToAsync("//RecipesPage/DetailRecipePage", parameters);
+                    IsBusy = false;
+                    StatusMessage = "";
                 }
             }
             else

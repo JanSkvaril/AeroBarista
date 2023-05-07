@@ -33,6 +33,8 @@
                 HorizontalOptions="Center"
                 Text="{Binding StatusMessage}"
                 VerticalOptions="Center" />
+
+            <ActivityIndicator Grid.Row="3" IsRunning="{Binding IsBusy}" />
         </Grid>
     </Grid>
 </ContentPage>

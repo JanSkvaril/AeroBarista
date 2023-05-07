@@ -6,6 +6,7 @@ using Camera.MAUI.ZXingHelper;
 using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
 using ZXing;
+using static Android.App.Assist.AssistStructure;
 
 namespace AeroBarista.Views;
 
@@ -19,7 +20,7 @@ public partial class ImportPage : ContentPage
 		InitializeComponent();
         BindingContext = vm;
         viewmodel = vm;
-
+       
         cameraView.CamerasLoaded += CameraView_CamerasLoaded;
         cameraView.BarcodeDetected += CameraView_BarcodeDetected;
 
@@ -33,6 +34,28 @@ public partial class ImportPage : ContentPage
         };
         cameraView.BarCodeDetectionFrameRate = 10;
         cameraView.BarCodeDetectionEnabled = true;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            await cameraView.StartCameraAsync();
+            cameraView.IsVisible = true;
+        });
+      
+    }
+    protected override void OnDisappearing()
+    {
+       
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            await cameraView.StopCameraAsync();
+            cameraView.IsVisible = false;
+        });
+        
+        base.OnDisappearing();
     }
 
     private void CameraView_CamerasLoaded(object sender, EventArgs e)

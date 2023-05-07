@@ -34,7 +34,7 @@ namespace AeroBarista.ViewModels
             if (Id != 0)
             {
                 // Id is initialized for parameter
-                GetDataAsync(Id);
+              //  GetDataAsync(Id);
             }
         }
 
@@ -88,14 +88,15 @@ namespace AeroBarista.ViewModels
             {
                 return;
             }
-            
+            TimeSpan time = new TimeSpan();
             foreach (var step in Recipe.Steps)
             {
                 if (step.time != null)
                 {
-                    TotalTime += (TimeSpan)step.time;
+                    time += (TimeSpan)step.time;
                 }
             }
+            TotalTime = time;
         }
     }
 }
