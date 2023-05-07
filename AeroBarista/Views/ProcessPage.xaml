@@ -84,6 +84,7 @@
                     FontSize="15"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
                     Text="{Binding PrevStep.ShorText}"
                     TextColor="LightGray"
                     VerticalOptions="Center" />
@@ -100,6 +101,7 @@
                     FontSize="25"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
                     Text="{Binding ActiveStep.ShorText}"
                     TextColor="WhiteSmoke"
                     VerticalOptions="Center" />
@@ -116,6 +118,7 @@
                     FontSize="15"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
                     Text="{Binding NextStep.ShorText}"
                     TextColor="LightGray"
                     VerticalOptions="Center" />
