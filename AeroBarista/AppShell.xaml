@@ -9,7 +9,7 @@
     Shell.NavBarIsVisible="True"
     Shell.TabBarBackgroundColor="{DynamicResource Primary}"
     Shell.TabBarTitleColor="{DynamicResource Secondary}"
-    Shell.UnselectedColor="{DynamicResource Text}">
+    Shell.TabBarUnselectedColor="{DynamicResource Text}">
 
 
     <TabBar>
