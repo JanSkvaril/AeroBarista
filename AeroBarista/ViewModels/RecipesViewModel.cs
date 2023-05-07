@@ -12,7 +12,7 @@ namespace AeroBarista.ViewModels
     [ExportTransient]
     public partial class RecipesViewModel : BaseViewModel
     {
-        IRecipeApiClient apiClient;
+        private readonly IRecipeApiClient apiClient;
 
         [ObservableProperty]
         private IList<RecipeModel> recipes;
@@ -27,7 +27,6 @@ namespace AeroBarista.ViewModels
             this.apiClient = apiClient;
             Recipes = new List<RecipeModel>();
             allRecipes = new List<RecipeModel>();
-            GetDataAsync();
             filterName = String.Empty;
             filterCategory = RecipeCategory.All;
         }
