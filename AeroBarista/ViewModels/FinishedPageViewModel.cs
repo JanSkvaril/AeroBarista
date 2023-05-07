@@ -49,5 +49,10 @@ namespace AeroBarista.ViewModels
             TakenImage = await cameraService.ObtainPhoto();
          
         }
+        [RelayCommand]
+        public void Back()
+        {
+            NavigationService.NavigateToAsync("../..");
+        }
     }
 }

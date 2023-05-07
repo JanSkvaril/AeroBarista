@@ -6,6 +6,7 @@
     xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
     Title="Brewing"
     x:DataType="viewModels:ProcessPageViewModel">
+
     <Grid BackgroundColor="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
