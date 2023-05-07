@@ -138,107 +138,86 @@ public class DemoDatabase
         data.Add(
             new RecipeModel(
                 1,
-                "MyCustomBestRecipe",
+                "James Hoffman - standard",
                 "Recipe stolen from some random article. Is has large coffe-water ratio, so it's quite cheap. It's generally better for lighter roastes. For Darker roasts I recomment reducing the water tempeture to 90 degres",
                 RecipeMethod.Standard,
                 RecipeCategory.Default,
-                GrandSize.Fine,
-                12,
-                "Franta Zahradnik",
+                GrandSize.Medium,
+                11,
+                "James Hoffman",
                 200,
                 true,
                 new()
                 {
-                      new(
+                    new(
                         0,
                         1,
                         0,
-                        "Prepare yourself!",
-                        "nic :)",
+                        "Add filter",
+                        "No need to rinse.",
                         StepType.Simple,
                         null,
+                        null),
+                    new(
+                        1,
+                        1,
+                        1,
+                        "Add 11g grounds",
+                        "For light roast, it should be ground fairly fine, but for medium or dark rost go coarser.",
+                        StepType.Grounds,
+                        11,
                         null
                     ),
                     new(
-                        1,
-                        1,
-                        1,
-                        "Boil the water to 98 degress",
-                        "For lighter roasts I recomend 90 degress",
-                        StepType.Simple,
-                        null,
-                        TimeSpan.FromSeconds(5)
-                    ),
-                    new(
                         2,
                         1,
                         2,
-                        "Grind 12 grams (fine)",
-                        "Very loo oo ooooo ooooo oooo ooo oo oo ooo ooo oo oo oo ong description",
-                        StepType.Grounds,
-                        null,
-                        TimeSpan.FromSeconds(5)
+                        "Pour 200g of water",
+                        "Close to boiling for light roast, 85°C for dark roast.",
+                        StepType.Water,
+                        200,
+                        TimeSpan.FromSeconds(30)
                     ),
                     new(
                         3,
                         1,
                         3,
-                        "Add the filter (no rinse) and the grounds",
+                        "Insert the plunger and lift it up slightly.Then wait",
+                        string.Empty,
+                        StepType.Wait,
+                        null,
+                        TimeSpan.FromSeconds(90)
+                    ),
+                    new(
+                        4,
+                        1,
+                        4,
+                        "Give it a litte swirl",
                         string.Empty,
                         StepType.Movement,
                         null,
                         TimeSpan.FromSeconds(5)
                     ),
                     new(
-                        4,
-                        1,
-                        4,
-                        "Slowly poor 150 grams of water",
-                        string.Empty,
-                        StepType.Water,
-                        150,
-                        TimeSpan.FromSeconds(60)
-                    ),
-                    new(
                         5,
                         1,
                         5,
-                        "Wait 10 seconds",
+                        "Wait",
                         string.Empty,
                         StepType.Wait,
                         null,
-                        TimeSpan.FromSeconds(10)
+                        TimeSpan.FromSeconds(25)
                     ),
                     new(
                         6,
                         1,
                         6,
-                        "Poor the rest of the foter (50 grams)",
-                        string.Empty,
-                        StepType.Simple,
-                        null,
-                        TimeSpan.FromSeconds(15)
-                    ),
-                    new(
-                        7,
-                        1,
-                        7,
-                        "Boil the water to 98 degress",
-                        string.Empty,
-                        StepType.Water,
-                        null,
-                        TimeSpan.FromSeconds(180)
-                    ),
-                    new(
-                        8,
-                        1,
-                        8,
-                        "Boil the water to 98 degress",
+                        "Press gently into the cup until the hiss",
                         string.Empty,
                         StepType.Simple,
                         null,
                         TimeSpan.FromSeconds(30)
-                    )
+                    ),                  
                 },
                 new()
                 {
@@ -246,7 +225,7 @@ public class DemoDatabase
                         1,
                         1,
                         5,
-                        "Enthiopia from Peneriny roastery in Brno, grinder was set to 10 steps. It was ok, but next time go finer with the grind",
+                        "Enthiopia from Peneriny roastery in Brno, grinder was set to 10 steps. It was ok, but next time go finer with the grind. 15 grams works better",
                          new DateTime(2023,3,15)
                      )
                 }
@@ -256,14 +235,14 @@ public class DemoDatabase
         data.Add(
             new RecipeModel(
                 2,
-                "ReceptFromBestDrive",
+                "Blue Bottle",
                 null,
-                RecipeMethod.Standard,
+                RecipeMethod.Inverted,
                 RecipeCategory.UserDefined,
                 GrandSize.Medium,
-                14,
-                "Pan Varil",
-                100,
+                15,
+                "bluebottlecoffee.com",
+                200,
                 false,
                 new()
                 {
@@ -271,49 +250,49 @@ public class DemoDatabase
                         1,
                         1,
                         1,
-                        "Boil the water to 98 degress",
-                        "For lighter roasts I recomend 90 degress",
+                        "Place a filter with rinse",
+                        "Rinse with hot water preferably.",
                         StepType.Simple,
                         null,
-                        TimeSpan.FromSeconds(5)
+                        null
                     ),
                     new(
                         2,
                         1,
                         2,
-                        "Grind 12 grams (fine)",
-                        string.Empty,
-                        StepType.Simple,
-                        null,
-                        TimeSpan.FromSeconds(5)
+                        "Add 15g of ground.",
+                        "It should be slightly finer then sea salt",
+                        StepType.Grounds,
+                        15,
+                        null
                     ),
                     new(
                         3,
                         1,
                         3,
-                        "Add the filter (no rinse) and the grounds",
-                        string.Empty,
-                        StepType.Simple,
-                        null,
-                        TimeSpan.FromSeconds(5)
-                    ),
-                    new(
-                        4,
-                        1,
-                        4,
-                        "Slowly poor 150 grams of water",
+                        "Pour 30 grams of water",
                         string.Empty,
                         StepType.Water,
-                        150,
-                        TimeSpan.FromSeconds(60)
+                        30,
+                        TimeSpan.FromSeconds(10)
+                    ),
+                    new(
+                        4,
+                        1,
+                        4,
+                        "Tamp the ground with paddle or spoon. Then let it bloom",
+                        string.Empty,
+                        StepType.Wait,
+                        20,
+                        TimeSpan.FromSeconds(20)
                     ),
                     new(
                         5,
                         1,
                         5,
-                        "Wait 10 seconds",
+                        "Pour aditional 170g of water",
                         string.Empty,
-                        StepType.Simple,
+                        StepType.Water,
                         null,
                         TimeSpan.FromSeconds(10)
                     ),
@@ -321,31 +300,31 @@ public class DemoDatabase
                         6,
                         1,
                         6,
-                        "Poor the rest of the foter (50 grams)",
+                        "Let it steep",
                         string.Empty,
-                        StepType.Simple,
+                        StepType.Wait,
                         null,
-                        TimeSpan.FromSeconds(15)
+                        TimeSpan.FromSeconds(50)
                     ),
                     new(
                         7,
                         1,
                         7,
-                        "Boil the water to 98 degress",
+                        "Stir 10 times",
                         string.Empty,
-                        StepType.Water,
+                        StepType.Movement,
                         null,
-                        TimeSpan.FromSeconds(180)
+                        TimeSpan.FromSeconds(10)
                     ),
                     new(
                         8,
                         1,
                         8,
-                        "Boil the water to 98 degress",
+                        "Fasten the filter cap, flip, and press into the cup",
                         string.Empty,
-                        StepType.Simple,
+                        StepType.Movement,
                         null,
-                        TimeSpan.FromSeconds(30)
+                        TimeSpan.FromSeconds(40)
                     )
                 },
                 new()
@@ -353,8 +332,8 @@ public class DemoDatabase
                     new(
                         1,
                         1,
-                        5,
-                        "Enthiopia from Peneriny roastery in Brno, grinder was set to 10 steps. It was ok, but next time go finer with the grind",
+                        3,
+                        "Meh",
                          new DateTime(2023,3,15)
                      )
                 }
@@ -364,14 +343,14 @@ public class DemoDatabase
         data.Add(
             new RecipeModel(
                 3,
-                "ReceptFromPetrovice",
-                "Recipe stolen from some random article. Is has large coffe-water ratio, so it's quite cheap. It's generally better for lighter roastes. For Darker roasts I recomment reducing the water tempeture to 90 degres",
-                RecipeMethod.Standard,
+                "WAC 2015 Winner",
+                "Winning recipe from WAC 2015 winner",
+                RecipeMethod.Inverted,
                 RecipeCategory.UserDefined,
-                GrandSize.Medium,
-                14,
-                null,
-                100,
+                GrandSize.Fine,
+                20,
+                "Lukas Zahradnik",
+                230,
                 true,
                 new()
                 {
@@ -379,92 +358,77 @@ public class DemoDatabase
                         1,
                         1,
                         1,
-                        "Boil the water to 98 degress",
-                        "For lighter roasts I recomend 90 degress",
+                        "Rinse the paper",
+                        "",
                         StepType.Simple,
                         null,
-                        TimeSpan.FromSeconds(5)
+                        null
                     ),
                     new(
                         2,
                         1,
                         2,
-                        "Grind 12 grams (fine)",
-                        "Grind 12 grams fine",
+                        "Preheat your aeropress to 79°C",
+                        "It should not take more then 15 seconds",
                         StepType.Simple,
                         null,
-                        TimeSpan.FromSeconds(5)
+                        null
                     ),
                     new(
                         3,
                         1,
                         3,
-                        "Add the filter (no rinse) and the grounds",
+                        "Add 20g grounds",
                         string.Empty,
-                        StepType.Simple,
-                        null,
-                        TimeSpan.FromSeconds(5)
+                        StepType.Grounds,
+                        20,
+                        null
                     ),
                     new(
                         4,
                         1,
                         4,
-                        "Slowly poor 150 grams of water",
+                        "Pour 60g of hot water",
                         string.Empty,
                         StepType.Water,
-                        150,
-                        TimeSpan.FromSeconds(60)
+                        60,
+                        TimeSpan.FromSeconds(15)
                     ),
                     new(
                         5,
                         1,
                         5,
-                        "Wait 10 seconds",
+                        "Give AeroPress a turbulet wiggle",
                         string.Empty,
-                        StepType.Simple,
-                        null,
-                        TimeSpan.FromSeconds(10)
-                    ),
-                    new(
-                        6,
-                        1,
-                        6,
-                        "Poor the rest of the foter (50 grams)",
-                        string.Empty,
-                        StepType.Simple,
+                        StepType.Movement,
                         null,
                         TimeSpan.FromSeconds(15)
                     ),
                     new(
-                        7,
+                        6,
                         1,
-                        7,
-                        "Boil the water to 98 degress",
+                        6,
+                        "Pour additional 170g of hot water",
                         string.Empty,
                         StepType.Water,
                         null,
-                        TimeSpan.FromSeconds(180)
+                        TimeSpan.FromSeconds(10)
                     ),
                     new(
-                        8,
+                        7,
                         1,
-                        8,
-                        "Boil the water to 98 degress",
+                        7,
+                        "Fasten the filter cap, flip, and slowly press into a cup",
                         string.Empty,
-                        StepType.Simple,
+                        StepType.Movement,
                         null,
-                        TimeSpan.FromSeconds(30)
-                    )
+                        TimeSpan.FromSeconds(45)
+                    ),
+
                 },
                 new()
                 {
-                    new(
-                        1,
-                        1,
-                        3,
-                        "Enthiopia from Peneriny roastery in Brno, grinder was set to 10 steps. It was ok, but next time go finer with the grind",
-                         new DateTime(2023,3,15)
-                     )
+
                 }
             )
         );
