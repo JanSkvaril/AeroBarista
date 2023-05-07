@@ -25,6 +25,7 @@
             FontSize="30"
             HorizontalOptions="Center"
             Text="{Binding Recipe.Name}"
+            TextColor="{DynamicResource Text}"
             VerticalOptions="Start" />
         <VerticalStackLayout Grid.Row="1">
             <Border
@@ -71,35 +72,54 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="3">
-
-            <Label
-                x:Name="PrevStep"
-                FontSize="15"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="{Binding PrevStep.ShorText}"
-                TextColor="LightGray"
-                VerticalOptions="Center" />
-            <Label
-                x:Name="CurrentStep"
-                Margin="0,20,0,20"
-                FontSize="25"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="{Binding ActiveStep.ShorText}"
-                TextColor="WhiteSmoke"
-                VerticalOptions="Center" />
-
-
-
-            <Label
-                x:Name="NextStep"
-                FontSize="15"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="{Binding NextStep.ShorText}"
-                TextColor="LightGray"
-                VerticalOptions="Center" />
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image
+                    Margin="10,0"
+                    HeightRequest="20"
+                    Opacity="0.5"
+                    Source="{Binding PrevStep.StepType, Converter={StaticResource IconPath}}"
+                    WidthRequest="20" />
+                <Label
+                    x:Name="PrevStep"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding PrevStep.ShorText}"
+                    TextColor="LightGray"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image
+                    Margin="10,0"
+                    HeightRequest="20"
+                    Source="{Binding ActiveStep.StepType, Converter={StaticResource IconPath}}"
+                    WidthRequest="20" />
+                <Label
+                    x:Name="CurrentStep"
+                    Margin="0,20,0,20"
+                    FontSize="25"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding ActiveStep.ShorText}"
+                    TextColor="WhiteSmoke"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image
+                    Margin="10,0"
+                    HeightRequest="20"
+                    Opacity="0.5"
+                    Source="{Binding NextStep.StepType, Converter={StaticResource IconPath}}"
+                    WidthRequest="20" />
+                <Label
+                    x:Name="NextStep"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding NextStep.ShorText}"
+                    TextColor="LightGray"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
         </VerticalStackLayout>
 
         <HorizontalStackLayout

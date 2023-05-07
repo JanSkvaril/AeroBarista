@@ -13,6 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
             <converters:StringVisibilityConverter x:Key="StringVisibility" />
             <converters:TotalTimeConvertor x:Key="TotalStepsTime" />
+            <converters:IconsPathConverter x:Key="IconPath" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
