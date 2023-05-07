@@ -54,6 +54,7 @@
 		<MauiImage Update="Resources\Images\arrowsspin.svg" TintColor="#EF5350" />
 		<MauiImage Update="Resources\Images\clock.svg" TintColor="#ffc400" />
 		<MauiImage Update="Resources\Images\heart.svg" TintColor="#F44336" />
+		<MauiImage Update="Resources\AppIcon\aeroicon.svg" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
