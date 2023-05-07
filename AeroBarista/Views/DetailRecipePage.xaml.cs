@@ -1,5 +1,5 @@
 using AeroBarista.Attributes;
-using AeroBarista.Models;
+using AeroBarista.Shared.Models;
 using AeroBarista.ViewModels;
 using AeroBarista.ViewModels.Base;
 using CommunityToolkit.Maui.Views;

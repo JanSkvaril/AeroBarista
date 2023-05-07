@@ -1,4 +1,4 @@
-﻿using AeroBarista.Models;
+﻿using AeroBarista.Shared.Models;
 using System.Globalization;
 
 namespace AeroBarista.Converters

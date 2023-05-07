@@ -1,5 +1,5 @@
-﻿using AeroBarista.Enums;
-using AeroBarista.Models;
+﻿using AeroBarista.Shared.Enums;
+using AeroBarista.Shared.Models;
 using System.Globalization;
 
 namespace AeroBarista.Converters

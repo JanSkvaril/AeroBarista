@@ -1,6 +1,6 @@
 ﻿using AeroBarista.ApiClients.Interfaces;
 using AeroBarista.Database;
-using AeroBarista.Models;
+using AeroBarista.Shared.Models;
 
 namespace AeroBarista.ApiClients;
 

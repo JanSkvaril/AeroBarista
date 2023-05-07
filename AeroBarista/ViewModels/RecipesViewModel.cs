@@ -1,7 +1,7 @@
 ﻿using AeroBarista.ApiClients.Interfaces;
 using AeroBarista.Attributes;
-using AeroBarista.Enums;
-using AeroBarista.Models;
+using AeroBarista.Shared.Enums;
+using AeroBarista.Shared.Models;
 using AeroBarista.Services.Interfaces;
 using AeroBarista.ViewModels.Base;
 using CommunityToolkit.Mvvm.ComponentModel;

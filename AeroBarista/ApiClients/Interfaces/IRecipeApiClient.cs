@@ -1,4 +1,4 @@
-﻿using AeroBarista.Models;
+﻿using AeroBarista.Shared.Models;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 namespace AeroBarista.ApiClients.Interfaces;

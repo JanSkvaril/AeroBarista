@@ -1,6 +1,6 @@
 ﻿using AeroBarista.ApiClients.Interfaces;
 using AeroBarista.Attributes;
-using AeroBarista.Models;
+using AeroBarista.Shared.Models;
 using AeroBarista.Services;
 using AeroBarista.Services.Interfaces;
 using AeroBarista.ViewModels.Base;

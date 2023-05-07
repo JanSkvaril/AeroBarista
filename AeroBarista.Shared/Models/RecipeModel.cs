@@ -1,6 +1,6 @@
-﻿using AeroBarista.Enums;
+﻿using AeroBarista.Shared.Enums;
 
-namespace AeroBarista.Models;
+namespace AeroBarista.Shared.Models;
 
 [Serializable]
 public record RecipeModel(

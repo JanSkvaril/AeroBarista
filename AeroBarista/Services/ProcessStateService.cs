@@ -1,5 +1,5 @@
 ﻿using AeroBarista.Attributes;
-using AeroBarista.Models;
+using AeroBarista.Shared.Models;
 using AeroBarista.Services.Interfaces;
 using System;
 using System.Collections.Generic;

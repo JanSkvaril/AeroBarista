@@ -1,4 +1,4 @@
-﻿using AeroBarista.Models;
+﻿using AeroBarista.Shared.Models;
 
 namespace AeroBarista.ApiClients.Interfaces;
 

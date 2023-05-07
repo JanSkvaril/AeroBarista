@@ -1,5 +1,5 @@
-﻿using AeroBarista.Enums;
-using AeroBarista.Models;
+﻿using AeroBarista.Shared.Enums;
+using AeroBarista.Shared.Models;
 
 namespace AeroBarista.Database;
 
@@ -15,7 +15,11 @@ public class DemoDatabase
 
     #region recipe
 
-    public void CreateRecipe(RecipeModel recipe) => data.Add(recipe);
+    public void CreateRecipe(RecipeModel recipe)
+    {
+        recipe = recipe with { Id = GetUniqueId() };
+        data.Add(recipe);
+    }
     public bool UpdateRecipe(RecipeModel recipe)
     {
         var recipeIndex = data.IndexOf(recipe);
@@ -43,6 +47,7 @@ public class DemoDatabase
 
     public void CreateRecipeStep(int recipeId, RecipeStepModel recipeStep)
     {
+        recipeStep = recipeStep with { Id = GetUniqueId() };
         var recipe = data.FirstOrDefault(r => r.Id == recipeId);
         if (recipe == null)
             throw new ArgumentNullException(nameof(recipe));
@@ -82,6 +87,7 @@ public class DemoDatabase
 
     public void CreateReview(int recipeId, RecipeReviewModel recipeReview)
     {
+        recipeReview = recipeReview with { Id = GetUniqueId() };
         var recipe = data.FirstOrDefault(r => r.Id == recipeId);
         if (recipe == null)
             throw new ArgumentNullException(nameof(recipe));
@@ -122,6 +128,8 @@ public class DemoDatabase
     }
 
     #endregion
+
+    private int GetUniqueId() => Guid.NewGuid().GetHashCode();
 
     #region seed
 

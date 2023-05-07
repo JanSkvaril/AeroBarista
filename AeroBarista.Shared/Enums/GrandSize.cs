@@ -1,4 +1,4 @@
-﻿namespace AeroBarista.Enums;
+﻿namespace AeroBarista.Shared.Enums;
 
 public enum GrandSize
 {

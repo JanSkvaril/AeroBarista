@@ -1,4 +1,4 @@
-﻿using AeroBarista.Models;
+﻿using AeroBarista.Shared.Models;
 using QRCoder;
 using System;
 using System.Collections.Generic;
