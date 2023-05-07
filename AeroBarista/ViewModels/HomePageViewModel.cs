@@ -14,6 +14,8 @@ public partial class HomePageViewModel : BaseViewModel
     private readonly IRecipeApiClient apiClient;
     private readonly ISloganService sloganService;
 
+    private readonly Random random = new Random();
+
     [ObservableProperty]
     private string slogan;
 
@@ -87,7 +89,6 @@ public partial class HomePageViewModel : BaseViewModel
     private void FindOneFavouriteRecipe(ICollection<RecipeModel> recipes)
     {
         var favourite = recipes.Where(r => r.IsFavourite).ToList();
-        Random random = new Random();
         int index = random.Next(0, favourite.Count);
         FavouriteRecipe = favourite[index];
     }
@@ -95,7 +96,6 @@ public partial class HomePageViewModel : BaseViewModel
     private void FindRandomRecipe(ICollection<RecipeModel> recipes)
     {
         var randomRecipes = recipes.ToList();
-        Random random = new Random();
         int index = random.Next(0, randomRecipes.Count);
         RandomRecipe = randomRecipes[index];
     }

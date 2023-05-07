@@ -8,6 +8,7 @@ namespace AeroBarista.Services
     public class SloganService : ISloganService
     {
         private IList<string>? slogans;
+        private readonly Random random = new Random();
 
         public SloganService()
         {
@@ -31,7 +32,6 @@ namespace AeroBarista.Services
                 return string.Empty;
             }
             
-            Random random = new Random();
             int index = random.Next(0, slogans.Count);
             return slogans[index];
         }
