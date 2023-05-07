@@ -37,7 +37,7 @@ namespace AeroBarista.ViewModels
         [RelayCommand]
         public async void SaveReview()
         {
-            // change here!
+            // todo change here!
             Random rnd = new Random();
             int id = rnd.Next();
 
