@@ -111,7 +111,7 @@ public partial class CreateRecipeViewModel : BaseViewModel
     {
         if (Recipe == null)
         {
-            RecipeModel recipe = new(0, Name, Description, (RecipeMethod)MethodIndex, (RecipeCategory)CategoryIndex, (GrandSize)GrandSizeIndex, CoffeeGrams, Author, TotalWaterGrams, false, Steps as List<RecipeStepModel>, null);
+            RecipeModel recipe = new(0, Name, Description, (RecipeMethod)MethodIndex, (RecipeCategory)CategoryIndex, (GrandSize)GrandSizeIndex, CoffeeGrams, Author, TotalWaterGrams, false, Steps.ToList(), null);
             await recipeApiClient.Create(recipe);
         } else
         {
