@@ -65,7 +65,7 @@ public partial class CreateStepViewModel : BaseViewModel
     private int? value;
 
     [ObservableProperty]
-    private int time;
+    private int? time;
 
     public CreateStepViewModel(INavigationService navigationService) : base(navigationService)
     {
@@ -76,13 +76,18 @@ public partial class CreateStepViewModel : BaseViewModel
     [RelayCommand]
     public void Save()
     {
+        TimeSpan? stepTime = null;
+        if (Time != null && Time > 0)
+        {
+            stepTime = TimeSpan.FromSeconds((double)Time);
+        }
         if (recipeStepToEdit != null)
         {
-            SaveResult?.Invoke(recipeStepToEdit with { Order = Order, ShorText = ShortText, Description = Description, StepType = (StepType)StepTypeIndex, Value = Value, Time = TimeSpan.FromSeconds(Time) });
+            SaveResult?.Invoke(recipeStepToEdit with { Order = Order, ShorText = ShortText, Description = Description, StepType = (StepType)StepTypeIndex, Value = Value, Time= stepTime });
             return;
         }
-
-        RecipeStepModel step = new(-1, -1, Order, ShortText, Description, (StepType)StepTypeIndex, Value, TimeSpan.FromSeconds(Time));
+       
+        RecipeStepModel step = new(-1, -1, Order, ShortText, Description, (StepType)StepTypeIndex, Value, stepTime);
         SaveResult?.Invoke(step);
     }
 }
