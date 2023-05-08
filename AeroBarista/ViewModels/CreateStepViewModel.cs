@@ -17,14 +17,12 @@ public partial class CreateStepViewModel : BaseViewModel
     public delegate void SaveAction(RecipeStepModel recipeStepModel);
     public event SaveAction SaveResult;
 
-    private readonly IRecipeStepApiClient recipeStepApiClient;
     private readonly CurrentDataProvider currentDataProvider;
 
     private RecipeStepModel recipeStepToEdit;
 
-    public CreateStepViewModel(INavigationService navigationService, IRecipeStepApiClient recipeStepApiClient, CurrentDataProvider currentDataProvider) : base(navigationService)
+    public CreateStepViewModel(INavigationService navigationService, CurrentDataProvider currentDataProvider) : base(navigationService)
     {
-        this.recipeStepApiClient = recipeStepApiClient;
         this.currentDataProvider = currentDataProvider;
 
         StepTypes = new(Enum.GetNames(typeof(StepType)));
@@ -76,7 +74,7 @@ public partial class CreateStepViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public async Task SaveAsync()
+    public void Save()
     {
         if (recipeStepToEdit != null)
         {
@@ -84,12 +82,7 @@ public partial class CreateStepViewModel : BaseViewModel
             return;
         }
 
-        var recipeId = currentDataProvider.CurrentRecipe.Id;
-
-        RecipeStepModel stepData = new(-1, recipeId, Order, ShortText, Description, (StepType)StepTypeIndex, Value, TimeSpan.FromSeconds(Time));
-        var step = await recipeStepApiClient.Create(stepData);
-        
-
+        RecipeStepModel step = new(-1, -1, Order, ShortText, Description, (StepType)StepTypeIndex, Value, TimeSpan.FromSeconds(Time));
         SaveResult?.Invoke(step);
     }
 }

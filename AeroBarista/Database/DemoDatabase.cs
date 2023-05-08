@@ -15,10 +15,11 @@ public class DemoDatabase
 
     #region recipe
 
-    public void CreateRecipe(RecipeModel recipe)
+    public RecipeModel CreateRecipe(RecipeModel recipe)
     {
         recipe = recipe with { Id = GetUniqueId() };
         data.Add(recipe);
+        return recipe;
     }
     public bool UpdateRecipe(RecipeModel recipe)
     {

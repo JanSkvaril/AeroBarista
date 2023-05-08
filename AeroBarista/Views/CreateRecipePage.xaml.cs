@@ -19,19 +19,16 @@ public partial class CreateRecipePage : ContentPage
         createRecipeViewModel.DisplayPopup += DisplayPopupAsync;
     }
 
-    private async void DisplayPopupAsync(Popup popup)
+    private async void DisplayPopupAsync(Popup popup, int? editStepIndex)
 	{
 		var result = await this.ShowPopupAsync(popup) as RecipeStepModel;
 
         if (result == null)
             return;
 
-        var step = createRecipeViewModel.Steps.FirstOrDefault(s => s.Id == result.Id);
-
-        if (step != null)
+        if (editStepIndex != null)
         {
-            var stepIndex = createRecipeViewModel.Steps.IndexOf(step);
-            createRecipeViewModel.Steps[stepIndex] = result;
+            createRecipeViewModel.Steps[(int)editStepIndex] = result;
             createRecipeViewModel.OnStepsChanged();
             return;
         }
