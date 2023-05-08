@@ -5,7 +5,7 @@
 
     <VerticalStackLayout HorizontalOptions="Fill" Margin="10" WidthRequest="300" Padding="15">
         <Label Text="Order"/>
-        <Entry Text="{Binding Order}"/>
+        <Entry Text="{Binding Order}" Keyboard="Numeric"/>
         <Label Text="ShortText"/>
         <Entry Text="{Binding ShortText}"/>
         <Label Text="Description"/>
@@ -13,9 +13,9 @@
         <Label Text="StepType"/>
         <Picker SelectedIndex="{Binding StepTypeIndex}" ItemsSource="{Binding StepTypes}"/>
         <Label Text="Value"/>
-        <Entry Text="{Binding Value}"/>
+        <Entry Text="{Binding Value}" Keyboard="Numeric"/>
         <Label Text="Time (seconds)"/>
-        <Entry Text="{Binding Time}"/>
+        <Entry Text="{Binding Time}" Keyboard="Numeric"/>
         <Button
                 Margin="5"
                 BackgroundColor="{DynamicResource Secondary}"

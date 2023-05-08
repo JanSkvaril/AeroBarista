@@ -58,9 +58,9 @@
                 Text="Update"
                 TextColor="{DynamicResource Text}"
                 VerticalTextAlignment="Center" />
-            <!--HorizontalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding DeleteRecipeCommand}" Tapped="CloseButtonClicked" />
-            </HorizontalStackLayout.GestureRecognizers-->
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding UpdateRecipeCommand}" Tapped="CloseButtonClicked" />
+            </HorizontalStackLayout.GestureRecognizers>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout HeightRequest="50" HorizontalOptions="Center">

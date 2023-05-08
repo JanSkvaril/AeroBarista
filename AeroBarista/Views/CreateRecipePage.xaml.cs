@@ -18,7 +18,7 @@ public partial class CreateRecipePage : ContentPage
         createRecipeViewModel.DisplayPopup += DisplayPopupAsync;
     }
 
-	private async void DisplayPopupAsync(Popup popup)
+    private async void DisplayPopupAsync(Popup popup)
 	{
 		var result = await this.ShowPopupAsync(popup);
         createRecipeViewModel.Steps.Add(result as RecipeStepModel);

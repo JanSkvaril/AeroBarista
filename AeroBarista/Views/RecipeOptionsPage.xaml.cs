@@ -10,4 +10,9 @@ public partial class RecipeOptionsPage : Popup
 	}
 
 	public void CloseButtonClicked(object? sender, EventArgs e) => Close(true);
+
+    private void CloseButtonClicked(object sender, TappedEventArgs e)
+    {
+
+    }
 }

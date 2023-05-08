@@ -22,7 +22,7 @@ public class DemoDatabase
     }
     public bool UpdateRecipe(RecipeModel recipe)
     {
-        var recipeIndex = data.IndexOf(recipe);
+        var recipeIndex = data.IndexOf(data.Find(r => r.Id == recipe.Id));
 
         if (recipeIndex == -1)
             throw new ArgumentException("Recipe not found in the list.");
@@ -61,7 +61,7 @@ public class DemoDatabase
         if (recipe == null)
             throw new ArgumentNullException(nameof(recipe));
 
-        var stepIndex = recipe.Steps?.IndexOf(recipeStep) ?? -1;
+        var stepIndex = recipe.Steps?.IndexOf(recipe.Steps?.Find(s => s.Id == recipeStep.Id)) ?? -1;
         if (stepIndex == -1)
             throw new KeyNotFoundException($"Index {stepIndex} not found.");
 
@@ -100,7 +100,7 @@ public class DemoDatabase
         if (recipe == null)
             throw new ArgumentNullException(nameof(recipe));
 
-        var reviewIndex = recipe.Reviews?.IndexOf(review) ?? -1;
+        var reviewIndex = recipe.Reviews?.IndexOf(recipe.Reviews?.Find(s => s.Id == review.Id)) ?? -1;
         if (reviewIndex == -1)
             throw new KeyNotFoundException($"Index {reviewIndex} not found.");
 
