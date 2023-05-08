@@ -31,11 +31,6 @@ namespace AeroBarista.ViewModels
         public override async Task OnAppearingAsync()
         {
             await base.OnAppearingAsync();
-            if (Id != 0)
-            {
-                // Id is initialized for parameter
-              //  GetDataAsync(Id);
-            }
         }
 
         partial void OnIdChanged(int value)
@@ -54,7 +49,7 @@ namespace AeroBarista.ViewModels
         public async void DeleteRecipe()
         {
             await apiClient.Delete(Id);
-            await NavigationService.NavigateToAsync("RecipesPage");
+            await NavigationService.NavigateToAsync("//RecipesPage");
         }
 
         [RelayCommand]
