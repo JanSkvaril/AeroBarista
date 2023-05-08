@@ -3,12 +3,30 @@
     x:Class="AeroBarista.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AeroBarista"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:local="clr-namespace:AeroBarista.Views"
+    Shell.BackgroundColor="{DynamicResource Primary}"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarBackgroundColor="{DynamicResource Primary}"
+    Shell.TabBarTitleColor="{DynamicResource Secondary}"
+    Shell.TabBarUnselectedColor="{DynamicResource Text}">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+
+    <TabBar>
+        <Tab Title="Home" Icon="housechimney.png">
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage" />
+        </Tab>
+
+
+        <Tab Title="Recipes" Icon="mughot.png">
+            <ShellContent ContentTemplate="{DataTemplate local:RecipesPage}" Route="RecipesPage" />
+        </Tab>
+
+
+        <Tab Title="Import" Icon="qrcode.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ImportPage}" Route="ImportPage" />
+        </Tab>
+    </TabBar>
+
 
 </Shell>

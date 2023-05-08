@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AeroBarista.Views.RecipesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:AeroBarista.Shared.Models;assembly=AeroBarista.Shared"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
+    x:Name="Root"
+    Title="Recipes"
+    x:DataType="viewModels:RecipesViewModel">
+    <ContentPage.Behaviors />
+    <Grid BackgroundColor="Black">
+        <Image
+            Aspect="AspectFill"
+            Opacity="0.3"
+            Source="background_image.png" />
+        <Grid RowDefinitions="70, 50, *, auto">
+            <SearchBar
+                x:Name="searchBar"
+                Grid.Row="0"
+                Margin="10,10"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="50"
+                Placeholder="Find recipe..."
+                PlaceholderColor="{DynamicResource TextDescription}"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding FilterName}"
+                TextColor="{DynamicResource Text}">
+                <SearchBar.Behaviors>
+                    <toolkit:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="TextChanged" />
+                </SearchBar.Behaviors>
+            </SearchBar>
+
+            <ScrollView
+                Grid.Row="1"
+                Margin="10,10"
+                HeightRequest="60"
+                HorizontalScrollBarVisibility="Never"
+                Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton>
+                        <RadioButton.Content>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="All"
+                                TextColor="{DynamicResource Text}" />
+                        </RadioButton.Content>
+                        <RadioButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="All" />
+                        </RadioButton.GestureRecognizers>
+                    </RadioButton>
+
+                    <RadioButton>
+                        <RadioButton.Content>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Favourite"
+                                TextColor="{DynamicResource Text}" />
+                        </RadioButton.Content>
+                        <RadioButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="Favourite" />
+                        </RadioButton.GestureRecognizers>
+                    </RadioButton>
+
+                    <RadioButton>
+                        <RadioButton.Content>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Default"
+                                TextColor="{DynamicResource Text}" />
+                        </RadioButton.Content>
+                        <RadioButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="Default" />
+                        </RadioButton.GestureRecognizers>
+                    </RadioButton>
+
+                    <RadioButton>
+                        <RadioButton.Content>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="My"
+                                TextColor="{DynamicResource Text}" />
+                        </RadioButton.Content>
+                        <RadioButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="My" />
+                        </RadioButton.GestureRecognizers>
+                    </RadioButton>
+
+                    <RadioButton>
+                        <RadioButton.Content>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Imported"
+                                TextColor="{DynamicResource Text}" />
+                        </RadioButton.Content>
+                        <RadioButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.FilterWithNameCommand}" CommandParameter="Imported" />
+                        </RadioButton.GestureRecognizers>
+                    </RadioButton>
+                </StackLayout>
+            </ScrollView>
+
+            <ScrollView Grid.Row="2" Margin="10,10">
+                <CollectionView ItemsSource="{Binding Recipes}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:RecipeModel">
+                            <Border
+                                Margin="0,5"
+                                BackgroundColor="{DynamicResource PrimaryLight}"
+                                HeightRequest="60"
+                                StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="5" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="40, 50, 40, 40, 60, 40, *, 50" RowDefinitions="*, *">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="4"
+                                        Margin="10,5"
+                                        Text="{Binding Name}"
+                                        TextColor="{DynamicResource Text}" />
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="7"
+                                        HeightRequest="20"
+                                        IsVisible="{Binding IsFavourite}"
+                                        Source="heart.png"
+                                        WidthRequest="20" />
+                                    <Image
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        HeightRequest="20"
+                                        Source="droplet.png"
+                                        WidthRequest="20" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding TotalWaterGrams, StringFormat='{0} g'}"
+                                        TextColor="{DynamicResource TextDescription}"
+                                        VerticalTextAlignment="Center" />
+                                    <Image
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        HeightRequest="20"
+                                        Source="coffeebean.png"
+                                        WidthRequest="20" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="3"
+                                        Text="{Binding CoffeeGrams, StringFormat='{0} g'}"
+                                        TextColor="{DynamicResource TextDescription}"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="4"
+                                        Text="{Binding GrandSize}"
+                                        TextColor="{DynamicResource TextDescription}"
+                                        VerticalTextAlignment="Center" />
+                                    <Image
+                                        Grid.Row="1"
+                                        Grid.Column="5"
+                                        HeightRequest="20"
+                                        Source="clock.png"
+                                        WidthRequest="20" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="6"
+                                        Grid.ColumnSpan="2"
+                                        Text="{Binding Steps, StringFormat='{}{0:mm\\:ss}', Converter={StaticResource TotalStepsTime}}"
+                                        TextColor="{DynamicResource TextDescription}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.RecipeDetailCommand}" CommandParameter="{Binding Id}" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+            <Border
+                Grid.Row="3"
+                Margin="10,10"
+                BackgroundColor="{DynamicResource Secondary}"
+                HeightRequest="60"
+                HorizontalOptions="End"
+                StrokeThickness="0"
+                WidthRequest="60">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="90" />
+                </Border.StrokeShape>
+                <ImageButton
+                    HeightRequest="40"
+                    Source="plus.png"
+                    WidthRequest="40" 
+                    Command="{Binding CreateRecipeCommand}"/>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AeroBarista.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:AeroBarista.ViewModels"
+    Title="Home"
+    x:DataType="viewModels:HomePageViewModel">
+    <Grid BackgroundColor="Black">
+        <Image
+            Aspect="AspectFill"
+            Opacity="0.3"
+            Source="background_image.png" />
+        <Grid Margin="10,10" RowDefinitions="50, 180, 30, 70, 30, 70, 30, 70">
+            <Grid
+                Grid.Row="0"
+                ColumnDefinitions="*, *"
+                HorizontalOptions="Center"
+                RowDefinitions="*, *">
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    Margin="10,5"
+                    HeightRequest="50"
+                    Source="aeropress.jpg"
+                    WidthRequest="50" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="AREO"
+                    TextColor="{DynamicResource TextDescription}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="BARISTA"
+                    TextColor="{DynamicResource TextDescription}" />
+            </Grid>
+            <Label
+                Grid.Row="1"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"
+                Text="{Binding Slogan}"
+                TextColor="{DynamicResource Text}"
+                VerticalTextAlignment="Center" />
+
+            <Label
+                Grid.Row="2"
+                Text="Best rated:"
+                TextColor="{DynamicResource Text}"
+                VerticalTextAlignment="Center" />
+
+            <Border
+                Grid.Row="3"
+                Margin="0,5"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="60"
+                StrokeThickness="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="40, 50, 40, 40, 60, 40, *, 50" RowDefinitions="*, *">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="10,5"
+                        Text="{Binding RatedRecipe.Name}"
+                        TextColor="{DynamicResource Text}" />
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="7"
+                        HeightRequest="20"
+                        IsVisible="{Binding RatedRecipe.IsFavourite}"
+                        Source="heart.png"
+                        WidthRequest="20" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        Source="droplet.png"
+                        WidthRequest="20" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding RatedRecipe.TotalWaterGrams, StringFormat='{0} g'}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        HeightRequest="20"
+                        Source="coffeebean.png"
+                        WidthRequest="20" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Text="{Binding RatedRecipe.CoffeeGrams, StringFormat='{0} g'}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Text="{Binding RatedRecipe.GrandSize}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        HeightRequest="20"
+                        Source="clock.png"
+                        WidthRequest="20" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="6"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding RatedRecipe.Steps, StringFormat='{}{0:mm\\:ss}', Converter={StaticResource TotalStepsTime}}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RecipeDetailCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+
+            <Label
+                Grid.Row="4"
+                Text="One of your favourite:"
+                TextColor="{DynamicResource Text}"
+                VerticalTextAlignment="Center" />
+
+            <Border
+                Grid.Row="5"
+                Margin="0,5"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="60"
+                StrokeThickness="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="40, 50, 40, 40, 60, 40, *, 50" RowDefinitions="*, *">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="10,5"
+                        Text="{Binding FavouriteRecipe.Name}"
+                        TextColor="{DynamicResource Text}" />
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="7"
+                        HeightRequest="20"
+                        IsVisible="{Binding FavouriteRecipe.IsFavourite}"
+                        Source="heart.png"
+                        WidthRequest="20" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        Source="droplet.png"
+                        WidthRequest="20" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding FavouriteRecipe.TotalWaterGrams, StringFormat='{0} g'}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        HeightRequest="20"
+                        Source="coffeebean.png"
+                        WidthRequest="20" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Text="{Binding FavouriteRecipe.CoffeeGrams, StringFormat='{0} g'}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Text="{Binding FavouriteRecipe.GrandSize}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        HeightRequest="20"
+                        Source="clock.png"
+                        WidthRequest="20" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="6"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding FavouriteRecipe.Steps, StringFormat='{}{0:mm\\:ss}', Converter={StaticResource TotalStepsTime}}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RecipeDetailCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+
+            <Label
+                Grid.Row="6"
+                Text="Or try this one:"
+                TextColor="{DynamicResource Text}"
+                VerticalTextAlignment="Center" />
+
+            <Border
+                Grid.Row="7"
+                Margin="0,5"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="60"
+                StrokeThickness="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="40, 50, 40, 40, 60, 40, *, 50" RowDefinitions="*, *">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="10,5"
+                        Text="{Binding RandomRecipe.Name}"
+                        TextColor="{DynamicResource Text}" />
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="7"
+                        HeightRequest="20"
+                        IsVisible="{Binding RandomRecipe.IsFavourite}"
+                        Source="heart.png"
+                        WidthRequest="20" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        Source="droplet.png"
+                        WidthRequest="20" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding RandomRecipe.TotalWaterGrams, StringFormat='{0} g'}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        HeightRequest="20"
+                        Source="coffeebean.png"
+                        WidthRequest="20" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Text="{Binding RandomRecipe.CoffeeGrams, StringFormat='{0} g'}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Text="{Binding RandomRecipe.GrandSize}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        HeightRequest="20"
+                        Source="clock.png"
+                        WidthRequest="20" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="6"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding RandomRecipe.Steps, StringFormat='{}{0:mm\\:ss}', Converter={StaticResource TotalStepsTime}}"
+                        TextColor="{DynamicResource TextDescription}"
+                        VerticalTextAlignment="Center" />
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RecipeDetailCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>

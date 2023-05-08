@@ -1,0 +1,59 @@
+<toolkit:Popup
+    x:Class="AeroBarista.Views.CreateStepPopUp"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <VerticalStackLayout
+        Margin="10"
+        Padding="15"
+        BackgroundColor="{DynamicResource Primary}"
+        HorizontalOptions="Fill"
+        WidthRequest="300">
+        <Label Text="Order" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Keyboard="Numeric"
+            Text="{Binding Order}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="ShortText" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Text="{Binding ShortText}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="Description" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Text="{Binding Description}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="StepType" TextColor="{DynamicResource Text}" />
+        <Picker
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            ItemsSource="{Binding StepTypes}"
+            SelectedIndex="{Binding StepTypeIndex}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="Value" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Keyboard="Numeric"
+            Text="{Binding Value}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="Time (seconds)" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Keyboard="Numeric"
+            Text="{Binding Time}"
+            TextColor="{DynamicResource Text}" />
+        <Button
+            Margin="5"
+            BackgroundColor="{DynamicResource Secondary}"
+            Command="{Binding SaveCommand}"
+            FontSize="Medium"
+            HorizontalOptions="Center"
+            Text="Save"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"
+            WidthRequest="200" />
+    </VerticalStackLayout>
+
+</toolkit:Popup>

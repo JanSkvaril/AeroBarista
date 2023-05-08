@@ -10,6 +10,7 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
 		<ApplicationTitle>AeroBarista</ApplicationTitle>
@@ -32,13 +33,33 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\aeroicon.svg" Color="#C69256" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#C69256" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\ellipsisvertical.svg" TintColor="#B7B5B5" />
+		<MauiImage Update="Resources\Images\trashcan.svg" TintColor="#B7B5B5" />
+		<MauiImage Update="Resources\Images\pen.svg" TintColor="#B7B5B5" />
+		<MauiImage Update="Resources\Images\sharenodes.svg" TintColor="#B7B5B5" />
+		<MauiImage Update="Resources\Images\arrowleft.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\arrowright.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\arrowup.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\arrowdown.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\pausesolid.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\playsolid.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\plus.svg" TintColor="#FFFFFF" />
+		<MauiImage Update="Resources\Images\coffeebean.svg" TintColor="#C69256" />
+		<MauiImage Update="Resources\Images\droplet.svg" TintColor="#03a9f4" />
+		<MauiImage Update="Resources\Images\arrowsspin.svg" TintColor="#EF5350" />
+		<MauiImage Update="Resources\Images\clock.svg" TintColor="#ffc400" />
+		<MauiImage Update="Resources\Images\heart.svg" TintColor="#F44336" />
+		<MauiImage Update="Resources\Images\housechimney.svg" TintColor="#FFFFFF" />
+		<MauiImage Update="Resources\Images\mughot.svg" TintColor="#FFFFFF" />
+		<MauiImage Update="Resources\Images\qrcode.svg" TintColor="#FFFFFF" />
+		<MauiImage Update="Resources\AppIcon\aeroicon.svg" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
@@ -49,7 +70,72 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\background_image.png" />
+	  <None Remove="Resources\Images\blank.png" />
+	  <None Remove="Resources\Raw\finished_sound.mp3" />
+	  <None Remove="Resources\Raw\next_step_sound.mp3" />
+	  <None Remove="Resources\Raw\slogans.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AlohaKit" Version="1.0.74" />
+		<PackageReference Include="Autofac" Version="7.0.0" />
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Camera.MAUI" Version="1.3.5" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Plugin.Maui.Audio" Version="1.0.0" />
+		<PackageReference Include="QRCoder" Version="1.4.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\AeroBarista.Shared\AeroBarista.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\AddReviewPage.xaml.cs">
+	    <DependentUpon>AddReviewPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\AddReviewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CreateRecipePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CreateStepPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DetailRecipePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\FinishedPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ImportPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ProcessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\RecipeOptionsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\RecipesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\QRSharePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\x.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
