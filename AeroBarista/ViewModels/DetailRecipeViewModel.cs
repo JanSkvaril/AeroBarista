@@ -71,6 +71,13 @@ namespace AeroBarista.ViewModels
             await NavigationService.NavigateToAsync("QRSharePage", parameters);
         }
 
+        [RelayCommand]
+        public async void UpdateRecipe()
+        {
+            var parameters = new Dictionary<string, object> { [nameof(CreateRecipeViewModel.Recipe)] = Recipe };
+            await NavigationService.NavigateToAsync("CreateRecipePage", parameters);
+        }
+
         private async void GetDataAsync(int id)
         {
             var actual = await apiClient.GetAll();
