@@ -10,7 +10,7 @@ class DemoRecipeStepApiClient : IRecipeStepApiClient
 
     public DemoRecipeStepApiClient(DemoDatabase demoDatabase) => this.demoDatabase = demoDatabase;
 
-    public async Task Create(RecipeStepModel recipeStep) => await Task.Run(() => demoDatabase.CreateRecipeStep(recipeStep.RecipeId, recipeStep));
+    public async Task<RecipeStepModel> Create(RecipeStepModel recipeStep) => await Task.Run(() => demoDatabase.CreateRecipeStep(recipeStep.RecipeId, recipeStep));
 
     public async Task<bool> Delete(int recipeStepId) => await Task.Run(() => demoDatabase.DeleteStep(recipeStepId));
 

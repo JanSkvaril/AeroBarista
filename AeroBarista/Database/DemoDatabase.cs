@@ -45,7 +45,7 @@ public class DemoDatabase
 
     #region steps
 
-    public void CreateRecipeStep(int recipeId, RecipeStepModel recipeStep)
+    public RecipeStepModel CreateRecipeStep(int recipeId, RecipeStepModel recipeStep)
     {
         recipeStep = recipeStep with { Id = GetUniqueId() };
         var recipe = data.FirstOrDefault(r => r.Id == recipeId);
@@ -53,6 +53,7 @@ public class DemoDatabase
             throw new ArgumentNullException(nameof(recipe));
 
         recipe.Steps.Add(recipeStep);
+        return recipeStep;
     }
 
     public bool UpdateRecipeStep(RecipeStepModel recipeStep)

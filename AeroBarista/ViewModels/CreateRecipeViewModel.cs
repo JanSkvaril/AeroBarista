@@ -1,5 +1,6 @@
 ﻿using AeroBarista.ApiClients.Interfaces;
 using AeroBarista.Attributes;
+using AeroBarista.Services;
 using AeroBarista.Services.Interfaces;
 using AeroBarista.Shared.Enums;
 using AeroBarista.Shared.Models;
@@ -10,6 +11,7 @@ using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace AeroBarista.ViewModels;
 
@@ -22,7 +24,7 @@ public partial class CreateRecipeViewModel : BaseViewModel
 
     private readonly IRecipeApiClient recipeApiClient;
     private readonly Func<CreateStepPopUp> createStepPopUpFactory;
-
+    private readonly CurrentDataProvider currentDataProvider;
     [ObservableProperty]
     private string headText = "Create Recipe";
 
@@ -60,7 +62,7 @@ public partial class CreateRecipeViewModel : BaseViewModel
     [ObservableProperty]
     private IList<RecipeStepModel> steps;
 
-    public CreateRecipeViewModel(INavigationService navigationService, IRecipeApiClient recipeApiClient, Func<CreateStepPopUp> createStepPopUpFactory) : base(navigationService)
+    public CreateRecipeViewModel(INavigationService navigationService, IRecipeApiClient recipeApiClient, Func<CreateStepPopUp> createStepPopUpFactory, CurrentDataProvider currentDataProvider) : base(navigationService)
     {
         Methods = new(Enum.GetNames(typeof(RecipeMethod)));
         Categories = new(Enum.GetNames(typeof(RecipeCategory)));
@@ -69,7 +71,7 @@ public partial class CreateRecipeViewModel : BaseViewModel
 
         this.recipeApiClient = recipeApiClient;
         this.createStepPopUpFactory = createStepPopUpFactory;
-
+        this.currentDataProvider = currentDataProvider;
         MethodIndex = 0;
         CategoryIndex = 0;
         GrandSizeIndex = 0;
@@ -95,8 +97,25 @@ public partial class CreateRecipeViewModel : BaseViewModel
         [RelayCommand]
     public void AddStep()
     {
+        currentDataProvider.CurrentRecipe = recipe;
+
         var createStepPopUp = createStepPopUpFactory();
         DisplayPopup?.Invoke(createStepPopUp);
+    }
+
+    [RelayCommand]
+    public void UpdateStep(RecipeStepModel step)
+    {
+        currentDataProvider.CurrentRecipe = recipe;
+        currentDataProvider.CurrentRecipeStep = step;
+
+        var createStepPopUp = createStepPopUpFactory();
+        DisplayPopup?.Invoke(createStepPopUp);
+    }
+
+    public void OnStepsChanged()
+    {
+        OnPropertyChanged(nameof(Steps));
         Steps = Steps.OrderBy(s => s.Order).ToObservableCollection();
     }
 
@@ -105,6 +124,7 @@ public partial class CreateRecipeViewModel : BaseViewModel
     {
         Steps.Remove(step);
     }
+
 
     [RelayCommand]
     public async void CreateRecipe()
