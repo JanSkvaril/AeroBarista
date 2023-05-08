@@ -1,14 +1,8 @@
 ﻿using AeroBarista.Attributes;
 using AeroBarista.Services.Interfaces;
 using AeroBarista.ViewModels.Base;
-using AndroidX.Lifecycle;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AeroBarista.ViewModels
 {

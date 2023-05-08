@@ -80,9 +80,8 @@ namespace AeroBarista.ViewModels
 
         private async void GetDataAsync(int id)
         {
-            var actual = await apiClient.GetAll();
             Recipe = null;
-            Recipe = actual.First(r => r.Id == id);
+            Recipe = await apiClient.GetRecipe(id);
 
             GetTotalTime();
         }

@@ -1,12 +1,7 @@
 using AeroBarista.Attributes;
 using AeroBarista.ViewModels;
-using AndroidX.Lifecycle;
 using Camera.MAUI;
 using Camera.MAUI.ZXingHelper;
-using CommunityToolkit.Mvvm.Input;
-using System.Diagnostics;
-using ZXing;
-using static Android.App.Assist.AssistStructure;
 
 namespace AeroBarista.Views;
 
