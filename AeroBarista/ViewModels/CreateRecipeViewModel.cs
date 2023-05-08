@@ -107,18 +107,18 @@ public partial class CreateRecipeViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public void CreateRecipe()
+    public async void CreateRecipe()
     {
         if (Recipe == null)
         {
             RecipeModel recipe = new(0, Name, Description, (RecipeMethod)MethodIndex, (RecipeCategory)CategoryIndex, (GrandSize)GrandSizeIndex, CoffeeGrams, Author, TotalWaterGrams, false, Steps as List<RecipeStepModel>, null);
-            recipeApiClient.Create(recipe);
+            await recipeApiClient.Create(recipe);
         } else
         {
             Recipe = Recipe with { Name = Name, Description = Description, Method = (RecipeMethod)MethodIndex, Category = (RecipeCategory)CategoryIndex, CoffeeGrams = CoffeeGrams, Author = Author, TotalWaterGrams = TotalWaterGrams, Steps = Steps.ToList() };
-            recipeApiClient.Update(recipe);
+            await recipeApiClient.Update(recipe);
         }
 
-        NavigationService.NavigateToAsync("//RecipesPage");
+        await NavigationService.NavigateToAsync("//RecipesPage");
     }
 }
