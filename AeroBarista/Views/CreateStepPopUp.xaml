@@ -1,31 +1,59 @@
-<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AeroBarista.Views.CreateStepPopUp"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+<toolkit:Popup
+    x:Class="AeroBarista.Views.CreateStepPopUp"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
-    <VerticalStackLayout HorizontalOptions="Fill" Margin="10" WidthRequest="300" Padding="15">
-        <Label Text="Order"/>
-        <Entry Text="{Binding Order}" Keyboard="Numeric"/>
-        <Label Text="ShortText"/>
-        <Entry Text="{Binding ShortText}"/>
-        <Label Text="Description"/>
-        <Entry Text="{Binding Description}"/>
-        <Label Text="StepType"/>
-        <Picker SelectedIndex="{Binding StepTypeIndex}" ItemsSource="{Binding StepTypes}"/>
-        <Label Text="Value"/>
-        <Entry Text="{Binding Value}" Keyboard="Numeric"/>
-        <Label Text="Time (seconds)"/>
-        <Entry Text="{Binding Time}" Keyboard="Numeric"/>
+    <VerticalStackLayout
+        Margin="10"
+        Padding="15"
+        BackgroundColor="{DynamicResource Primary}"
+        HorizontalOptions="Fill"
+        WidthRequest="300">
+        <Label Text="Order" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Keyboard="Numeric"
+            Text="{Binding Order}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="ShortText" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Text="{Binding ShortText}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="Description" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Text="{Binding Description}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="StepType" TextColor="{DynamicResource Text}" />
+        <Picker
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            ItemsSource="{Binding StepTypes}"
+            SelectedIndex="{Binding StepTypeIndex}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="Value" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Keyboard="Numeric"
+            Text="{Binding Value}"
+            TextColor="{DynamicResource Text}" />
+        <Label Text="Time (seconds)" TextColor="{DynamicResource Text}" />
+        <Entry
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            Keyboard="Numeric"
+            Text="{Binding Time}"
+            TextColor="{DynamicResource Text}" />
         <Button
-                Margin="5"
-                BackgroundColor="{DynamicResource Secondary}"
-                Command="{Binding SaveCommand}"
-                FontSize="Medium"
-                Text="Save"
-                TextColor="{DynamicResource Text}"
-                WidthRequest="200" 
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"/>
+            Margin="5"
+            BackgroundColor="{DynamicResource Secondary}"
+            Command="{Binding SaveCommand}"
+            FontSize="Medium"
+            HorizontalOptions="Center"
+            Text="Save"
+            TextColor="{DynamicResource Text}"
+            VerticalOptions="Center"
+            WidthRequest="200" />
     </VerticalStackLayout>
 
 </toolkit:Popup>
