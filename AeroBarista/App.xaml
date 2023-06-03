@@ -14,6 +14,7 @@
             <converters:StringVisibilityConverter x:Key="StringVisibility" />
             <converters:TotalTimeConvertor x:Key="TotalStepsTime" />
             <converters:IconsPathConverter x:Key="IconPath" />
+            <converters:LikeIconPathConverter x:Key="LikeIconPath" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

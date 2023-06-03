@@ -5,6 +5,7 @@ using AeroBarista.Services.Interfaces;
 using AeroBarista.ViewModels.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using AeroBarista.Shared.Enums;
 
 namespace AeroBarista.ViewModels
 {
@@ -43,6 +44,13 @@ namespace AeroBarista.ViewModels
         {
             var parameters = new Dictionary<string, object> { [nameof(ProcessPageViewModel.Recipe)] = Recipe };
             await NavigationService.NavigateToAsync("ProcessPage", parameters);
+        }
+
+        [RelayCommand]
+        public async void ChangeLike()
+        {
+            Recipe = Recipe with { IsFavourite = !Recipe.IsFavourite };
+            await apiClient.Update(Recipe);
         }
 
         [RelayCommand]
