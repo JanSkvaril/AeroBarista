@@ -10,6 +10,7 @@ namespace AeroBarista.ViewModels
 {
 
     [ExportTransient]
+    [QueryProperty(nameof(FastStart), nameof(FastStart))]
     [QueryProperty(nameof(Recipe), nameof(Recipe))]
     public partial class ProcessPageViewModel : BaseViewModel
     {
@@ -17,6 +18,8 @@ namespace AeroBarista.ViewModels
         IProcessStateService processStateService;
         IAudioService audio;
 
+        [ObservableProperty]
+        private bool fastStart;
 
         [ObservableProperty]
         private RecipeModel? recipe;
@@ -65,7 +68,7 @@ namespace AeroBarista.ViewModels
 
             processStateService.SetStateChangeCallback(StateChangeCallback);
             processStateService.SetFinishedCallback(FinishedCallback);
-            processStateService.Inicialize();
+            processStateService.Inicialize(FastStart);
 
         }
 

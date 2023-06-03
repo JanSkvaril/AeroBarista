@@ -9,7 +9,11 @@ namespace AeroBarista.Services.Interfaces
 {
     public interface IProcessStateService
     {
-        void Inicialize();
+        /// <summary>
+        /// Inicialize state of the service
+        /// </summary>
+        /// <param name="fastStart">If true, find first step with time and set it as initial step</param>
+        void Inicialize(bool fastStart = false);
 
         /// <summary>
         /// Callback is called every time state is changed

@@ -30,9 +30,22 @@ namespace AeroBarista.Services
             
         }
 
-        public void Inicialize()
+        public void Inicialize(bool fastStart=false)
         {
-            ChangeState(steps.First(),new TimeSpan());
+            var first_step = steps.First();
+            if (fastStart)
+            {
+                foreach (var step in steps)
+                {
+                    if (step.Time != null)
+                    {
+                        first_step = step;
+                        break;
+                    }
+                }
+            }
+
+            ChangeState(first_step, new TimeSpan());
         }
 
         /// <summary>

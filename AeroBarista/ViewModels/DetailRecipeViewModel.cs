@@ -41,7 +41,14 @@ namespace AeroBarista.ViewModels
         [RelayCommand]
         public async void StartRecipe()
         {
-            var parameters = new Dictionary<string, object> { [nameof(ProcessPageViewModel.Recipe)] = Recipe };
+            var parameters = new Dictionary<string, object> { [nameof(ProcessPageViewModel.Recipe)] = Recipe, ["FastStart"] = false };
+            await NavigationService.NavigateToAsync("ProcessPage", parameters);
+        }
+
+        [RelayCommand]
+        public async void StartRecipeFast()
+        {
+            var parameters = new Dictionary<string, object> { [nameof(ProcessPageViewModel.Recipe)] = Recipe, ["FastStart"] = true };
             await NavigationService.NavigateToAsync("ProcessPage", parameters);
         }
 

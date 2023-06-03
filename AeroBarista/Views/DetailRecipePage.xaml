@@ -14,10 +14,11 @@
             Aspect="AspectFill"
             Opacity="0.3"
             Source="background_image.png" />
-        <Grid ColumnDefinitions="10, *, 10" RowDefinitions="*, auto">
+        <Grid ColumnDefinitions="10, *, *, 10" RowDefinitions="*, auto, auto">
             <ScrollView
                 Grid.Row="0"
                 Grid.Column="1"
+                Grid.ColumnSpan="2"
                 VerticalScrollBarVisibility="Never">
                 <VerticalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Center">
@@ -336,13 +337,28 @@
             <Button
                 Grid.Row="1"
                 Grid.Column="1"
-                Margin="10,10"
+                Margin="10,15"
+                BackgroundColor="{DynamicResource Gray600}"
+                Command="{Binding StartRecipeFastCommand}"
+                FontSize="Small"
+                Text="Fast Start"
+                HeightRequest="50"
+                TextColor="{DynamicResource Text}"
+                WidthRequest="100"
+                HorizontalOptions="Start"/>
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
+                HorizontalOptions="Center"
+                Margin="10,15"
                 BackgroundColor="{DynamicResource Secondary}"
                 Command="{Binding StartRecipeCommand}"
                 FontSize="Medium"
                 Text="Start"
+                HeightRequest="50"
                 TextColor="{DynamicResource Text}"
                 WidthRequest="200" />
+        
         </Grid>
     </Grid>
 </ContentPage>
