@@ -24,6 +24,8 @@ public class MainActivity : MauiAppCompatActivity
     {
         base.OnCreate(savedInstanceState);
 
+        Window.AddFlags(Android.Views.WindowManagerFlags.KeepScreenOn);
+
         //test
         OnNewIntent(Intent);
     }
