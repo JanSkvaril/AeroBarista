@@ -218,17 +218,18 @@
                     </Grid>
 
                     <VerticalStackLayout HorizontalOptions="Center" MaximumWidthRequest="300">
-                        <Grid ColumnDefinitions="70, *">
+                        <Grid ColumnDefinitions="70,50" HorizontalOptions="Center">
                             <Label
                                 Grid.Column="0"
                                 Text="Favourite: "
                                 TextColor="{DynamicResource TextDescription}"
                                 VerticalTextAlignment="Center" />
-                            <Switch
+                            <ImageButton
                                 Grid.Column="1"
-                                Margin="5,0"
-                                IsToggled="{Binding Recipe.IsFavourite}"
-                                OnColor="{DynamicResource Secondary}" />
+                                Margin="10,10"
+                                Command="{Binding ChangeLikeCommand}"
+                                HeightRequest="30"
+                                Source="{Binding Recipe.IsFavourite, Converter={StaticResource LikeIconPath}}" />
                         </Grid>
                         <Label
                             Margin="0,5"
