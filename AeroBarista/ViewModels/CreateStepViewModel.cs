@@ -8,6 +8,7 @@ using AeroBarista.ViewModels.Base;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.ComponentModel.DataAnnotations;
 
 namespace AeroBarista.ViewModels;
 
@@ -46,11 +47,15 @@ public partial class CreateStepViewModel : BaseViewModel
             Time = 0;
         else
             Time = Convert.ToInt32(((TimeSpan)recipeStep.Time!).TotalSeconds);
+        Error = string.Empty;
     }
 
+    [Required(ErrorMessage = "Order is required")]
+    [Range(1,100)]
     [ObservableProperty]
     private int order;
 
+    [Required(ErrorMessage = "Short text is required", AllowEmptyStrings = false)]
     [ObservableProperty]
     private string shortText;
 
@@ -67,6 +72,9 @@ public partial class CreateStepViewModel : BaseViewModel
     [ObservableProperty]
     private int? time;
 
+    [ObservableProperty]
+    private string error;
+
     public CreateStepViewModel(INavigationService navigationService) : base(navigationService)
     {
         StepTypes = new(Enum.GetNames(typeof(StepType)));
@@ -76,6 +84,16 @@ public partial class CreateStepViewModel : BaseViewModel
     [RelayCommand]
     public void Save()
     {
+        ValidateAllProperties();
+
+        if (HasErrors)
+        {
+            Error = string.Join(Environment.NewLine, GetErrors().Select(e => e.ErrorMessage));
+            return;
+        }
+
+        Error = string.Empty;
+
         TimeSpan? stepTime = null;
         if (Time != null && Time > 0)
         {

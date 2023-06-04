@@ -16,7 +16,7 @@
             Keyboard="Numeric"
             Text="{Binding Order}"
             TextColor="{DynamicResource Text}" />
-        <Label Text="ShortText" TextColor="{DynamicResource Text}" />
+        <Label Text="Short Text" TextColor="{DynamicResource Text}" />
         <Entry
             BackgroundColor="{DynamicResource PrimaryLight}"
             Text="{Binding ShortText}"
@@ -26,7 +26,7 @@
             BackgroundColor="{DynamicResource PrimaryLight}"
             Text="{Binding Description}"
             TextColor="{DynamicResource Text}" />
-        <Label Text="StepType" TextColor="{DynamicResource Text}" />
+        <Label Text="Step Type" TextColor="{DynamicResource Text}" />
         <Picker
             BackgroundColor="{DynamicResource PrimaryLight}"
             ItemsSource="{Binding StepTypes}"
@@ -44,6 +44,7 @@
             Keyboard="Numeric"
             Text="{Binding Time}"
             TextColor="{DynamicResource Text}" />
+        <Label Text="{Binding Error}" TextColor="Red"/>
         <Button
             Margin="5"
             BackgroundColor="{DynamicResource Secondary}"

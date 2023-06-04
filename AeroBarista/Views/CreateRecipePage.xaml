@@ -166,6 +166,7 @@
                         Source="plus.png"
                         WidthRequest="25" />
                 </Border>
+                <Label Text="{Binding Error}" TextColor="Red"/>
                 <Button
                     Margin="10"
                     BackgroundColor="{DynamicResource Secondary}"

@@ -12,6 +12,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace AeroBarista.ViewModels;
 
@@ -32,6 +33,7 @@ public partial class CreateRecipeViewModel : BaseViewModel
     [ObservableProperty]
     private RecipeModel? recipe;
 
+    [Required(ErrorMessage = "Name is required", AllowEmptyStrings = false)]
     [ObservableProperty]
     private string name;
 
@@ -47,21 +49,28 @@ public partial class CreateRecipeViewModel : BaseViewModel
     private int categoryIndex;
 
     public List<string> GrandSizes { get; set; }
-
     [ObservableProperty]
     private int grandSizeIndex;
 
+    [Required(ErrorMessage = "Coffee grams are required", AllowEmptyStrings = false)]
+    [Range(1,1000)]
     [ObservableProperty]
     private int coffeeGrams;
 
     [ObservableProperty]
     private string author;
 
+    [Required(ErrorMessage = "Water grams are required", AllowEmptyStrings = false)]
+    [Range(1, 5000)]
     [ObservableProperty]
     private int totalWaterGrams;
 
     [ObservableProperty]
     private IList<RecipeStepModel> steps;
+
+    [ObservableProperty]
+    private string error;
+
 
     public CreateRecipeViewModel(INavigationService navigationService, IRecipeApiClient recipeApiClient, IRecipeStepApiClient recipeStepApiClient, Func<CreateStepPopUp> createStepPopUpFactory, CurrentDataProvider currentDataProvider) : base(navigationService)
     {
@@ -77,6 +86,7 @@ public partial class CreateRecipeViewModel : BaseViewModel
         MethodIndex = 0;
         CategoryIndex = 0;
         GrandSizeIndex = 0;
+        Error = string.Empty;
     }
 
     partial void OnRecipeChanged(RecipeModel? value)
@@ -129,6 +139,16 @@ public partial class CreateRecipeViewModel : BaseViewModel
     [RelayCommand]
     public async void CreateRecipe()
     {
+        ValidateAllProperties();
+
+        if(HasErrors)
+        {
+            Error = string.Join(Environment.NewLine, GetErrors().Select(e => e.ErrorMessage));
+            return;
+        }
+
+        Error = string.Empty;
+
         if (Recipe == null)
         {
             RecipeModel recipeData = new(-1, Name, Description, (RecipeMethod)MethodIndex, (RecipeCategory)CategoryIndex, (GrandSize)GrandSizeIndex, CoffeeGrams, Author, TotalWaterGrams, false, new(), null);
